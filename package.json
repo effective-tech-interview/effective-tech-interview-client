@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
+    "format": "prettier --check ./src",
+    "format:fix": "prettier --write ./src",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -35,7 +38,8 @@
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-simple-import-sort": "10.0.0",
     "eslint-plugin-unused-imports": "2.0.0",
-    "prettier": "2.8.4",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "lint-staged": "13.1.2",
+    "prettier": "2.8.4"
   }
 }
