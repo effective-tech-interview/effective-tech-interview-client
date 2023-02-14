@@ -1,0 +1,76 @@
+{
+  "main": {
+    "categories": [
+      {
+        "id": 1,
+        "name": "프론트엔드"
+      },
+      {
+        "id": 2,
+        "name": "백엔드"
+      },
+      {
+        "id": 3,
+        "name": "모바일 웹 개발"
+      },
+      {
+        "id": 4,
+        "name": "게임 개발"
+      },
+      {
+        "id": 5,
+        "name": "알고리즘"
+      },
+      {
+        "id": 6,
+        "name": "자료구조"
+      }
+    ]
+  },
+  "mid": {
+    "categories": [
+      {
+        "id": 1,
+        "name": "html/css",
+        "imageUrl": ""
+      },
+      {
+        "id": 2,
+        "name": "javascript",
+        "imageUrl": ""
+      },
+      {
+        "id": 3,
+        "name": "react",
+        "imageUrl": ""
+      },
+      {
+        "id": 4,
+        "name": "vue.js",
+        "imageUrl": ""
+      },
+      {
+        "id": 5,
+        "name": "jquery",
+        "imageUrl": ""
+      },
+      {
+        "id": 6,
+        "name": "es6",
+        "imageUrl": ""
+      }
+    ]
+  },
+  "questions": {
+    "id": 1,
+    "question": "class와  id의 차이점에 관해서 설명해주세요."
+  },
+  "questions-id-answer": {
+    "id": 1,
+    "answer": "class와 id는 HTML 요소를 식별하기 위해 사용되는 속성입니다.\nclass는 하나의 요소에 여러 개의 클래스를 지정할 수 있습니다. 같은 클래스를 가진 여러 요소들을 한 번에 스타일링하거나 조작할 수 있습니다. id는 하나의 요소에 하나의 id만 지정할 수 있습니다. 같은 id를 가진 요소는 없어야 합니다. id는 특정 요소를 식별하기 위해 사용됩니다."
+  },
+  "questions-id-tail": {
+    "id": 1,
+    "question": "class와  id의 차이점에 관해서 설명해주세요."
+  }
+}
