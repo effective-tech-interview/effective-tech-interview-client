@@ -5,6 +5,12 @@ const nextConfig = {
   compiler: {
     emotion: true,
   },
+  // modularizeImports experimental
+  // modularizeImports: {
+  //   '@emotion/react': {
+  //     transform: '@emotion/react/{{member}}',
+  //   }
+  // },
 };
 
 module.exports = nextConfig;
