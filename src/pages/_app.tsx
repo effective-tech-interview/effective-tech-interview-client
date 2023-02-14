@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { AppProps } from 'next/app';
 import type { ComponentProps } from 'react';
 import { RecoilRoot } from 'recoil';
@@ -14,7 +15,9 @@ export default function App({ Component, pageProps }: AppProps<PageProps>) {
     <RecoilRoot>
       <QueryClientProvider dehydratedState={pageProps.dehydratedState}>
         <RecoilDebugObserver />
-        <Component {...pageProps} />
+        <Suspense fallback={<>Global Suspense</>}>
+          <Component {...pageProps} />
+        </Suspense>
       </QueryClientProvider>
     </RecoilRoot>
   );
