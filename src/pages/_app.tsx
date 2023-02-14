@@ -4,9 +4,9 @@ import type { ComponentProps } from 'react';
 import { RecoilRoot } from 'recoil';
 
 import GlobalErrorFallback from '~/components/common/GlobalErrorFallback';
+import QueryClientProvider from '~/components/common/QueryClientProvider';
 import QueryErrorBoundary from '~/components/common/QueryErrorBoundary';
-import QueryClientProvider from '~/components/QueryClientProvider';
-import RecoilDebugObserver from '~/components/RecolDebugObserver';
+import RecoilDebugObserver from '~/components/common/RecoilDebugObserver';
 
 interface PageProps {
   dehydratedState: ComponentProps<typeof QueryClientProvider>['dehydratedState'];
