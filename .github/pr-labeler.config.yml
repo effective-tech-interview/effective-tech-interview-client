@@ -1,0 +1,9 @@
+'Type: Feature': 'feature/*'
+'Type: Refactor': 'refactor/*'
+'Type: Improvement': 'improvement/*'
+'Type: Test': 'test/*'
+'Type: Style': ['design/*', 'style/*']
+'Type: Chore': ['doc/*', 'misc/*', 'chore/*', 'deps/*']
+'Type: Bug': ['fix/*', 'fix*']
+
+'Setting': ['setting/*', 'settings/*']
