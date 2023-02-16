@@ -3,12 +3,17 @@ on:
   pull_request:
     types: [opened, reopened]
 
+permissions:
+  contents: read
+
 jobs:
   pr-labeler:
+    permissions:
+      contents: read # for TimonVS/pr-labeler-action to read config file
+      pull-requests: write # for TimonVS/pr-labeler-action to add labels in PR
     runs-on: ubuntu-latest
     steps:
-      - uses: TimonVS/pr-labeler-action@v3
+      - uses: TimonVS/pr-labeler-action@v4
         with:
-          configuration-path: .github/pr-labeler-config.yml
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: .github/pr-labeler.config.yml # optional, .github/pr-labeler.yml is the default value
