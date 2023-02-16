@@ -25,6 +25,12 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+          run_install: false
+
       - name: Compute dependency cache key
         id: compute_lockfile_hash
         run: echo "::set-output name=hash::${{ hashFiles('pnpm-lock.yaml') }}"
@@ -54,6 +60,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.DEFAULT_NODE_VERSION }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+          run_install: false
 
       - name: Check dependency cache
         uses: actions/cache@v3
