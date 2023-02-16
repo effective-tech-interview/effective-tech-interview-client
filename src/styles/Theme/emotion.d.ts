@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import type theme from './Theme';
+import type { theme } from './Theme';
 
 import '@emotion/react';
 
