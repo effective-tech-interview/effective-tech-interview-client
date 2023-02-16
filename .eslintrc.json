@@ -1,3 +1,102 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "extends": [
+    "next",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint", "simple-import-sort", "unused-imports", "import"],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
+    }
+  },
+  "rules": {
+    // ESLint rules
+    "no-implicit-coercion": "error", // use shorter, more self-explanatory notation for the type conversion
+
+    // Next rules
+    "@next/next/no-img-element": "off", // We currently not using next/image because it isn't supported with SSG mode
+
+    // React rules
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "react/jsx-props-no-spreading": "off", // _app.tsx uses spread operator
+    "react/destructuring-assignment": "off", // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
+
+    // TypeScript rules
+    "@typescript-eslint/no-unused-vars": "off", // duplicate option "unused-imports/no-unused-vars"
+    "@typescript-eslint/array-type": ["error", { "default": "array-simple" }],
+    "@typescript-eslint/consistent-type-imports": "error", // Ensure `import type` is used when it's necessary
+    "@typescript-eslint/comma-dangle": "off", // Avoid conflict rule between Eslint and Prettier
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "format": ["camelCase", "UPPER_CASE", "PascalCase"],
+        "selector": "variable",
+        "leadingUnderscore": "allow"
+      },
+      { "format": ["camelCase", "PascalCase"], "selector": "function" },
+      { "format": ["PascalCase"], "selector": "interface" },
+      { "format": ["PascalCase"], "selector": "typeAlias" }
+    ],
+
+    // Default import rules
+    "import/no-unresolved": "error",
+    "import/prefer-default-export": "off", // Named export is easier to refactor automatically
+
+    // Simple import recommended rules
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // react > next > @ > a~z
+          ["^react$", "^next", "^@", "^[a-z]"],
+          // ~
+          ["^~"],
+          // `../` > './'
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$", "^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          // Side effect imports
+          ["^\\u0000"]
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "error",
+    "import/first": "error", // makes sure all imports are at the top of the file. (autofixable)
+    "import/newline-after-import": "error", // makes sure there’s a newline after the imports. (autofixable)
+    "import/no-duplicates": "error", // merges import statements of the same file. (autofixable, mostly)
+
+    // Unused import recommended rules
+    "unused-imports/no-unused-imports": "warn",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  }
 }

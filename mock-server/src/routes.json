@@ -1,0 +1,6 @@
+{
+  "/api/v1/*": "/$1",
+  "/questions\\?midCategoryId=:midCategoryId": "/questions",
+  "/questions/:questionId/answer": "/questions-id-answer",
+  "/questions/:questionId/tail": "/questions-id-tail"
+}

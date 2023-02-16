@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Epic",
+    "color": "273c75",
+    "description": "에픽"
+  },
+  {
+    "name": "Story",
+    "color": "F9165B",
+    "description": "스토리"
+  },
+  {
+    "name": "Setting",
+    "color": "b2bec3",
+    "description": "프로젝트 설정"
+  },
+  {
+    "name": "Priority: Critical",
+    "color": "B70102",
+    "description": "우선순위: 긴급"
+  },
+  {
+    "name": "Priority: High",
+    "color": "DA3D02",
+    "description": "우선순위: 상"
+  },
+  {
+    "name": "Priority: Low",
+    "color": "028B0F",
+    "description": "우선순위: 하"
+  },
+  {
+    "name": "Priority: Medium",
+    "color": "FBCB00",
+    "description": "우선순위: 중"
+  },
+  {
+    "name": "Status: Done",
+    "color": "00b894",
+    "description": "리뷰까지 완료 된 이슈"
+  },
+  {
+    "name": "Status: Duplicated",
+    "color": "a29bfe",
+    "description": "이미 보고 된 이슈",
+    "aliases": [
+      "duplicate"
+    ]
+  },
+  {
+    "name": "Status: In Progress",
+    "color": "74b9ff",
+    "description": "현재 처리 중인 이슈"
+  },
+  {
+    "name": "Status: Pending",
+    "color": "fab1a0",
+    "description": "보류 중인 이슈",
+    "aliases": [
+      "wontfix"
+    ]
+  },
+  {
+    "name": "Status: Reviewing",
+    "color": "fdcb6e",
+    "description": "처리하고 리뷰 중인 이슈"
+  },
+  {
+    "name": "Status: To Do",
+    "color": "e17055",
+    "description": "처리해야 되는 이슈"
+  },
+  {
+    "name": "Type: Bug",
+    "color": "E24946",
+    "description": "유형: 버그",
+    "aliases": [
+      "bug"
+    ]
+  },
+  {
+    "name": "Type: Documentation",
+    "color": "1C8733",
+    "description": "유형: 문서"
+  },
+  {
+    "name": "Type: Feature",
+    "color": "1870EC",
+    "description": "유형: 기능 추가"
+  },
+  {
+    "name": "Type: Improvement",
+    "color": "8A58E6",
+    "description": "유형: 기능 개선",
+    "aliases": [
+      "enhancement"
+    ]
+  },
+  {
+    "name": "Type: Question",
+    "color": "A26A00",
+    "description": "유형: 질문"
+  },
+  {
+    "name": "Type: Refactor",
+    "color": "C0498B",
+    "description": "유형: 리팩토링"
+  },
+  {
+    "name": "Type: Test",
+    "color": "D7542E",
+    "description": "유형: 테스트"
+  }
+]
