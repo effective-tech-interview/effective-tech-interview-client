@@ -1,4 +1,4 @@
-'Type: Feature': 'feature/*'
+'Type: Feature': ['feature/*', 'feat/*']
 'Type: Refactor': 'refactor/*'
 'Type: Improvement': 'improvement/*'
 'Type: Test': 'test/*'
