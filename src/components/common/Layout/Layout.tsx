@@ -22,6 +22,8 @@ const Font = LocalFont({
   ],
 });
 
-export default function Layout({ children }: PropsWithChildren<{}>) {
+const Layout = ({ children }: PropsWithChildren<{}>) => {
   return <main className={Font.className}>{children}</main>;
-}
+};
+
+export default Layout;
