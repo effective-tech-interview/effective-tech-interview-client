@@ -10,7 +10,7 @@ import QueryClientProvider from '~/components/common/QueryClientProvider';
 import QueryErrorBoundary from '~/components/common/QueryErrorBoundary';
 import RecoilDebugObserver from '~/components/common/RecoilDebugObserver';
 import GlobalStyle from '~/styles/GlobalStyle';
-import Theme from '~/styles/Theme';
+import { theme } from '~/styles/Theme';
 
 interface PageProps {
   dehydratedState: ComponentProps<typeof QueryClientProvider>['dehydratedState'];
@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps<PageProps>) {
         <QueryErrorBoundary ErrorFallback={GlobalErrorFallback}>
           <RecoilDebugObserver />
           <Suspense fallback={<>Global Suspense</>}>
-            <ThemeProvider theme={Theme}>
+            <ThemeProvider theme={theme}>
               <GlobalStyle />
               <Layout>
                 <Component {...pageProps} />

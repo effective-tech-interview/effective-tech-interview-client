@@ -1,1 +1,2 @@
-export { default } from './Theme';
+export type { KeyOfColors, KeyOfTypography } from './Theme';
+export { theme } from './Theme';
