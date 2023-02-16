@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@emotion/react';
+import { OverlayProvider } from '@toss/use-overlay';
 import type { ComponentProps } from 'react';
 import { RecoilRoot } from 'recoil';
 
@@ -20,17 +21,19 @@ export default function App({ Component, pageProps }: AppProps<PageProps>) {
   return (
     <RecoilRoot>
       <QueryClientProvider dehydratedState={pageProps.dehydratedState}>
-        <QueryErrorBoundary ErrorFallback={GlobalErrorFallback}>
-          <RecoilDebugObserver />
-          <Suspense fallback={<>Global Suspense</>}>
-            <ThemeProvider theme={theme}>
-              <GlobalStyle />
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </ThemeProvider>
-          </Suspense>
-        </QueryErrorBoundary>
+        <OverlayProvider>
+          <QueryErrorBoundary ErrorFallback={GlobalErrorFallback}>
+            <RecoilDebugObserver />
+            <Suspense fallback={<>Global Suspense</>}>
+              <ThemeProvider theme={theme}>
+                <GlobalStyle />
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
+              </ThemeProvider>
+            </Suspense>
+          </QueryErrorBoundary>
+        </OverlayProvider>
       </QueryClientProvider>
     </RecoilRoot>
   );
