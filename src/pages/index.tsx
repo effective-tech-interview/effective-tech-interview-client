@@ -1,3 +1,4 @@
+import { Input } from '~/components/common/Input';
 import Text from '~/components/common/Text';
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Text variant="b2">이팩티브 기술면접</Text>
       <Text variant="subtitle">이팩티브 기술면접</Text>
       <Text variant="caption">이팩티브 기술면접</Text>
+      <Input></Input>
     </div>
   );
 }
