@@ -1,19 +1,44 @@
 import type { IconName } from './icons';
 import { ICONS } from './icons';
 
-export interface IconProps extends React.SVGProps<SVGSVGElement> {
+type SizeType = 'oneSize' | 'eachSize';
+
+interface IconProps extends React.SVGProps<SVGSVGElement> {
   wrapperProps?: React.HTMLAttributes<HTMLDivElement>;
   iconName: IconName;
-  size?: number;
+  size?: SizeType;
   width?: number;
   height?: number;
 }
 
-export const Icon = ({ size = 22, width, height, iconName, wrapperProps, ...rest }: IconProps) => {
+type SizeProps = {
+  [key in SizeType]: {
+    w: number;
+    h: number;
+  };
+};
+export const Icon = ({
+  size = 'oneSize',
+  width = 22,
+  height = 22,
+  iconName,
+  wrapperProps,
+  ...rest
+}: IconProps) => {
+  const SIZE: SizeProps = {
+    oneSize: {
+      w: width,
+      h: width,
+    },
+    eachSize: {
+      w: width,
+      h: height,
+    },
+  };
   const IconComponent = ICONS[iconName];
   return (
     <span {...wrapperProps}>
-      <IconComponent {...rest} width={width || size} height={height || size} />
+      <IconComponent width={SIZE[size]['w']} height={SIZE[size]['h']} {...rest} />
     </span>
   );
 };
