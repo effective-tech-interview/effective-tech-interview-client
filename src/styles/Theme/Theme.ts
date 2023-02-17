@@ -9,6 +9,7 @@ export const theme = {
     gray400: '#9CA7C0',
     gray600: '#5E6473',
     gray800: '#383C45',
+    primary_light: '#F6F5FF',
     primary_default: '#5445FF',
     primary_press: '#322999',
     secondary_default: '#00DD9B',
@@ -23,7 +24,7 @@ export const theme = {
     `,
     h2: css`
       font-size: 2.4rem;
-      font-weight: 700;
+      font-weight: 600;
       line-height: 2.6rem;
       letter-spacing: 0px;
     `,
@@ -41,7 +42,7 @@ export const theme = {
     `,
     subtitle: css`
       font-size: 1.8rem;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 2rem;
       letter-spacing: -0.25px;
     `,
