@@ -14,7 +14,7 @@ export function useModal() {
       overlay.open(({ isOpen, close }) => {
         return (
           <>
-            {isOpen ? (
+            {isOpen && (
               <Dimmer
                 ref={ref}
                 onClick={(e: React.MouseEvent) => {
@@ -26,7 +26,7 @@ export function useModal() {
               >
                 <Modal {...props} />
               </Dimmer>
-            ) : null}
+            )}
           </>
         );
       });
