@@ -46,9 +46,9 @@ const Text = ({
 
 export default Text;
 
-type StyleProps = Pick<TextProps, 'size' | 'weight' | 'color' | 'variant'>;
+type TextStyleProps = Pick<TextProps, 'size' | 'weight' | 'color' | 'variant'>;
 
-const StyledText = styled('span')<StyleProps>`
+const StyledText = styled('span')<TextStyleProps>`
   font-size: ${({ size }) => size}rem;
   font-weight: ${({ weight }) => weight};
   color: ${({ color }) => theme.color[color ?? 'gray800']};
