@@ -24,6 +24,7 @@ specifiers:
   husky: ^8.0.0
   lint-staged: 13.1.2
   next: 13.1.6
+  pnpm: ^7.27.0
   prettier: 2.8.4
   react: 18.2.0
   react-dom: 18.2.0
@@ -38,6 +39,7 @@ dependencies:
   '@tanstack/react-query': 4.24.6_biqbaboplfbrettd7655fr4n2y
   axios: 1.3.3
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
+  pnpm: 7.27.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-error-boundary: 3.1.4_react@18.2.0
@@ -3163,6 +3165,12 @@ packages:
     engines: {node: '>=0.10'}
     hasBin: true
     dev: true
+
+  /pnpm/7.27.0:
+    resolution: {integrity: sha512-nvxGrxgu3oYyw7zg7DdotEnqp9r/c0/iLZHr6QewJPEkVFGSPdsxrm0HFKBkOqwCInoutFzz/mtGx+pbYV8UCw==}
+    engines: {node: '>=14.6'}
+    hasBin: true
+    dev: false
 
   /postcss/8.4.14:
     resolution: {integrity: sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig==}
