@@ -47,7 +47,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
             {required && '*'}
           </Text>
         </label>
-        <StyledInput
+        <InputContainer
           width={width}
           height={height}
           isFocus={isFocus}
@@ -71,7 +71,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
             }}
           />
           {suffix && suffix}
-        </StyledInput>
+        </InputContainer>
         {errorMessage && (
           <Text
             variant="caption"
@@ -113,7 +113,7 @@ const Wrapper = styled.div`
   gap: 6px;
 `;
 
-const StyledInput = styled('div')<{
+const InputContainer = styled('div')<{
   width?: number;
   height?: number;
   isFocus: boolean;
@@ -160,11 +160,7 @@ const InitialInput = styled('input')`
   }
 
   //body01
-  font-family: Pretendard;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: -0.25px;
+  ${theme.typography.b1}
 
   box-sizing: border-box;
   outline: none;
