@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
-import type { KeyOfColors, KeyOfTypography } from '@styles/Theme';
-import { theme } from '@styles/Theme';
 import type { HTMLAttributes, PropsWithChildren } from 'react';
+
+import type { KeyOfColors, KeyOfTypography } from '~/styles/Theme';
+import { theme } from '~/styles/Theme';
 
 type FontWeight =
   | 100

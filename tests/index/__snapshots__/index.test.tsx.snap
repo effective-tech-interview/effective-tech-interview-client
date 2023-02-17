@@ -5,7 +5,112 @@ exports[`<Home /> renders a heading 1`] = `
   <div
     style="display: flex; flex-direction: column;"
   >
-    Home
+    <div>
+      Home
+    </div>
+    <span
+      class="css-3j559g ek7smyr0"
+      color="gray800"
+      size="1.6"
+    >
+      이팩티브 기술면접
+    </span>
+    <span
+      class="css-w2f84g ek7smyr0"
+      color="gray800"
+      size="1.6"
+    >
+      이팩티브 기술면접
+    </span>
+    <span
+      class="css-uqu3dd ek7smyr0"
+      color="gray800"
+      size="1.6"
+    >
+      이팩티브 기술면접
+    </span>
+    <span
+      class="css-vzwkk1 ek7smyr0"
+      color="gray800"
+      size="1.6"
+    >
+      이팩티브 기술면접
+    </span>
+    <span
+      class="css-8ki022 ek7smyr0"
+      color="gray800"
+      size="1.6"
+    >
+      이팩티브 기술면접
+    </span>
+    <span
+      class="css-9kepj9 ek7smyr0"
+      color="gray800"
+      size="1.6"
+    >
+      이팩티브 기술면접
+    </span>
+    <div
+      style="display: flex; height: 500px; flex-direction: column; width: 328px; justify-content: space-between;"
+    >
+      <button
+        class="css-1mmamjn enf1cef0"
+        color="primary_default"
+        width="7.2"
+      >
+        변경
+      </button>
+      <button
+        class="css-pfqsme enf1cef0"
+      >
+        버튼
+      </button>
+      <button
+        class="css-1rgmv7y enf1cef0"
+      >
+        버튼
+      </button>
+      <button
+        class="css-1l939tl enf1cef0"
+      >
+        버튼
+      </button>
+      <button
+        class="css-zrrv6e enf1cef0"
+      >
+        버튼
+      </button>
+      <button
+        class="css-1punggx enf1cef0"
+        color="gray400"
+      >
+        버튼
+      </button>
+      <button
+        class="css-1c0tl3d enf1cef0"
+      >
+        버튼
+      </button>
+    </div>
+    <div
+      class="css-14bpej7 e16bg56v0"
+    >
+      <label>
+        <span
+          class="css-8ki022 ek7smyr0"
+          color="gray800"
+          size="1.6"
+        />
+      </label>
+      <div
+        class="css-17u2oxq e16bg56v1"
+      >
+        <input
+          class="css-fsrgdv e16bg56v2"
+          type="text"
+        />
+      </div>
+    </div>
   </div>
 </div>
 `;
