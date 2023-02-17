@@ -1,13 +1,9 @@
 import styled from '@emotion/styled';
-import type { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 
 import { theme } from '~/styles/Theme';
 
-interface Props {
-  children: ReactNode;
-}
-
-export function Modal({ children }: Props) {
+export function Modal({ children }: PropsWithChildren) {
   return <StyledModal>{children}</StyledModal>;
 }
 
