@@ -12,8 +12,8 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
 export const Icon = ({ size = 22, width, height, iconName, wrapperProps, ...rest }: IconProps) => {
   const IconComponent = ICONS[iconName];
   return (
-    <i {...wrapperProps}>
+    <span {...wrapperProps}>
       <IconComponent {...rest} width={width || size} height={height || size} />
-    </i>
+    </span>
   );
 };
