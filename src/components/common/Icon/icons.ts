@@ -11,17 +11,17 @@ import { default as upArrow } from './icons/upArrow.svg';
 import { default as user } from './icons/user.svg';
 
 export const ICONS = {
-  user: user,
-  show: show,
-  reload: reload,
-  hide: hide,
-  check: check,
-  downArrow: downArrow,
-  leftArrow: leftArrow,
-  rightArrow: rightArrow,
-  setting: setting,
-  toGoHome: toGoHome,
-  upArrow: upArrow,
+  user,
+  show,
+  reload,
+  hide,
+  check,
+  downArrow,
+  leftArrow,
+  rightArrow,
+  setting,
+  toGoHome,
+  upArrow,
 };
 
 export type IconName = keyof typeof ICONS;
