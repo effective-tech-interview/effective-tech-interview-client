@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> renders a heading 1`] = `
+<div>
+  <div
+    style="display: flex; flex-direction: column;"
+  >
+    Home
+  </div>
+</div>
+`;

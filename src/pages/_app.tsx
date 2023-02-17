@@ -1,17 +1,16 @@
 import { Suspense } from 'react';
 import type { AppProps } from 'next/app';
+import GlobalErrorFallback from '@components/common/GlobalErrorFallback';
+import Layout from '@components/common/Layout';
+import QueryClientProvider from '@components/common/QueryClientProvider';
+import QueryErrorBoundary from '@components/common/QueryErrorBoundary';
+import RecoilDebugObserver from '@components/common/RecoilDebugObserver';
 import { ThemeProvider } from '@emotion/react';
+import GlobalStyle from '@styles/GlobalStyle';
+import { theme } from '@styles/Theme';
 import { OverlayProvider } from '@toss/use-overlay';
 import type { ComponentProps } from 'react';
 import { RecoilRoot } from 'recoil';
-
-import GlobalErrorFallback from '~/components/common/GlobalErrorFallback';
-import Layout from '~/components/common/Layout';
-import QueryClientProvider from '~/components/common/QueryClientProvider';
-import QueryErrorBoundary from '~/components/common/QueryErrorBoundary';
-import RecoilDebugObserver from '~/components/common/RecoilDebugObserver';
-import GlobalStyle from '~/styles/GlobalStyle';
-import { theme } from '~/styles/Theme';
 
 interface PageProps {
   dehydratedState: ComponentProps<typeof QueryClientProvider>['dehydratedState'];

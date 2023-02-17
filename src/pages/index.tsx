@@ -5,6 +5,7 @@ import Text from '~/components/common/Text';
 export default function Home() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div>Home</div>
       <Text variant="h1">이팩티브 기술면접</Text>
       <Text variant="h2">이팩티브 기술면접</Text>
       <Text variant="b1">이팩티브 기술면접</Text>
