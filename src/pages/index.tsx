@@ -1,5 +1,4 @@
 import Button from '~/components/common/Button';
-import { Input } from '~/components/common/Input';
 import Text from '~/components/common/Text';
 
 export default function Home() {
@@ -33,7 +32,6 @@ export default function Home() {
         </Button>
         <Button backgroundColor="system_error">버튼</Button>
       </div>
-      <Input></Input>
     </div>
   );
 }
