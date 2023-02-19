@@ -28,8 +28,6 @@ interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: KeyOfTypography;
 }
 
-type StyleProps = Pick<TextProps, 'size' | 'weight' | 'color' | 'variant'>;
-
 const Text = ({
   as = 'span',
   size = 1.6,
@@ -48,7 +46,9 @@ const Text = ({
 
 export default Text;
 
-const StyledText = styled('span')<StyleProps>`
+type TextStyleProps = Pick<TextProps, 'size' | 'weight' | 'color' | 'variant'>;
+
+const StyledText = styled('span')<TextStyleProps>`
   font-size: ${({ size }) => size}rem;
   font-weight: ${({ weight }) => weight};
   color: ${({ color }) => theme.color[color ?? 'gray800']};
