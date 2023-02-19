@@ -20,6 +20,7 @@
       "~/*": ["./src/*"]
     }
   },
+  "types": ["node", "jest", "@testing-library/jest-dom"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "mock-server"]
 }
