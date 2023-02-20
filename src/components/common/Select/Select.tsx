@@ -52,6 +52,10 @@ const StyledSelectItem = styled('li')<SelectStyleProps>`
   background-color: ${theme.color.gray000};
   color: ${theme.color.gray800};
 
+  :not(:first-child) {
+    margin-top: 1rem;
+  }
+
   ${({ selected }) =>
     selected &&
     css`
