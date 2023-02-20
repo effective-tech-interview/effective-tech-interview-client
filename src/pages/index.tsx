@@ -1,10 +1,21 @@
 import Button from '~/components/common/Button';
+import { Input } from '~/components/common/Input';
+import Select from '~/components/common/Select';
 import Text from '~/components/common/Text';
 
 export default function Home() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <div>Home</div>
+      <div style={{ width: '328px' }}>
+        <Select
+          items={[
+            { id: 1, name: '프론트엔드' },
+            { id: 2, name: '백엔드' },
+            { id: 3, name: '데브옵스' },
+          ]}
+        />
+      </div>
       <Text variant="h1">이팩티브 기술면접</Text>
       <Text variant="h2">이팩티브 기술면접</Text>
       <Text variant="b1">이팩티브 기술면접</Text>
@@ -32,6 +43,7 @@ export default function Home() {
         </Button>
         <Button backgroundColor="system_error">버튼</Button>
       </div>
+      <Input></Input>
     </div>
   );
 }
