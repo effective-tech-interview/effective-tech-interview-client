@@ -39,6 +39,13 @@ export const useCheckSignUpForm = () => {
     };
   }, []);
 
+  const isMaxLength = useCallback((maxLength: number) => {
+    return {
+      value: maxLength,
+      message: `${maxLength}자 이내로 입력해주세요.`,
+    };
+  }, []);
+
   const isEmailPattern = useCallback(() => {
     return {
       value: emailPattern,
@@ -53,6 +60,7 @@ export const useCheckSignUpForm = () => {
     };
   }, []);
 
+  // submit
   const { mutate: createVerificationCode } = useMutation(async () => {
     const { email } = getValues();
     try {
@@ -103,5 +111,6 @@ export const useCheckSignUpForm = () => {
     isMinLength,
     isEmailPattern,
     isPasswordPattern,
+    isMaxLength,
   };
 };

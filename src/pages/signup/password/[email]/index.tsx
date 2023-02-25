@@ -18,8 +18,15 @@ export async function getServerSideProps({ params }: { params: IParams }) {
 }
 
 export default function Password({ email }: { email: string }) {
-  const { register, completeSignUp, isPasswordPattern, isMinLength, getValues, errors } =
-    useCheckSignUpForm();
+  const {
+    register,
+    completeSignUp,
+    isPasswordPattern,
+    isMinLength,
+    getValues,
+    isMaxLength,
+    errors,
+  } = useCheckSignUpForm();
   return (
     <form
       onSubmit={e => {
@@ -31,7 +38,11 @@ export default function Password({ email }: { email: string }) {
         label="비밀번호"
         placeholder="비밀번호 (영문, 숫자 조합 8자 이상)"
         errorMessage={errors.password?.message}
-        {...register('password', { pattern: isPasswordPattern(), minLength: isMinLength(8) })}
+        {...register('password', {
+          pattern: isPasswordPattern(),
+          minLength: isMinLength(8),
+          maxLength: isMaxLength(20),
+        })}
       />
       <Spacing size={40} />
       <Input
