@@ -1,50 +1,26 @@
+import { Flex, Spacing } from '@toss/emotion-utils';
+
 import Button from '~/components/common/Button';
-import { Header } from '~/components/common/Header';
-import { Input } from '~/components/common/Input';
-import Select from '~/components/common/Select';
 import Text from '~/components/common/Text';
+import { ConfirmModal } from '~/components/mainPage/ConfirmModal';
+import { useModal } from '~/hooks/useModal';
 
 export default function Home() {
+  const { openModal } = useModal();
+  const onClick = async () => {
+    await openModal({
+      children: <ConfirmModal />,
+    });
+  };
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Header headerTitle="로그인" color="gray" />
-      <div style={{ width: '328px' }}>
-        <Select
-          items={[
-            { id: 1, name: '프론트엔드' },
-            { id: 2, name: '백엔드' },
-            { id: 3, name: '데브옵스' },
-          ]}
-        />
-      </div>
-      <Text variant="h1">이팩티브 기술면접</Text>
-      <Text variant="h2">이팩티브 기술면접</Text>
-      <Text variant="b1">이팩티브 기술면접</Text>
-      <Text variant="b2">이팩티브 기술면접</Text>
-      <Text variant="subtitle">이팩티브 기술면접</Text>
-      <Text variant="caption">이팩티브 기술면접</Text>
-      <div
-        style={{
-          display: 'flex',
-          height: '500px',
-          flexDirection: 'column',
-          width: '328px',
-          justifyContent: 'space-between',
-        }}
-      >
-        <Button width={7.2} color="primary_default" backgroundColor="primary_light">
-          변경
-        </Button>
-        <Button>버튼</Button>
-        <Button backgroundColor="primary_press">버튼</Button>
-        <Button backgroundColor="gray400">버튼</Button>
-        <Button backgroundColor="gray600">버튼</Button>
-        <Button color="gray400" backgroundColor="gray050">
-          버튼
-        </Button>
-        <Button backgroundColor="system_error">버튼</Button>
-      </div>
-      <Input></Input>
-    </div>
+    <Flex.Center direction="column">
+      <Text variant="b1" color="gray600">
+        AI 꼬리질문으로 준비하는 면접 연습
+      </Text>
+      <Spacing size={24} />
+      {/* 메인 화면 이미지 */}
+      <Spacing size={24} />
+      <Button onClick={onClick}>시작하기</Button>
+    </Flex.Center>
   );
 }
