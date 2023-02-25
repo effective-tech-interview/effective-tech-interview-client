@@ -29,6 +29,7 @@ export const useCheckSignUpForm = () => {
 
   const isDisabled = !isDirty || !isValid;
 
+  //validation check
   const isRequiredText = useCallback((text: string) => `${text}을 입력해주세요.`, []);
 
   const isMinLength = useCallback((minLength: number) => {

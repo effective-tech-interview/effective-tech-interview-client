@@ -7,7 +7,6 @@ import { useCheckSignUpForm } from '~/hooks/form/useCheckSignUpForm';
 export default function SignUp() {
   const {
     register,
-    getValues,
     isDisabled,
     errors,
     createVerificationCode,
@@ -15,13 +14,12 @@ export default function SignUp() {
     isRequiredText,
     isEmailPattern,
   } = useCheckSignUpForm();
-  const { email } = getValues();
-  console.log(email);
+
   const sendCode = (e: React.SyntheticEvent) => {
     e.preventDefault();
     createVerificationCode();
-    console.log(email);
   };
+
   return (
     <form
       onSubmit={e => {
