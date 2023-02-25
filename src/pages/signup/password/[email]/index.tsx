@@ -18,7 +18,8 @@ export async function getServerSideProps({ params }: { params: IParams }) {
 }
 
 export default function Password({ email }: { email: string }) {
-  const { register, completeSignUp } = useCheckSignUpForm();
+  const { register, completeSignUp, isPasswordPattern, isMinLength, getValues, errors } =
+    useCheckSignUpForm();
   return (
     <form
       onSubmit={e => {
@@ -26,9 +27,24 @@ export default function Password({ email }: { email: string }) {
         completeSignUp(email);
       }}
     >
-      <Input label="비밀번호" {...register('password')} />
+      <Input
+        label="비밀번호"
+        errorMessage={errors.password?.message}
+        {...register('password', { pattern: isPasswordPattern(), minLength: isMinLength(8) })}
+      />
       <Spacing size={40} />
-      <Input label="비밀번호 확인" {...register('confirmPassword')} />
+      <Input
+        label="비밀번호 확인"
+        errorMessage={errors.confirmPassword?.message}
+        {...register('confirmPassword', {
+          validate: {
+            matchPassword: value => {
+              const { password } = getValues();
+              return password === value || '비밀번호가 일치하지 않습니다. ';
+            },
+          },
+        })}
+      />
       <Spacing size={40} />
       <Button>가입 완료</Button>
     </form>

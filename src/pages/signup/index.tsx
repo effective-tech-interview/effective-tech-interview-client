@@ -10,8 +10,11 @@ export default function SignUp() {
     getValues,
     setError,
     isDisabled,
+    errors,
     createVerificationCode,
     checkVerificationCode,
+    isRequiredText,
+    isEmailPattern,
   } = useCheckSignUpForm();
   const { email } = getValues();
   console.log(email);
@@ -28,9 +31,13 @@ export default function SignUp() {
       }}
     >
       <Input
-        {...register('email')}
+        {...register('email', {
+          required: isRequiredText('이메일'),
+          pattern: isEmailPattern(),
+        })}
         label="이메일"
         placeholder="이메일을 입력해주세요"
+        errorMessage={errors.email?.message}
         suffix={
           <Button
             onClick={(e: React.SyntheticEvent) => sendCode(e)}
@@ -43,8 +50,14 @@ export default function SignUp() {
           </Button>
         }
       />
-      <Spacing size={12} />
-      <Input placeholder="인증 번호 6자리" {...register('verificationCode')} />
+      <Spacing size={20} />
+      <Input
+        placeholder="인증 번호 6자리"
+        errorMessage={errors.verificationCode?.message}
+        {...register('verificationCode', {
+          required: isRequiredText('인증번호'),
+        })}
+      />
       <Spacing size={40} />
       <Button disabled={isDisabled}>다음</Button>
     </form>
