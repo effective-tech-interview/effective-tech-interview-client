@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
+import styled from '@emotion/styled';
 import LocalFont from '@next/font/local';
 import type { PropsWithChildren } from 'react';
 
@@ -23,7 +24,11 @@ const Font = LocalFont({
 });
 
 const Layout = ({ children }: PropsWithChildren<{}>) => {
-  return <main className={Font.className}>{children}</main>;
+  return <StyledLayout className={Font.className}>{children}</StyledLayout>;
 };
 
 export default Layout;
+
+const StyledLayout = styled.main`
+  padding: 0 16px;
+`;
