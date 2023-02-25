@@ -4,16 +4,21 @@ import { Spacing } from '@toss/emotion-utils';
 import Button from '~/components/common/Button';
 import Text from '~/components/common/Text';
 
-export function ConfirmModal() {
+type ConfirmMidalProps = {
+  title: string;
+  subtitle: string;
+};
+
+export function ConfirmModal({ title, subtitle }: ConfirmMidalProps) {
   const router = useRouter();
   const onClick = () => {
     router.push('/login');
   };
   return (
     <>
-      <Text variant="subtitle">로그인이 필요해요</Text>
+      <Text variant="subtitle">{title}</Text>
       <Spacing size={8} />
-      <Text variant="b1">회원가입 후 연습을 시작할 수 있어요</Text>
+      <Text variant="b1">{subtitle}</Text>
       <Spacing size={24} />
       <Button onClick={onClick}>확인</Button>
     </>

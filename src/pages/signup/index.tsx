@@ -8,7 +8,6 @@ export default function SignUp() {
   const {
     register,
     getValues,
-    setError,
     isDisabled,
     errors,
     createVerificationCode,

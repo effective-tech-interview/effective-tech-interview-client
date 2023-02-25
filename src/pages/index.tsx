@@ -1,15 +1,17 @@
 import { Flex, Spacing } from '@toss/emotion-utils';
 
 import Button from '~/components/common/Button';
+import { ConfirmModal } from '~/components/common/ConfirmModal';
 import Text from '~/components/common/Text';
-import { ConfirmModal } from '~/components/mainPage/ConfirmModal';
 import { useModal } from '~/hooks/useModal';
 
 export default function Home() {
   const { openModal } = useModal();
   const onClick = async () => {
     await openModal({
-      children: <ConfirmModal />,
+      children: (
+        <ConfirmModal title="로그인이 필요해요" subtitle="회원가입 후 연습을 시작할 수 있어요" />
+      ),
     });
   };
   return (

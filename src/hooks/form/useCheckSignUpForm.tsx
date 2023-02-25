@@ -4,7 +4,10 @@ import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import { postEmail, postEmailAndCode, postSignUp } from '~/apis';
+import { ConfirmModal } from '~/components/common/ConfirmModal';
 import { emailPattern, passwordPattern } from '~/constants/validationPattern';
+
+import { useModal } from '../useModal';
 
 interface CheckSignUpForm {
   email: string;
@@ -21,9 +24,11 @@ export const useCheckSignUpForm = () => {
     formState: { isDirty, isValid, errors },
     getValues,
   } = useForm<CheckSignUpForm>({ mode: 'onBlur' });
+  const router = useRouter();
+  const { openModal } = useModal();
 
   const isDisabled = !isDirty || !isValid;
-  const router = useRouter();
+
   const isRequiredText = useCallback((text: string) => `${text}을 입력해주세요.`, []);
 
   const isMinLength = useCallback((minLength: number) => {
@@ -74,7 +79,9 @@ export const useCheckSignUpForm = () => {
     try {
       const res = postSignUp(email, password, confirmPassword);
       if (await res) {
-        console.log('모달띄우기');
+        await openModal({
+          children: <ConfirmModal title="회원가입 완료" subtitle="기술면접 연습을 시작해볼까요?" />,
+        });
       }
     } catch (error: unknown) {
       console.log(error);

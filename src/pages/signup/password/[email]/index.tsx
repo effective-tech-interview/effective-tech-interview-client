@@ -29,12 +29,14 @@ export default function Password({ email }: { email: string }) {
     >
       <Input
         label="비밀번호"
+        placeholder="비밀번호 (영문, 숫자 조합 8자 이상)"
         errorMessage={errors.password?.message}
         {...register('password', { pattern: isPasswordPattern(), minLength: isMinLength(8) })}
       />
       <Spacing size={40} />
       <Input
         label="비밀번호 확인"
+        placeholder="비밀번호를 입력해주세요."
         errorMessage={errors.confirmPassword?.message}
         {...register('confirmPassword', {
           validate: {
