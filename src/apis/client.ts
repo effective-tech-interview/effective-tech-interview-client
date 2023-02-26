@@ -90,6 +90,23 @@ axiosClient.interceptors.response.use(
     )
 );
 
+// 1. 요청 인터셉터
+axiosClient.interceptors.request.use(
+  function (config) {
+    if (config?.headers == null) {
+      throw new Error(`config.header is undefined`);
+    }
+    config.headers['Content-Type'] = 'application/json; charset=utf-8';
+    config.headers['Authorization'] = authToken.access;
+
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
+
+// 2. 응답 인터셉터
 axiosClient.interceptors.response.use(
   response => response.data,
   async function (error: EffError) {
