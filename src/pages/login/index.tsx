@@ -13,7 +13,7 @@ export default function Login() {
         <Spacing size={32} />
         <Input label="비밀번호" placeholder="비밀번호(영문, 숫자 조합 8자 이상)" />
         <Spacing size={40} />
-        <Button>로그인</Button>
+        <Button variant="largePrimary">로그인</Button>
       </form>
       <Spacing size={24} />
       <Flex.Center css={{ gap: '16px' }}>
