@@ -48,6 +48,7 @@ export const useCheckLoginForm = () => {
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
       }
+      // 로컬스토리지에 제대로 aT, rT 들어갔으면 카테고리 선택 페이지로 라우팅
     } catch (error: unknown) {
       if (isEffError(error)) {
         // TODO: toast 추가

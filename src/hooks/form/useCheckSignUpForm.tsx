@@ -4,6 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import { postEmail, postEmailAndCode, postSignUp } from '~/apis';
+import { isEffError } from '~/apis/client';
 import { ConfirmModal } from '~/components/common/ConfirmModal';
 import { emailPattern, passwordPattern } from '~/constants/validationPattern';
 
@@ -69,7 +70,10 @@ export const useCheckSignUpForm = () => {
     try {
       postEmail(email);
     } catch (error: unknown) {
-      console.log(error);
+      if (isEffError(error)) {
+        // TODO: toast 추가
+        console.log(error.message, error.errorCode);
+      }
     }
   });
 
@@ -80,7 +84,10 @@ export const useCheckSignUpForm = () => {
       await postEmailAndCode(email, verificationCode);
       router.push(`/signup/password/${email}`);
     } catch (error: unknown) {
-      console.log(error);
+      if (isEffError(error)) {
+        // TODO: toast 추가
+        console.log(error.message, error.errorCode);
+      }
     }
   });
 
@@ -93,7 +100,10 @@ export const useCheckSignUpForm = () => {
         children: <ConfirmModal title="회원가입 완료" subtitle="기술면접 연습을 시작해볼까요?" />,
       });
     } catch (error: unknown) {
-      console.log(error);
+      if (isEffError(error)) {
+        // TODO: toast 추가
+        console.log(error.message, error.errorCode);
+      }
     }
   });
 

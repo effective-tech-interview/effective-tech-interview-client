@@ -1,3 +1,4 @@
+import type { AxiosError, AxiosResponse } from 'axios';
 import axios from 'axios';
 
 const DEV_SERVER_URL = process.env.NEXT_PUBLIC_DEVELOPMENT_SERVER_URL;
@@ -88,6 +89,25 @@ axiosClient.interceptors.response.use(
         : originalError
     )
 );
+
+axiosClient.interceptors.response.use(
+  response => response.data,
+  async function (error: EffError) {
+    if (isEffError(error) && error.errorCode === 401) {
+      //refresh 토큰 처리 로직 추가
+      // redirectToLoginPage();
+      // redirect가 완료되고, API가 종료될 수 있도록 delay를 추가합니다.
+      await delay(500);
+      return null;
+    } else {
+      throw error;
+    }
+  }
+);
+
+function delay(time: number) {
+  return new Promise(res => setTimeout(res, time));
+}
 
 // const interceptorResponseFulfilled = (res: AxiosResponse) => {
 //   if (200 <= res.status && res.status < 300) {
