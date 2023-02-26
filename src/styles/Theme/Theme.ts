@@ -9,11 +9,12 @@ export const theme = {
     gray400: '#9CA7C0',
     gray600: '#5E6473',
     gray800: '#383C45',
-    primary_light: '#F6F5FF',
     primary_default: '#5445FF',
     primary_press: '#322999',
-    secondary_default: '#00DD9B',
-    system_error: '#FF2F2F',
+    teritary_default: '#F6F5FF',
+    teritary_press: '#EEECFF',
+    system_default: '#FF2F2F',
+    system_press: '#CC2626',
   },
   typography: {
     h1: css`
