@@ -3,6 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import { postLogin } from '~/apis';
+import { isEffError } from '~/apis/client';
 import { emailPattern, passwordPattern } from '~/constants/validationPattern';
 
 interface CheckLoginForm {
@@ -41,8 +42,6 @@ export const useCheckLoginForm = () => {
   const { mutate: loginMutation } = useMutation(async () => {
     const { email, password } = getValues();
     try {
-      console.log('hi');
-
       const data = await postLogin(email, password);
       if (data) {
         const { accessToken, refreshToken } = data;
@@ -50,7 +49,10 @@ export const useCheckLoginForm = () => {
         localStorage.setItem('refreshToken', refreshToken);
       }
     } catch (error: unknown) {
-      console.log(error);
+      if (isEffError(error)) {
+        // TODO: toast 추가
+        console.log(error.message, error.errorCode);
+      }
     }
   });
 

@@ -28,6 +28,67 @@ export const axiosClient = axios.create({
   },
 });
 
+//에러 커스텀 로직
+// effective-interview 에러 타입
+export interface EffErrorResponse {
+  code: number;
+  message: string;
+}
+
+// 커스텀 에러 타입
+export interface EffError extends AxiosError<EffErrorResponse> {
+  response: AxiosResponse<EffErrorResponse>;
+  isEffError: true;
+  message: string;
+  code: string;
+  status: number;
+  errorCode: number;
+}
+
+// effective-interview에서 정의한 에러인지 확인
+export function isEffError(error: unknown): error is EffError {
+  try {
+    return (error as EffError).isEffError === true;
+  } catch {
+    return false;
+  }
+}
+
+//axios 에러인지 확인
+function isAxiosErrorWithResponseData(
+  error: unknown
+): error is AxiosError & { response: AxiosResponse } {
+  try {
+    return axios.isAxiosError(error) && error.response?.data != null;
+  } catch {
+    return false;
+  }
+}
+
+//axios에러를 커스텀한 에러로 변환
+function createEffErrorFromAxiosError(error: AxiosError): EffErrorResponse | AxiosError {
+  if (isAxiosErrorWithResponseData(error)) {
+    const effError = error as EffError;
+
+    effError.isEffError = true;
+    effError.message = effError.response.data.message ?? '';
+    effError.errorCode = effError.response.data.code;
+  }
+
+  return error;
+}
+
+// 매 응답마다 axios error를 커스텀한 에러로 변환
+axiosClient.interceptors.response.use(
+  response => response,
+  originalError =>
+    Promise.reject(
+      isAxiosErrorWithResponseData(originalError)
+        ? createEffErrorFromAxiosError(originalError)
+        : originalError
+    )
+);
+
 // const interceptorResponseFulfilled = (res: AxiosResponse) => {
 //   if (200 <= res.status && res.status < 300) {
 //     return res.data;
