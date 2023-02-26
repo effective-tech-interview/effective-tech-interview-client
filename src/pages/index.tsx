@@ -22,7 +22,9 @@ export default function Home() {
       <Spacing size={24} />
       {/* 메인 화면 이미지 */}
       <Spacing size={24} />
-      <Button onClick={onClick}>시작하기</Button>
+      <Button variant="largePrimary" onClick={onClick}>
+        시작하기
+      </Button>
     </Flex.Center>
   );
 }

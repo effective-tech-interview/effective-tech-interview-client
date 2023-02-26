@@ -30,7 +30,10 @@ export const useCheckSignUpForm = () => {
   const isDisabled = !isDirty || !isValid;
 
   //validation check
-  const isRequiredText = useCallback((text: string) => `${text}을 입력해주세요.`, []);
+  const isRequiredText = useCallback(
+    (text: string) => (text === '비밀번호' ? `${text}를 입력해주세요.` : `${text}을 입력해주세요.`),
+    []
+  );
 
   const isMinLength = useCallback((minLength: number) => {
     return {
@@ -56,12 +59,12 @@ export const useCheckSignUpForm = () => {
   const isPasswordPattern = useCallback(() => {
     return {
       value: passwordPattern,
-      message: '숫자와 한글만 입력해주세요.',
+      message: '숫자와 영문만 입력해주세요.',
     };
   }, []);
 
   // submit
-  const { mutate: createVerificationCode } = useMutation(async () => {
+  const { mutate: createVerificationCodeMutation } = useMutation(async () => {
     const { email } = getValues();
     try {
       postEmail(email);
@@ -70,28 +73,25 @@ export const useCheckSignUpForm = () => {
     }
   });
 
-  const { mutate: checkVerificationCode } = useMutation(async () => {
+  const { mutate: checkVerificationCodeMutation } = useMutation(async () => {
     const { email, verificationCode } = getValues();
 
     try {
-      const res = postEmailAndCode(email, verificationCode);
-      if (await res) {
-        router.push(`/signup/password/${email}`);
-      }
+      await postEmailAndCode(email, verificationCode);
+      router.push(`/signup/password/${email}`);
     } catch (error: unknown) {
       console.log(error);
     }
   });
 
-  const { mutate: completeSignUp } = useMutation(async (email: string) => {
+  const { mutate: completeSignUpMutation } = useMutation(async (email: string) => {
     const { password, confirmPassword } = getValues();
     try {
-      const res = postSignUp(email, password, confirmPassword);
-      if (await res) {
-        await openModal({
-          children: <ConfirmModal title="회원가입 완료" subtitle="기술면접 연습을 시작해볼까요?" />,
-        });
-      }
+      await postSignUp(email, password, confirmPassword);
+
+      await openModal({
+        children: <ConfirmModal title="회원가입 완료" subtitle="기술면접 연습을 시작해볼까요?" />,
+      });
     } catch (error: unknown) {
       console.log(error);
     }
@@ -103,9 +103,9 @@ export const useCheckSignUpForm = () => {
     setError,
     isDisabled,
     getValues,
-    createVerificationCode,
-    checkVerificationCode,
-    completeSignUp,
+    createVerificationCodeMutation,
+    checkVerificationCodeMutation,
+    completeSignUpMutation,
     errors,
     isRequiredText,
     isMinLength,
