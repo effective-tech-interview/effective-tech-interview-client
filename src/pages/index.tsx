@@ -1,4 +1,5 @@
 import Button from '~/components/common/Button';
+import { Header } from '~/components/common/Header';
 import { Input } from '~/components/common/Input';
 import Select from '~/components/common/Select';
 import Text from '~/components/common/Text';
@@ -6,7 +7,7 @@ import Text from '~/components/common/Text';
 export default function Home() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <div>Home</div>
+      <Header headerTitle="로그인" color="gray" />
       <div style={{ width: '328px' }}>
         <Select
           items={[
