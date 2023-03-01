@@ -75,7 +75,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
         {errorMessage && (
           <Text
             variant="caption"
-            color="system_error"
+            color="system_default"
             style={{ position: 'absolute', bottom: '-20px', whiteSpace: 'pre' }}
           >
             {errorMessage}
@@ -95,7 +95,7 @@ export const InitialInputFocusStyle = css`
 `;
 
 export const InitialInputErrorStyle = css`
-  border: 1px solid ${theme.color.system_error};
+  border: 1px solid ${theme.color.system_default};
 `;
 
 export const InitialInputHoverStyle = css`

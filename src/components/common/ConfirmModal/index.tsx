@@ -20,7 +20,9 @@ export function ConfirmModal({ title, subtitle }: ConfirmMidalProps) {
       <Spacing size={8} />
       <Text variant="b1">{subtitle}</Text>
       <Spacing size={24} />
-      <Button onClick={onClick}>확인</Button>
+      <Button variant="largePrimary" onClick={onClick}>
+        확인
+      </Button>
     </>
   );
 }
