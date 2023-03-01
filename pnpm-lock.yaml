@@ -25,7 +25,6 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 5.52.0
   '@typescript-eslint/parser': 5.52.0
   axios: 1.3.3
-  babel-jest: ^29.4.3
   eslint: 8.34.0
   eslint-config-next: 13.1.6
   eslint-config-prettier: 8.6.0
@@ -35,7 +34,6 @@ specifiers:
   eslint-plugin-unused-imports: 2.0.0
   husky: ^8.0.0
   jest: ^29.4.3
-  jest-dom: ^4.0.0
   jest-environment-jsdom: ^29.4.3
   lint-staged: 13.1.2
   next: 13.1.6
@@ -45,7 +43,6 @@ specifiers:
   react-error-boundary: 3.1.4
   react-hook-form: ^7.43.2
   recoil: 0.7.6
-  ts-jest: ^29.0.5
   typescript: 4.9.5
 
 dependencies:
@@ -82,7 +79,6 @@ devDependencies:
   '@types/testing-library__jest-dom': 5.14.5
   '@typescript-eslint/eslint-plugin': 5.52.0_6cfvjsbua5ptj65675bqcn6oza
   '@typescript-eslint/parser': 5.52.0_7kw3g6rralp5ps6mg3uyzz6azm
-  babel-jest: 29.4.3_@babel+core@7.21.0
   eslint: 8.34.0
   eslint-config-next: 13.1.6_7kw3g6rralp5ps6mg3uyzz6azm
   eslint-config-prettier: 8.6.0_eslint@8.34.0
@@ -92,11 +88,9 @@ devDependencies:
   eslint-plugin-unused-imports: 2.0.0_vqeavzxdzk2atb75l6fx3anzpi
   husky: 8.0.3
   jest: 29.4.3_@types+node@18.13.0
-  jest-dom: 4.0.0
   jest-environment-jsdom: 29.4.3
   lint-staged: 13.1.2
   prettier: 2.8.4
-  ts-jest: 29.0.5_uvh2lfmfmkxl7pemqrjflcid5y
 
 packages:
 
@@ -3249,13 +3243,6 @@ packages:
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
 
-  /bs-logger/0.2.6:
-    resolution: {integrity: sha512-pd8DCoxmbgc7hyPKOvxtqNcjYoOsABPQdcCUjGp3d42VR2CX1ORhk2A87oqqu5R1kk+76nsxZupkmyd+MVtCog==}
-    engines: {node: '>= 6'}
-    dependencies:
-      fast-json-stable-stringify: 2.1.0
-    dev: true
-
   /bser/2.1.1:
     resolution: {integrity: sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==}
     dependencies:
@@ -5202,11 +5189,6 @@ packages:
       detect-newline: 3.1.0
     dev: true
 
-  /jest-dom/4.0.0:
-    resolution: {integrity: sha512-gBxYZlZB1Jgvf2gP2pRfjjUWF8woGBHj/g5rAQgFPB/0K2atGuhVcPO+BItyjWeKg9zM+dokgcMOH01vrWVMFA==}
-    deprecated: '🚨 jest-dom has moved to @testing-library/jest-dom. Please uninstall jest-dom and install @testing-library/jest-dom instead, or use an older version of jest-dom. Learn more about this change here: https://github.com/testing-library/dom-testing-library/issues/260 Thanks! :)'
-    dev: true
-
   /jest-each/29.4.3:
     resolution: {integrity: sha512-1ElHNAnKcbJb/b+L+7j0/w7bDvljw4gTv1wL9fYOczeJrbTbkMGQ5iQPFJ3eFQH19VPTx1IyfePdqSpePKss7Q==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -5779,10 +5761,6 @@ packages:
 
   /lodash.kebabcase/4.1.1:
     resolution: {integrity: sha512-N8XRTIMMqqDgSy4VLKPnJ/+hpGZN+PHQiJnSenYqPaVV/NCqEogTnAdZLQiGKhxX+JCs8waWq2t1XHWKOmlY8g==}
-    dev: true
-
-  /lodash.memoize/4.1.2:
-    resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
     dev: true
 
   /lodash.merge/4.6.2:
@@ -7130,41 +7108,6 @@ packages:
   /trim-newlines/3.0.1:
     resolution: {integrity: sha512-c1PTsA3tYrIsLGkJkzHF+w9F2EyxfXGo4UyJc4pFL++FMjnq0HJS69T3M7d//gKrFKwy429bouPescbjecU+Zw==}
     engines: {node: '>=8'}
-    dev: true
-
-  /ts-jest/29.0.5_uvh2lfmfmkxl7pemqrjflcid5y:
-    resolution: {integrity: sha512-PL3UciSgIpQ7f6XjVOmbi96vmDHUqAyqDr8YxzopDqX3kfgYtX1cuNeBjP+L9sFXi6nzsGGA6R3fP3DDDJyrxA==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    hasBin: true
-    peerDependencies:
-      '@babel/core': '>=7.0.0-beta.0 <8'
-      '@jest/types': ^29.0.0
-      babel-jest: ^29.0.0
-      esbuild: '*'
-      jest: ^29.0.0
-      typescript: '>=4.3'
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      '@jest/types':
-        optional: true
-      babel-jest:
-        optional: true
-      esbuild:
-        optional: true
-    dependencies:
-      '@babel/core': 7.21.0
-      babel-jest: 29.4.3_@babel+core@7.21.0
-      bs-logger: 0.2.6
-      fast-json-stable-stringify: 2.1.0
-      jest: 29.4.3_@types+node@18.13.0
-      jest-util: 29.4.3
-      json5: 2.2.3
-      lodash.memoize: 4.1.2
-      make-error: 1.3.6
-      semver: 7.3.8
-      typescript: 4.9.5
-      yargs-parser: 21.1.1
     dev: true
 
   /ts-node/10.9.1_4bewfcp2iebiwuold25d6rgcsy:
