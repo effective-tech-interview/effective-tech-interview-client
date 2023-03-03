@@ -22,5 +22,5 @@ export function renderButton(props?: ComponentProps<typeof Button>) {
     await userEvent.click(button());
   }
 
-  return { Button, onClick, button, clickButton };
+  return { onClick, button, clickButton };
 }
