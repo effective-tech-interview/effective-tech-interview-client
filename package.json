@@ -11,8 +11,8 @@
     "format": "prettier --check ./src",
     "format:fix": "prettier --write ./src",
     "prepare": "husky install",
-    "test": "jest --watch --passWithNoTests",
-    "test:ci": "jest --ci --passWithNoTests"
+    "test": "jest --watch",
+    "test:ci": "jest --ci"
   },
   "dependencies": {
     "@babel/core": "^7.21.0",
@@ -36,8 +36,9 @@
     "@commitlint/config-conventional": "17.4.3",
     "@svgr/webpack": "^6.5.1",
     "@tanstack/react-query-devtools": "4.24.6",
+    "@testing-library/dom": "9.0.0",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^14.0.0",
+    "@testing-library/react": "14.0.0",
     "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.4.0",
