@@ -108,7 +108,7 @@
       "extends": [
         "plugin:testing-library/react",
         "plugin:jest/recommended",
-        "plugin:jest-dom/recommen"
+        "plugin:jest-dom/recommended"
       ]
     }
   ]
