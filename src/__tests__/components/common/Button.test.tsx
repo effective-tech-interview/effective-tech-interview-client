@@ -1,7 +1,7 @@
 import { renderButton } from '~/__tests__/utils';
 import Button from '~/components/common/Button';
 
-describe('components/common/Button/Button', () => {
+describe('<Button />', () => {
   it('컴포넌트가 존재해야 한다.', async () => {
     expect(Button).toBeDefined();
   });
