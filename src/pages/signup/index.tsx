@@ -1,4 +1,4 @@
-import { Spacing } from '@toss/emotion-utils';
+import { Flex, Spacing } from '@toss/emotion-utils';
 
 import Button from '~/components/common/Button';
 import { Header } from '~/components/common/Header';
@@ -15,6 +15,9 @@ export default function SignUp() {
     checkVerificationCodeMutation,
     isRequiredText,
     isEmailPattern,
+    isMaxLength,
+    isMinLength,
+    isVerificationpattern,
   } = useCheckSignUpForm();
 
   const sendCode = (e: React.SyntheticEvent) => {
@@ -57,6 +60,9 @@ export default function SignUp() {
           errorMessage={errors.verificationCode?.message}
           {...register('verificationCode', {
             required: isRequiredText('인증번호'),
+            pattern: isVerificationpattern(),
+            maxLength: isMaxLength(6),
+            minLength: isMinLength(6),
           })}
         />
         <Spacing size={40} />
@@ -67,9 +73,15 @@ export default function SignUp() {
       <Spacing size={40} />
       <Text variant="b2">인증번호가 오지 않나요?</Text>
       <Spacing size={8} />
-      <Text variant="b2" color="gray400">
-        스팸메일함을 확인해주세요. 스팸메일함에도 없다면 다시한번 ‘인증번호 전송’을 눌러주세요.
-      </Text>
+      <Flex direction="column">
+        <Text variant="b2" color="gray400">
+          스팸메일함을 확인해주세요. 스팸메일함에도 없다면 다시한번 ‘인증번호 전송’을 눌러주세요.
+        </Text>
+        <Spacing size={8} />
+        <Text variant="b2" color="gray400">
+          계정문의 | effectivetechinterview@gmail.com
+        </Text>
+      </Flex>
     </>
   );
 }

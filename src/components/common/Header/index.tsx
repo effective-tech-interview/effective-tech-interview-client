@@ -33,7 +33,7 @@ export const Header = ({ headerTitle, color }: HeaderProps) => {
   );
 };
 
-const HeaderWrapper = styled.div<{ color: ColorType }>`
+export const HeaderWrapper = styled.div<{ color: ColorType }>`
   display: flex;
   height: 64px;
   width: calc(100% + 16 * 2);
@@ -48,6 +48,6 @@ const HeaderWrapper = styled.div<{ color: ColorType }>`
   }};
 `;
 
-const IconContainer = styled.div`
+export const IconContainer = styled.div`
   cursor: pointer;
 `;

@@ -29,6 +29,27 @@ export const axiosClient = axios.create({
   },
 });
 
+const REDIRECT_URL_STORAGE = 'redirectUrl';
+
+export const redirectToLoginPage = () => {
+  const isDev = window.location.hostname === 'localhost';
+  const isLoginPage = window.location.href.includes('/login');
+
+  if (isLoginPage) {
+    return;
+  }
+
+  window.localStorage.setItem(
+    REDIRECT_URL_STORAGE,
+    JSON.stringify({
+      host: isDev ? 'http://localhost:3000' : '',
+      path: window.location.pathname,
+    })
+  );
+
+  window.location.href = isDev ? 'http://localhost:3000/login' : '/login';
+};
+
 //에러 커스텀 로직
 // effective-interview 에러 타입
 export interface EffErrorResponse {
@@ -108,14 +129,36 @@ axiosClient.interceptors.request.use(
 
 // 2. 응답 인터셉터
 axiosClient.interceptors.response.use(
-  response => response.data,
+  response => response,
   async function (error: EffError) {
     if (isEffError(error) && error.errorCode === 401) {
-      //refresh 토큰 처리 로직 추가
-      // redirectToLoginPage();
-      // redirect가 완료되고, API가 종료될 수 있도록 delay를 추가합니다.
-      await delay(500);
-      return null;
+      const headers = {
+        Authorization: `Bearer ${authToken.refresh}`,
+      };
+      try {
+        const {
+          data: { accessToken, refreshToken },
+        } = await axios.post(
+          'http://fteam-env-1.eba-ciibaeid.ap-northeast-2.elasticbeanstalk.com/api/v1/auth/refresh',
+          { headers }
+        );
+        if (error?.config?.headers === undefined) {
+          return null;
+        } else {
+          error.config.headers['Authorization'] = `Bearer ${accessToken}`;
+          //localStorage에 새 토큰 저장
+          localStorage.setItem('accessToken', accessToken);
+          localStorage.setItem('refreshToken', refreshToken);
+          const originalResponse = await axios.request(error.config);
+          return originalResponse.data.data;
+        }
+      } catch (err) {
+        if (isEffError(error) && error.errorCode === 401) {
+          redirectToLoginPage();
+          await delay(500);
+          return null;
+        }
+      }
     } else {
       throw error;
     }
