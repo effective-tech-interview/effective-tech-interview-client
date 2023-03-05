@@ -11,8 +11,10 @@
     "format": "prettier --check ./src",
     "format:fix": "prettier --write ./src",
     "prepare": "husky install",
-    "test": "jest --watch --passWithNoTests",
-    "test:ci": "jest --ci --passWithNoTests"
+    "test": "jest",
+    "test:ci": "jest --ci",
+    "test:watch": "jest --watch",
+    "test:coverage": "jset --coverage"
   },
   "dependencies": {
     "@babel/core": "^7.21.0",
