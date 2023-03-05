@@ -14,7 +14,7 @@
     "test": "jest",
     "test:ci": "jest --ci",
     "test:watch": "jest --watch",
-    "test:coverage": "jset --coverage"
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@babel/core": "^7.21.0",
