@@ -14,23 +14,23 @@ export interface AIBubbleProps {
 
 export const AIBubble = ({ questionType, question, answer }: AIBubbleProps) => {
   return (
-    <>
-      {answer ? (
-        <BubbleWrapper>
-          <BubbleContainer>
-            {questionType === 'normal' && (
-              <Text variant="b2" color="gray400">
-                일반 질문
-              </Text>
-            )}
-            {questionType === 'tail' && (
-              <Text variant="b2" color="primary_default">
-                꼬리 질문
-              </Text>
-            )}
-            <Text variant="b1" color="gray800">
-              {question}
-            </Text>
+    <BubbleWrapper>
+      <BubbleContainer>
+        {questionType === 'normal' && (
+          <Text variant="b2" color="gray400">
+            일반 질문
+          </Text>
+        )}
+        {questionType === 'tail' && (
+          <Text variant="b2" color="primary_default">
+            꼬리 질문
+          </Text>
+        )}
+        <Text variant="b1" color="gray800">
+          {question}
+        </Text>
+        {answer && (
+          <>
             <Divider />
             <Text variant="b2" color="gray400">
               AI답변
@@ -38,30 +38,11 @@ export const AIBubble = ({ questionType, question, answer }: AIBubbleProps) => {
             <Text variant="b1" color="gray800">
               {answer}
             </Text>
-          </BubbleContainer>
-          <Arrow />
-        </BubbleWrapper>
-      ) : (
-        <BubbleWrapper>
-          <BubbleContainer>
-            {questionType === 'normal' && (
-              <Text variant="b2" color="gray400">
-                일반 질문
-              </Text>
-            )}
-            {questionType === 'tail' && (
-              <Text variant="b2" color="primary_default">
-                꼬리 질문
-              </Text>
-            )}
-            <Text variant="b1" color="gray800">
-              {question}
-            </Text>
-          </BubbleContainer>
-          <Arrow />
-        </BubbleWrapper>
-      )}
-    </>
+          </>
+        )}
+      </BubbleContainer>
+      <Arrow />
+    </BubbleWrapper>
   );
 };
 
