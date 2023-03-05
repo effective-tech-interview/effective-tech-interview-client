@@ -7,6 +7,7 @@ import { useModal } from '~/hooks/useModal';
 
 export default function Home() {
   const { openModal } = useModal();
+
   const onClick = async () => {
     await openModal({
       children: (

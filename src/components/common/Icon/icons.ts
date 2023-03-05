@@ -9,6 +9,7 @@ import { default as show } from './icons/show.svg';
 import { default as toGoHome } from './icons/toGoHome.svg';
 import { default as upArrow } from './icons/upArrow.svg';
 import { default as user } from './icons/user.svg';
+import { default as warning } from './icons/warning.svg';
 
 export const ICONS = {
   user,
@@ -22,6 +23,7 @@ export const ICONS = {
   setting,
   toGoHome,
   upArrow,
+  warning,
 };
 
 export type IconName = keyof typeof ICONS;
