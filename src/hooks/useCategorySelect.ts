@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 
 import selectedCategoryIdAtomFamily from '~/store/selectedCategoryId/selectedCategoryIdAtom';
 
-import { useDidUpdate } from './useDidUpdate';
+import { useDidUpdate } from './common/useDidUpdate';
 
 type CategoryType = 'main' | 'mid';
 
