@@ -1,17 +1,26 @@
-import axios from 'axios';
+import { axiosClient } from './client';
 
-const axiosClient = axios.create({
-  baseURL: 'http://fteam-env-1.eba-ciibaeid.ap-northeast-2.elasticbeanstalk.com/api',
-});
-
+export type LoginResponse = {
+  memberId: number;
+  accessToken: string;
+  refreshToken: string;
+};
+//signup and login apis
 export async function postEmail(email: string) {
-  return await axiosClient.post('/v1/auth/email/send', { email });
+  return await axiosClient.post('/auth/email/send', { email });
 }
 
 export async function postEmailAndCode(email: string, verificationCode: number) {
-  return await axiosClient.post('/v1/auth/email/authenticate', { email, verificationCode });
+  return await axiosClient.post('/auth/email/authenticate', { email, verificationCode });
 }
 
 export async function postSignUp(email: string, password: string, confirmPassword: string) {
-  return await axiosClient.post('/v1/signup', { email, password, confirmPassword });
+  return await axiosClient.post('/signup', { email, password, confirmPassword });
+}
+
+export async function postLogin(email: string, password: string) {
+  const {
+    data: { memberId, accessToken, refreshToken },
+  } = await axiosClient.post<LoginResponse>('/auth/login', { email, password });
+  return { memberId, accessToken, refreshToken };
 }
