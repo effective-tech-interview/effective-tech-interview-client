@@ -49,16 +49,15 @@ export const useCheckLoginForm = () => {
     const { email, password } = getValues();
     try {
       const data = await postLogin(email, password);
-      console.log(data);
       if (data) {
         const { accessToken, refreshToken } = data;
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
       }
       if (authToken.access && authToken.refresh) {
+        // TODO: 리다이렉트 페이지 바꾸기
         router.push('/');
       }
-      //로컬스토리지에 제대로 aT, rT 들어갔으면 카테고리 선택 페이지로 라우팅
     } catch (error: unknown) {
       if (isEffError(error)) {
         // TODO: toast 추가
@@ -66,7 +65,6 @@ export const useCheckLoginForm = () => {
           type: 'danger',
           title: '이메일 또는 비밀번호가 다릅니다',
         });
-        console.log(error.message, error.errorCode);
       }
     }
   });
