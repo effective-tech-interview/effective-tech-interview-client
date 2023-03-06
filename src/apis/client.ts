@@ -138,10 +138,7 @@ axiosClient.interceptors.response.use(
       try {
         const {
           data: { accessToken, refreshToken },
-        } = await axios.post(
-          'http://fteam-env-1.eba-ciibaeid.ap-northeast-2.elasticbeanstalk.com/api/v1/auth/refresh',
-          { headers }
-        );
+        } = await axios.post(`${DEV_SERVER_URL}/auth/refresh`, { headers });
         if (error?.config?.headers === undefined) {
           return null;
         } else {
