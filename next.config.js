@@ -5,12 +5,15 @@ const nextConfig = {
   compiler: {
     emotion: true,
   },
-  // modularizeImports experimental
-  // modularizeImports: {
-  //   '@emotion/react': {
-  //     transform: '@emotion/react/{{member}}',
-  //   }
-  // },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      issuer: /\.(js|ts)x?$/,
+      use: ['@svgr/webpack'],
+    });
+
+    return config;
+  },
 };
 
 module.exports = nextConfig;

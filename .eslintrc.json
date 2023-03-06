@@ -98,5 +98,18 @@
         "argsIgnorePattern": "^_"
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "env": {
+        "jest": true
+      },
+      "files": ["**/__tests__/**/*.[jt]s?(x)"],
+      "extends": [
+        "plugin:testing-library/react",
+        "plugin:jest/recommended",
+        "plugin:jest-dom/recommended"
+      ]
+    }
+  ]
 }
