@@ -1,10 +1,13 @@
 import { useCallback } from 'react';
+import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import { postLogin } from '~/apis';
-import { isEffError } from '~/apis/client';
+import { authToken, isEffError } from '~/apis/client';
 import { emailPattern, passwordPattern } from '~/constants/validationPattern';
+
+import { useToast } from '../useToast';
 
 interface CheckLoginForm {
   email: string;
@@ -17,6 +20,9 @@ export const useCheckLoginForm = () => {
     getValues,
     formState: { isDirty, isValid },
   } = useForm<CheckLoginForm>({ mode: 'onBlur' });
+
+  const { openToast } = useToast();
+  const router = useRouter();
 
   const isEmailPattern = useCallback(() => {
     return {
@@ -48,11 +54,17 @@ export const useCheckLoginForm = () => {
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
       }
-      // 로컬스토리지에 제대로 aT, rT 들어갔으면 카테고리 선택 페이지로 라우팅
+      if (authToken.access && authToken.refresh) {
+        // TODO: 리다이렉트 페이지 바꾸기
+        router.push('/');
+      }
     } catch (error: unknown) {
       if (isEffError(error)) {
         // TODO: toast 추가
-        console.log(error.message, error.errorCode);
+        await openToast({
+          type: 'danger',
+          title: '이메일 또는 비밀번호가 다릅니다',
+        });
       }
     }
   });

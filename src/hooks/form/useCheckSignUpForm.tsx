@@ -6,9 +6,10 @@ import { useForm } from 'react-hook-form';
 import { postEmail, postEmailAndCode, postSignUp } from '~/apis';
 import { isEffError } from '~/apis/client';
 import { ConfirmModal } from '~/components/common/ConfirmModal';
-import { emailPattern, passwordPattern } from '~/constants/validationPattern';
+import { emailPattern, passwordPattern, verificatonPattern } from '~/constants/validationPattern';
 
 import { useModal } from '../useModal';
+import { useToast } from '../useToast';
 
 interface CheckSignUpForm {
   email: string;
@@ -27,6 +28,7 @@ export const useCheckSignUpForm = () => {
   } = useForm<CheckSignUpForm>({ mode: 'onBlur' });
   const router = useRouter();
   const { openModal } = useModal();
+  const { openToast } = useToast();
 
   const isDisabled = !isDirty || !isValid;
 
@@ -60,7 +62,14 @@ export const useCheckSignUpForm = () => {
   const isPasswordPattern = useCallback(() => {
     return {
       value: passwordPattern,
-      message: '숫자와 영문만 입력해주세요.',
+      message: '숫자와 영문 조합으로 입력해주세요.',
+    };
+  }, []);
+
+  const isVerificationpattern = useCallback(() => {
+    return {
+      value: verificatonPattern,
+      message: '숫자만 입력해주세요.',
     };
   }, []);
 
@@ -71,22 +80,27 @@ export const useCheckSignUpForm = () => {
       postEmail(email);
     } catch (error: unknown) {
       if (isEffError(error)) {
-        // TODO: toast 추가
-        console.log(error.message, error.errorCode);
+        await openToast({
+          type: 'danger',
+          title: `${error.message}`,
+        });
       }
     }
   });
 
   const { mutate: checkVerificationCodeMutation } = useMutation(async () => {
     const { email, verificationCode } = getValues();
+    console.log(verificationCode, typeof verificationCode);
 
     try {
       await postEmailAndCode(email, verificationCode);
       router.push(`/signup/password/${email}`);
     } catch (error: unknown) {
       if (isEffError(error)) {
-        // TODO: toast 추가
-        console.log(error.message, error.errorCode);
+        await openToast({
+          type: 'danger',
+          title: `${error.message}`,
+        });
       }
     }
   });
@@ -101,8 +115,10 @@ export const useCheckSignUpForm = () => {
       });
     } catch (error: unknown) {
       if (isEffError(error)) {
-        // TODO: toast 추가
-        console.log(error.message, error.errorCode);
+        await openToast({
+          type: 'danger',
+          title: `${error.message}`,
+        });
       }
     }
   });
@@ -122,5 +138,6 @@ export const useCheckSignUpForm = () => {
     isEmailPattern,
     isPasswordPattern,
     isMaxLength,
+    isVerificationpattern,
   };
 };

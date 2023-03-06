@@ -28,7 +28,7 @@ const StyledToast = styled.div`
   left: 50%;
   transform: translate(-50%, 0);
 
-  width: fit-content;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
