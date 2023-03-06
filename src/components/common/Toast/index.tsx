@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 import { theme } from '~/styles/Theme';
 
+import { Icon } from '../Icon';
 import Text from '../Text';
 
 type ToastProps = {
@@ -12,7 +13,8 @@ type ToastProps = {
 export function Toast({ type, title }: ToastProps) {
   return (
     <StyledToast>
-      <Text variant="subtitle" color={type === 'danger' ? 'system_default' : 'primary_default'}>
+      {type === 'danger' && <Icon width={20} iconName="warning" />}
+      <Text variant="b1" color="gray000">
         {title}
       </Text>
     </StyledToast>
@@ -31,11 +33,11 @@ const StyledToast = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  top: 10px;
+  bottom: 40px;
 
-  border-radius: 16px;
-  padding: 12px 26px;
-  background-color: ${theme.color.gray000};
+  border-radius: 80px;
+  padding: 12px 18px;
+  background-color: ${theme.color.gray800};
 
   z-index: 99999;
 `;
