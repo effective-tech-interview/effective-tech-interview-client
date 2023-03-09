@@ -86,6 +86,10 @@ export const useCheckSignUpForm = () => {
     const { email } = getValues();
     try {
       await postEmail(email);
+      await openToast({
+        type: 'success',
+        title: '메일함에 인증코드가 발송되었습니다.',
+      });
     } catch (error: unknown) {
       if (isEffError(error) && error.message === 'the email is already registered') {
         await openModal({ children: <SignUpModal /> });
