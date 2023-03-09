@@ -24,3 +24,19 @@ export async function postLogin(email: string, password: string) {
   } = await axiosClient.post<LoginResponse>('/auth/login', { email, password });
   return { memberId, accessToken, refreshToken };
 }
+
+//password reset apis
+export async function postEmailforResetPassword(email: string) {
+  return await axiosClient.post('/auth/password-reset/email', { email });
+}
+
+export async function postEmailAndCodeforResetPassword(email: string, verificationCode: number) {
+  return await axiosClient.post('/auth/password-reset/email-verification', {
+    email,
+    verificationCode,
+  });
+}
+
+export async function postResetPassword(email: string, password: string, confirmPassword: string) {
+  return await axiosClient.post('/members/password-reset', { email, password, confirmPassword });
+}

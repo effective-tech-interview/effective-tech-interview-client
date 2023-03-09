@@ -72,7 +72,7 @@ export default function Login() {
         >
           회원가입
         </Text>
-        <Text variant="subtitle" onClick={() => router.push('/find')}>
+        <Text css={{ cursor: 'pointer' }} variant="subtitle" onClick={() => router.push('/find')}>
           비밀번호 찾기
         </Text>
       </Flex.Center>
