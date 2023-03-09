@@ -156,7 +156,6 @@ export const useCheckSignUpForm = () => {
 
   const { mutate: checkVerificationCodeforResetMutation } = useMutation(async () => {
     const { email, verificationCode } = getValues();
-    console.log(verificationCode, typeof verificationCode);
 
     try {
       await postEmailAndCodeforResetPassword(email, verificationCode);

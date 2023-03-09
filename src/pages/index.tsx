@@ -6,7 +6,7 @@ import Text from '~/components/common/Text';
 import { useShowLoginModal } from '~/hooks/useShowLoginModal';
 
 export default function Home() {
-  // redirect page 재설정하기
+  // TODO: redirect page 재설정하기
   const showLoginModal = useShowLoginModal('login');
   return (
     <Flex.Center direction="column">
