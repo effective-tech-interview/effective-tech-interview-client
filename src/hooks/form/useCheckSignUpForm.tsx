@@ -13,6 +13,7 @@ import {
 } from '~/apis';
 import { isEffError } from '~/apis/client';
 import { ConfirmModal } from '~/components/common/ConfirmModal';
+import { SignUpModal } from '~/components/signup/SignUpModal.tsx';
 import { emailPattern, passwordPattern, verificatonPattern } from '~/constants/validationPattern';
 
 import { useModal } from '../useModal';
@@ -84,26 +85,22 @@ export const useCheckSignUpForm = () => {
   const { mutate: createVerificationCodeMutation } = useMutation(async () => {
     const { email } = getValues();
     try {
-      postEmail(email);
+      await postEmail(email);
     } catch (error: unknown) {
-      if (isEffError(error)) {
-        await openToast({
-          type: 'danger',
-          title: `${error.message}`,
-        });
+      if (isEffError(error) && error.message === 'the email is already registered') {
+        await openModal({ children: <SignUpModal /> });
       }
     }
   });
 
   const { mutate: checkVerificationCodeMutation } = useMutation(async () => {
     const { email, verificationCode } = getValues();
-    console.log(verificationCode, typeof verificationCode);
-
     try {
       await postEmailAndCode(email, verificationCode);
       router.push(`/signup/password/${email}`);
     } catch (error: unknown) {
       if (isEffError(error)) {
+        console.log('hi', error);
         await openToast({
           type: 'danger',
           title: `${error.message}`,
