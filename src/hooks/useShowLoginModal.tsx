@@ -5,14 +5,14 @@ import { ConfirmModal } from '~/components/common/ConfirmModal';
 
 import { useModal } from './useModal';
 
-export function useShowLoginModal() {
+export function useShowLoginModal(redirectUrl: string) {
   const { openModal } = useModal();
   const router = useRouter();
 
   const showLoginModal = async () => {
     if (authToken.access && authToken.refresh) {
       // TODO: 리다이렉트 페이지 바꾸기
-      router.push('/');
+      router.push(`/${redirectUrl}`);
     } else {
       await openModal({
         children: (
