@@ -53,7 +53,7 @@ export default function Find() {
             </Button>
           }
         />
-        <Spacing size={8} />
+        <Spacing size={20} />
         <Input
           placeholder="인증 번호 6자리"
           errorMessage={errors.verificationCode?.message}

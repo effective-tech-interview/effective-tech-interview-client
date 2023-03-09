@@ -104,7 +104,6 @@ export const useCheckSignUpForm = () => {
       router.push(`/signup/password/${email}`);
     } catch (error: unknown) {
       if (isEffError(error)) {
-        console.log('hi', error);
         await openToast({
           type: 'danger',
           title: `${error.message}`,
@@ -135,9 +134,18 @@ export const useCheckSignUpForm = () => {
   const { mutate: createVerificationCodeforResetMutation } = useMutation(async () => {
     const { email } = getValues();
     try {
-      postEmailforResetPassword(email);
+      await postEmailforResetPassword(email);
+      await openToast({
+        type: 'success',
+        title: '메일함에 인증코드가 발송되었습니다.',
+      });
     } catch (error: unknown) {
-      if (isEffError(error)) {
+      if (isEffError(error) && error.message === 'member not found') {
+        await openToast({
+          type: 'danger',
+          title: '가입된 이메일이 아닙니다. ',
+        });
+      } else if (isEffError(error)) {
         await openToast({
           type: 'danger',
           title: `${error.message}`,
