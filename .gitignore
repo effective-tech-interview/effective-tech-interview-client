@@ -31,6 +31,9 @@ yarn-error.log*
 # development env file
 .env.development
 
+# production env file
+.env.production
+
 # vercel
 .vercel
 
