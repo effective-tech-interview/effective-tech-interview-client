@@ -5,7 +5,14 @@ export type LoginResponse = {
   accessToken: string;
   refreshToken: string;
 };
-//signup and login apis
+
+export const getMainCategories = async () => {
+  const {
+    data: { categories },
+  } = await axiosClient.get<MainCategoriesResponse>('/categories/main');
+  return { categories };
+};
+
 export async function postEmail(email: string) {
   return await axiosClient.post('/auth/email/send', { email });
 }
