@@ -1,4 +1,6 @@
+import type { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
+import type { DehydratedState } from '@tanstack/react-query';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRecoilValue } from 'recoil';
@@ -11,7 +13,7 @@ import { MAIN_CATEGORY_QUERY_KEYS } from '~/constants/queryKeys';
 import { useMainCategoryQuery } from '~/hooks/query/useMainCategoryQuery';
 import selectedCategoryIdAtomFamily from '~/store/selectedCategoryId/selectedCategoryIdAtom';
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<{ dehydratedState: DehydratedState }> = async () => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(MAIN_CATEGORY_QUERY_KEYS.getMainCategories, getMainCategories);
@@ -21,7 +23,7 @@ export async function getStaticProps() {
       dehydratedState: dehydrate(queryClient),
     },
   };
-}
+};
 
 export default function Category() {
   const { data: mainCategoryData } = useMainCategoryQuery();
