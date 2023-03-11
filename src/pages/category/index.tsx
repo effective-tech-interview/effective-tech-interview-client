@@ -16,7 +16,10 @@ import selectedCategoryIdAtomFamily from '~/store/selectedCategoryId/selectedCat
 export const getStaticProps: GetStaticProps<{ dehydratedState: DehydratedState }> = async () => {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(MAIN_CATEGORY_QUERY_KEYS.getMainCategories, getMainCategories);
+  await queryClient.prefetchQuery({
+    queryKey: MAIN_CATEGORY_QUERY_KEYS.getMainCategories,
+    queryFn: getMainCategories,
+  });
 
   return {
     props: {
