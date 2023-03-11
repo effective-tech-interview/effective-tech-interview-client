@@ -12,7 +12,7 @@ const CategoryDetailBody = ({ categories }: CategoryDetailBodyProps) => {
       {categories?.map(category => {
         return (
           <div key={category.id} css={CategoryDetailBodyImgWrapperStyle}>
-            <Link href={`/questions/${category.name.toLowerCase()}`}>
+            <Link href={`/questions/${category.id}`}>
               <Image alt={category.name} src={category.imageUrl} fill />
             </Link>
           </div>
