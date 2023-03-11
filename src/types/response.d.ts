@@ -2,7 +2,6 @@ interface MainCategoryResponse {
   id: number;
   name: string;
 }
-
 interface MainCategoriesResponse {
   categories: MainCategoryResponse[];
 }
@@ -11,8 +10,11 @@ interface MidCategoryResponse {
   imageUrl: string;
   name: string;
 }
-
 interface MidCategoriesResponse {
   name: string;
   categories: MidCategoryResponse[];
+}
+interface RandomQuestionResponse {
+  id: number;
+  question: string;
 }

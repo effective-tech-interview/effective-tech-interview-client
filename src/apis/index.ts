@@ -6,22 +6,6 @@ export type LoginResponse = {
   refreshToken: string;
 };
 
-export const getMainCategories = async () => {
-  const {
-    data: { categories },
-  } = await axiosClient.get<MainCategoriesResponse>('/categories/main');
-  return { categories };
-};
-
-export const getMidCategories = async (mainCategoryId: number) => {
-  const {
-    data: { name, categories },
-  } = await axiosClient.get<MidCategoriesResponse>('/categories/mid', {
-    params: { mainCategoryId },
-  });
-  return { name, categories };
-};
-
 export async function postEmail(email: string) {
   return await axiosClient.post('/auth/email/send', { email });
 }
@@ -56,3 +40,35 @@ export async function postEmailAndCodeforResetPassword(email: string, verificati
 export async function postResetPassword(email: string, password: string, confirmPassword: string) {
   return await axiosClient.post('/members/password-reset', { email, password, confirmPassword });
 }
+
+export const getMainCategories = async () => {
+  const {
+    data: { categories },
+  } = await axiosClient.get<MainCategoriesResponse>('/categories/main');
+  return { categories };
+};
+
+export const getMidCategories = async (mainCategoryId: number) => {
+  const {
+    data: { name, categories },
+  } = await axiosClient.get<MidCategoriesResponse>('/categories/mid', {
+    params: { mainCategoryId },
+  });
+  return { name, categories };
+};
+
+export const getMidCategory = async (midCategoryId: number) => {
+  const {
+    data: { id, name, imageUrl },
+  } = await axiosClient.get<MidCategoryResponse>(`/categories/mid/${midCategoryId}`);
+  return { id, name, imageUrl };
+};
+
+export const getRandomQuestion = async (midCategoryId: number) => {
+  const {
+    data: { id, question },
+  } = await axiosClient.get<RandomQuestionResponse>('/questions', {
+    params: { midCategoryId },
+  });
+  return { id, question };
+};
