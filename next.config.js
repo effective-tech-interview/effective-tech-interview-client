@@ -14,6 +14,14 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: process.env.NEXT_PUBLIC_DEVELOPMENT_S3_HOST_NAME,
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
