@@ -68,6 +68,7 @@ const StyledTextArea = styled.textarea`
     border: 2px solid ${theme.color.gray200};
   }
   ::placeholder {
+    font-size: 16px;
     color: ${theme.color.gray400};
   }
 `;

@@ -8,7 +8,7 @@ type QuestionType = 'normal' | 'tail';
 
 export interface AIBubbleProps {
   questionType: QuestionType;
-  question: string;
+  question?: string;
   answer?: string;
 }
 
