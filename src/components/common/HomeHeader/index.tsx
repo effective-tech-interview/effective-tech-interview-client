@@ -5,7 +5,7 @@ import { Icon } from '~/components/common/Icon';
 import { useShowLoginModal } from '~/hooks/useShowLoginModal';
 
 export const HomeHeader = () => {
-  const showLoginModal = useShowLoginModal();
+  const showLoginModal = useShowLoginModal('mypage');
   return (
     <HomeHeaderWrapper>
       <IconContainer>

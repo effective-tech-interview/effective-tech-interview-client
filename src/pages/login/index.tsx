@@ -13,8 +13,15 @@ export default function Login() {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
 
-  const { isDisabled, register, isEmailPattern, isPasswordPattern, loginMutation, isRequiredText } =
-    useCheckLoginForm();
+  const {
+    isDisabled,
+    register,
+    isEmailPattern,
+    isPasswordPattern,
+    loginMutation,
+    isRequiredText,
+    errors,
+  } = useCheckLoginForm();
   const onClick = () => {
     router.push('/signup');
   };
@@ -35,6 +42,7 @@ export default function Login() {
         <Input
           label="이메일"
           placeholder="이메일을 입력해주세요"
+          errorMessage={errors.email?.message}
           {...register('email', {
             pattern: isEmailPattern(),
             required: isRequiredText('이메일'),
@@ -45,6 +53,7 @@ export default function Login() {
           isVisible={isVisible}
           label="비밀번호"
           placeholder="비밀번호(영문, 숫자 조합 8자 이상)"
+          errorMessage={errors.password?.message}
           {...register('password', {
             pattern: isPasswordPattern(),
             required: isRequiredText('비밀번호'),
@@ -72,7 +81,7 @@ export default function Login() {
         >
           회원가입
         </Text>
-        <Text variant="subtitle" onClick={() => router.push('/find')}>
+        <Text css={{ cursor: 'pointer' }} variant="subtitle" onClick={() => router.push('/find')}>
           비밀번호 찾기
         </Text>
       </Flex.Center>

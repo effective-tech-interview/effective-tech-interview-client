@@ -1,12 +1,13 @@
 import { Flex, Spacing } from '@toss/emotion-utils';
 
 import Button from '~/components/common/Button';
+import { HomeHeader } from '~/components/common/HomeHeader';
 import Text from '~/components/common/Text';
-import { HomeHeader } from '~/components/homePage/HomeHeader';
 import { useShowLoginModal } from '~/hooks/useShowLoginModal';
 
 export default function Home() {
-  const showLoginModal = useShowLoginModal();
+  // TODO: redirect page 재설정하기
+  const showLoginModal = useShowLoginModal('login');
   return (
     <Flex.Center direction="column">
       <HomeHeader />

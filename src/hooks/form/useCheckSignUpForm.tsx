@@ -3,9 +3,17 @@ import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
-import { postEmail, postEmailAndCode, postSignUp } from '~/apis';
+import {
+  postEmail,
+  postEmailAndCode,
+  postEmailAndCodeforResetPassword,
+  postEmailforResetPassword,
+  postResetPassword,
+  postSignUp,
+} from '~/apis';
 import { isEffError } from '~/apis/client';
 import { ConfirmModal } from '~/components/common/ConfirmModal';
+import { SignUpModal } from '~/components/signup/SignUpModal.tsx';
 import { emailPattern, passwordPattern, verificatonPattern } from '~/constants/validationPattern';
 
 import { useModal } from '../useModal';
@@ -77,21 +85,20 @@ export const useCheckSignUpForm = () => {
   const { mutate: createVerificationCodeMutation } = useMutation(async () => {
     const { email } = getValues();
     try {
-      postEmail(email);
+      await postEmail(email);
+      await openToast({
+        type: 'success',
+        title: '메일함에 인증코드가 발송되었습니다.',
+      });
     } catch (error: unknown) {
-      if (isEffError(error)) {
-        await openToast({
-          type: 'danger',
-          title: `${error.message}`,
-        });
+      if (isEffError(error) && error.message === 'the email is already registered') {
+        await openModal({ children: <SignUpModal /> });
       }
     }
   });
 
   const { mutate: checkVerificationCodeMutation } = useMutation(async () => {
     const { email, verificationCode } = getValues();
-    console.log(verificationCode, typeof verificationCode);
-
     try {
       await postEmailAndCode(email, verificationCode);
       router.push(`/signup/password/${email}`);
@@ -123,6 +130,66 @@ export const useCheckSignUpForm = () => {
     }
   });
 
+  //reset password
+  const { mutate: createVerificationCodeforResetMutation } = useMutation(async () => {
+    const { email } = getValues();
+    try {
+      await postEmailforResetPassword(email);
+      await openToast({
+        type: 'success',
+        title: '메일함에 인증코드가 발송되었습니다.',
+      });
+    } catch (error: unknown) {
+      if (isEffError(error) && error.message === 'member not found') {
+        await openToast({
+          type: 'danger',
+          title: '가입된 이메일이 아닙니다. ',
+        });
+      } else if (isEffError(error)) {
+        await openToast({
+          type: 'danger',
+          title: `${error.message}`,
+        });
+      }
+    }
+  });
+
+  const { mutate: checkVerificationCodeforResetMutation } = useMutation(async () => {
+    const { email, verificationCode } = getValues();
+
+    try {
+      await postEmailAndCodeforResetPassword(email, verificationCode);
+      router.push(`/find/${email}`);
+    } catch (error: unknown) {
+      if (isEffError(error)) {
+        await openToast({
+          type: 'danger',
+          title: `${error.message}`,
+        });
+      }
+    }
+  });
+
+  const { mutate: completeResetPassword } = useMutation(async (email: string) => {
+    const { password, confirmPassword } = getValues();
+    try {
+      await postResetPassword(email, password, confirmPassword);
+
+      await openModal({
+        children: (
+          <ConfirmModal title="비밀번호 재설정 완료" subtitle="기술면접 연습을 시작해볼까요?" />
+        ),
+      });
+    } catch (error: unknown) {
+      if (isEffError(error)) {
+        await openToast({
+          type: 'danger',
+          title: `${error.message}`,
+        });
+      }
+    }
+  });
+
   return {
     register,
     handleSubmit,
@@ -132,6 +199,11 @@ export const useCheckSignUpForm = () => {
     createVerificationCodeMutation,
     checkVerificationCodeMutation,
     completeSignUpMutation,
+
+    createVerificationCodeforResetMutation,
+    checkVerificationCodeforResetMutation,
+    completeResetPassword,
+
     errors,
     isRequiredText,
     isMinLength,

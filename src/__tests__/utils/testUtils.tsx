@@ -3,12 +3,17 @@
 import { ThemeProvider } from '@emotion/react';
 import type { RenderOptions } from '@testing-library/react';
 import { render } from '@testing-library/react';
+import { OverlayProvider } from '@toss/use-overlay';
 import type { PropsWithChildren, ReactElement } from 'react';
 
 import { theme } from '~/styles/Theme';
 
 const AllTheProviders = ({ children }: PropsWithChildren<{}>) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <OverlayProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </OverlayProvider>
+  );
 };
 
 const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>

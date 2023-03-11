@@ -18,7 +18,7 @@ export const useCheckLoginForm = () => {
   const {
     register,
     getValues,
-    formState: { isDirty, isValid },
+    formState: { isDirty, isValid, errors },
   } = useForm<CheckLoginForm>({ mode: 'onBlur' });
 
   const { openToast } = useToast();
@@ -34,7 +34,7 @@ export const useCheckLoginForm = () => {
   const isPasswordPattern = useCallback(() => {
     return {
       value: passwordPattern,
-      message: '숫자와 한글만 입력해주세요.',
+      message: '숫자와 영문 조합으로 입력해주세요',
     };
   }, []);
 
@@ -69,5 +69,13 @@ export const useCheckLoginForm = () => {
     }
   });
 
-  return { register, isDisabled, isEmailPattern, isPasswordPattern, loginMutation, isRequiredText };
+  return {
+    register,
+    isDisabled,
+    isEmailPattern,
+    isPasswordPattern,
+    loginMutation,
+    isRequiredText,
+    errors,
+  };
 };
