@@ -13,6 +13,15 @@ export const getMainCategories = async () => {
   return { categories };
 };
 
+export const getMidCategories = async (mainCategoryId: number) => {
+  const {
+    data: { name, categories },
+  } = await axiosClient.get<MidCategoriesResponse>('/categories/mid', {
+    params: { mainCategoryId },
+  });
+  return { name, categories };
+};
+
 export async function postEmail(email: string) {
   return await axiosClient.post('/auth/email/send', { email });
 }
