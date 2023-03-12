@@ -6,3 +6,13 @@ interface MainCategoryResponse {
 interface MainCategoriesResponse {
   categories: MainCategoryResponse[];
 }
+interface MidCategoryResponse {
+  id: number;
+  imageUrl: string;
+  name: string;
+}
+
+interface MidCategoriesResponse {
+  name: string;
+  categories: MidCategoryResponse[];
+}

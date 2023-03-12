@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps<PageProps>) {
         <OverlayProvider>
           <QueryErrorBoundary ErrorFallback={GlobalErrorFallback}>
             <RecoilDebugObserver />
-            <ClientSuspense fallback={<>Global Suspense</>}>
+            <ClientSuspense fallback={<></>}>
               <ThemeProvider theme={theme}>
                 <GlobalStyle />
                 <Layout>
