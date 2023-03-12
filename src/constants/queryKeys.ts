@@ -19,3 +19,9 @@ export const RANDOM_QUESTION_QUERY_KEYS = {
     return ['getRandomQuestion', midCategoryId];
   },
 };
+
+export const QUESTION_ANSWER_QUERY_KEYS = {
+  getQuestionAnswer(questionId?: number) {
+    return ['getQuestionAnswer', questionId];
+  },
+};
