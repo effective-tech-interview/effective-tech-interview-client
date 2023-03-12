@@ -1,2 +1,2 @@
-export { DobuleBottomFixedButton, SingleBottomFixedButton } from './BottomFixedButton';
+export { DoubleBottomFixedButton, SingleBottomFixedButton } from './BottomFixedButton';
 export { default } from './Button';
