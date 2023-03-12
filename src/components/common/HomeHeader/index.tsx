@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styled from '@emotion/styled';
 
 import { IconContainer } from '~/components/common/Header';
@@ -9,10 +10,11 @@ export const HomeHeader = () => {
   return (
     <HomeHeaderWrapper>
       <IconContainer>
-        <img
+        <Image
           alt="blue-logo"
           width={30}
-          src="https://effectivetechinterview-asset.s3.ap-northeast-1.amazonaws.com/logo-blue.svg"
+          height={30}
+          src={'https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/logo-blue.svg'}
         />
       </IconContainer>
       <IconContainer onClick={showLoginModal}>
