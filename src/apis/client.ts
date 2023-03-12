@@ -118,7 +118,7 @@ axiosClient.interceptors.request.use(
       throw new Error(`config.header is undefined`);
     }
     config.headers['Content-Type'] = 'application/json; charset=utf-8';
-    config.headers['Authorization'] = authToken.access;
+    config.headers['Authorization'] = `Bearer ${authToken.access}`;
 
     return config;
   },

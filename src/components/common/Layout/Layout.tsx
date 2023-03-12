@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-types */
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import LocalFont from '@next/font/local';
 import type { PropsWithChildren } from 'react';
+
+import useBackGroundColor from '~/hooks/useBackgroundColor';
 
 const Font = LocalFont({
   src: './PretendardVariable.woff2',
@@ -24,11 +27,26 @@ const Font = LocalFont({
 });
 
 const Layout = ({ children }: PropsWithChildren<{}>) => {
-  return <StyledLayout className={Font.className}>{children}</StyledLayout>;
+  const { backgroundColor } = useBackGroundColor();
+
+  return (
+    <StyledLayout backgroundColor={backgroundColor} className={Font.className}>
+      {children}
+    </StyledLayout>
+  );
 };
 
 export default Layout;
 
-const StyledLayout = styled.main`
+type LayoutStyleProps = ReturnType<typeof useBackGroundColor>;
+
+const StyledLayout = styled('main')<LayoutStyleProps>`
   padding: 0 16px;
+  height: 100vh;
+
+  ${({ backgroundColor }) => {
+    return css`
+      background-color: ${backgroundColor};
+    `;
+  }}
 `;

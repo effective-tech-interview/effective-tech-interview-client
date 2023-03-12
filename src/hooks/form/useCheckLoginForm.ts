@@ -55,8 +55,7 @@ export const useCheckLoginForm = () => {
         localStorage.setItem('refreshToken', refreshToken);
       }
       if (authToken.access && authToken.refresh) {
-        // TODO: 리다이렉트 페이지 바꾸기
-        router.push('/');
+        router.push('/category');
       }
     } catch (error: unknown) {
       if (isEffError(error)) {

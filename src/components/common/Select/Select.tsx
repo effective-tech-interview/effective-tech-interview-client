@@ -23,13 +23,13 @@ const SelectItem = ({ id, children }: PropsWithChildren<SelectItemProps>) => {
 };
 
 interface SelectProps {
-  items: MainCategoryResponse[];
+  items?: MainCategoryResponse[];
 }
 
 const Select = ({ items }: SelectProps) => {
   return (
-    <ul>
-      {items.map(item => (
+    <ul css={SelectWrapperStyle}>
+      {items?.map(item => (
         <SelectItem key={item.id} id={item.id}>
           {item.name}
         </SelectItem>
@@ -52,7 +52,7 @@ const StyledSelectItem = styled('li')<SelectStyleProps>`
   background-color: ${theme.color.gray000};
   color: ${theme.color.gray800};
 
-  :not(:first-child) {
+  :not(:first-of-type) {
     margin-top: 1rem;
   }
 
@@ -65,4 +65,8 @@ const StyledSelectItem = styled('li')<SelectStyleProps>`
 
 const SelectItemStyle = css`
   ${theme.typography.b1}
+`;
+
+const SelectWrapperStyle = css`
+  width: 100%;
 `;
