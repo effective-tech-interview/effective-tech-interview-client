@@ -32,7 +32,7 @@ export const Chip = ({ text, chipType }: ChipProps) => {
   return (
     <StyledChip chipType={chipType}>
       <Text variant="caption" color={CHIP_COLOR[chipType]['color']}>
-        {text}{' '}
+        {text}
       </Text>
     </StyledChip>
   );
