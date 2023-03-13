@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 
 interface CategoryDetailBodyProps {
-  categories?: MidCategoryResponse[];
+  categories: MidCategoryResponse[];
 }
 
 const CategoryDetailBody = ({ categories }: CategoryDetailBodyProps) => {
@@ -12,7 +12,7 @@ const CategoryDetailBody = ({ categories }: CategoryDetailBodyProps) => {
       {categories?.map(category => {
         return (
           <div key={category.id} css={CategoryDetailBodyImgWrapperStyle}>
-            <Link href={`/questions/${category.name.toLowerCase()}`}>
+            <Link href={`/questions/${category.id}`}>
               <Image alt={category.name} src={category.imageUrl} fill />
             </Link>
           </div>

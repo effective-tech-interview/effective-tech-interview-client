@@ -9,15 +9,15 @@ import { getMainCategories } from '~/apis';
 import { SingleBottomFixedButton } from '~/components/common/Button';
 import Select from '~/components/common/Select';
 import Text from '~/components/common/Text';
-import { MAIN_CATEGORY_QUERY_KEYS } from '~/constants/queryKeys';
-import { useMainCategoryQuery } from '~/hooks/query/useMainCategoryQuery';
+import { MAIN_CATEGORIES_QUERY_KEYS } from '~/constants/queryKeys';
+import { useMainCategoriesQuery } from '~/hooks/query/useMainCategoriesQuery';
 import selectedCategoryIdAtomFamily from '~/store/selectedCategoryId/selectedCategoryIdAtom';
 
 export const getStaticProps: GetStaticProps<{ dehydratedState: DehydratedState }> = async () => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: MAIN_CATEGORY_QUERY_KEYS.getMainCategories,
+    queryKey: MAIN_CATEGORIES_QUERY_KEYS.getMainCategories,
     queryFn: getMainCategories,
   });
 
@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps<{ dehydratedState: DehydratedState }
 };
 
 export default function Category() {
-  const { data: mainCategoryData } = useMainCategoryQuery();
+  const { data: mainCategoryData } = useMainCategoriesQuery();
 
   const selectedCategoryId = useRecoilValue(selectedCategoryIdAtomFamily('main'));
 

@@ -22,6 +22,7 @@ export { DobuleBottomFixedButton, SingleBottomFixedButton };
 const BottomFixedButtonWrapperStyle = css`
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
   background-color: ${theme.color.gray000};
   padding: 1.6rem;

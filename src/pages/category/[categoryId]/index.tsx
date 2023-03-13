@@ -6,8 +6,8 @@ import { Flex, Spacing } from '@toss/emotion-utils';
 import { getMidCategories } from '~/apis';
 import { CategoryDetailBody, CategoryDetailHeader } from '~/components/categoryDetail';
 import Text from '~/components/common/Text';
-import { MID_CATEGORY_QUERY_KEYS } from '~/constants/queryKeys';
-import { useMidCategoryQuery } from '~/hooks/query/useMidCategoryQuery';
+import { MID_CATEGORIES_QUERY_KEYS } from '~/constants/queryKeys';
+import { useMidCategoriesQuery } from '~/hooks/query/useMidCategoriesQuery';
 
 const TOTAL_PAGE_NUMBER = 4;
 
@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<{
     mainCategoryId = Number(params.categoryId);
 
     await queryClient.prefetchQuery({
-      queryKey: MID_CATEGORY_QUERY_KEYS.getMidCategories(mainCategoryId),
+      queryKey: MID_CATEGORIES_QUERY_KEYS.getMidCategories(mainCategoryId),
       queryFn: () => getMidCategories(mainCategoryId),
     });
   }
@@ -47,15 +47,17 @@ export const getStaticProps: GetStaticProps<{
 export default function CategoryDetail({
   mainCategoryId,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { data } = useMidCategoryQuery(mainCategoryId);
+  const { data: midCategoriesData } = useMidCategoriesQuery(mainCategoryId);
+
+  if (!midCategoriesData) return;
 
   return (
     <>
       {/* { TODO: Add Header} */}
       <Spacing size={26} />
-      <CategoryDetailHeader name={data?.name} />
+      <CategoryDetailHeader name={midCategoriesData.name} />
       <Spacing size={20} />
-      <CategoryDetailBody categories={data?.categories} />
+      <CategoryDetailBody categories={midCategoriesData.categories} />
       <Spacing size={63} />
       <Flex.Center>
         <Text variant="caption" color="gray400">
