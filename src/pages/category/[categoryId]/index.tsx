@@ -49,13 +49,15 @@ export default function CategoryDetail({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data: midCategoriesData } = useMidCategoriesQuery(mainCategoryId);
 
+  if (!midCategoriesData) return;
+
   return (
     <>
       {/* { TODO: Add Header} */}
       <Spacing size={26} />
-      <CategoryDetailHeader name={midCategoriesData?.name} />
+      <CategoryDetailHeader name={midCategoriesData.name} />
       <Spacing size={20} />
-      <CategoryDetailBody categories={midCategoriesData?.categories} />
+      <CategoryDetailBody categories={midCategoriesData.categories} />
       <Spacing size={63} />
       <Flex.Center>
         <Text variant="caption" color="gray400">

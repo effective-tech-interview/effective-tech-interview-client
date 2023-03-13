@@ -5,7 +5,7 @@ import Button from '../common/Button';
 import Text from '../common/Text';
 
 interface CategoryDetailHeaderProps {
-  name?: string;
+  name: string;
 }
 
 const CategoryDetailHeader = ({ name }: CategoryDetailHeaderProps) => {

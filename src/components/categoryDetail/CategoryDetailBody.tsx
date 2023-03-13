@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 
 interface CategoryDetailBodyProps {
-  categories?: MidCategoryResponse[];
+  categories: MidCategoryResponse[];
 }
 
 const CategoryDetailBody = ({ categories }: CategoryDetailBodyProps) => {
