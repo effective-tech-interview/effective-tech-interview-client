@@ -18,7 +18,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'sparcs-2023-startup-hackathon-f-1.s3.ap-northeast-2.amazonaws.co',
+        hostname: 'sparcs-2023-startup-hackathon-f-1.s3.ap-northeast-2.amazonaws.com',
       },
     ],
   },
