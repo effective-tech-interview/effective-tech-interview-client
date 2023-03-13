@@ -23,10 +23,12 @@ const Questions = ({ params }: InferGetServerSidePropsType<typeof getServerSideP
 
   const [answer, setAnswer] = useState('');
 
+  if (!midCategoryData || !randomQuestionData) return;
+
   return (
     <>
-      <Header headerTitle={midCategoryData?.name} color="gray" />
-      <AIBubble questionType="normal" question={randomQuestionData?.question} />
+      <Header headerTitle={midCategoryData.name} color="gray" />
+      <AIBubble questionType="normal" question={randomQuestionData.question} />
       <Spacing size={20} />
       <InputBubble onChange={e => setAnswer(e.target.value)} value={answer} />
       <SingleBottomFixedButton variant="largePrimary" disabled={Boolean(!answer)}>

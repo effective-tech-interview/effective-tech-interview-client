@@ -8,5 +8,6 @@ export const useRandomQuestionQuery = (midCategoryId: number) => {
     queryKey: RANDOM_QUESTION_QUERY_KEYS.getRandomQuestion(midCategoryId),
     queryFn: () => getRandomQuestion(midCategoryId),
   });
+
   return randomQuestionQuery;
 };
