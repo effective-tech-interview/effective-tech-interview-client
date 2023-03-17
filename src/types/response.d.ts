@@ -18,3 +18,7 @@ interface RandomQuestionResponse {
   id: number;
   question: string;
 }
+interface User {
+  nickname: string;
+  email: string;
+}

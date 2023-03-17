@@ -9,7 +9,7 @@ import { useShowLoginModal } from '~/hooks/useShowLoginModal';
 
 export default function Home() {
   // TODO: redirect page 재설정하기
-  const showLoginModal = useShowLoginModal('login');
+  const showLoginModal = useShowLoginModal('category');
   return (
     <Flex.Center direction="column">
       <HomeHeader />

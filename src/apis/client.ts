@@ -19,6 +19,17 @@ export const authToken = {
       return null;
     }
   })(),
+  refetch: () => {
+    authToken.access = localStorage.getItem('accessToken');
+    authToken.refresh = localStorage.getItem('refreshToken');
+    return;
+  },
+  destroy: () => {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    authToken.access = null;
+    authToken.refresh = null;
+  },
 };
 
 export const axiosClient = axios.create({
@@ -26,6 +37,7 @@ export const axiosClient = axios.create({
   headers: {
     Authorization: `Bearer ${authToken.access}`,
     'Content-Type': 'application/json; charset=utf-8',
+    timeout: 5000,
   },
 });
 
@@ -117,8 +129,17 @@ axiosClient.interceptors.request.use(
     if (config?.headers == null) {
       throw new Error(`config.header is undefined`);
     }
-    config.headers['Content-Type'] = 'application/json; charset=utf-8';
+
+    if (config.headers['Authorization'] == `Bearer ${null}`) {
+      authToken.refetch();
+    }
+
+    if (axiosClient.defaults.headers.common['Authorization'] == `Bearer ${null}`) {
+      authToken.refetch();
+    }
+
     config.headers['Authorization'] = `Bearer ${authToken.access}`;
+    axiosClient.defaults.headers.common['Authorization'] = `Bearer ${authToken.access}`;
 
     return config;
   },
@@ -150,7 +171,8 @@ axiosClient.interceptors.response.use(
           return originalResponse.data.data;
         }
       } catch (err) {
-        if (isEffError(error) && error.errorCode === 401) {
+        if (isEffError(err) && err.errorCode === 401) {
+          console.log(err);
           redirectToLoginPage();
           await delay(500);
           return null;

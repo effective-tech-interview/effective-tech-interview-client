@@ -16,7 +16,9 @@ specifiers:
   '@testing-library/react-hooks': ^8.0.1
   '@testing-library/user-event': ^14.4.3
   '@toss/emotion-utils': ^1.1.5
+  '@toss/react': ^1.3.7
   '@toss/use-overlay': ^1.3.1
+  '@toss/utils': ^1.4.1
   '@types/jest': ^29.4.0
   '@types/node': 18.13.0
   '@types/react': 18.0.28
@@ -56,7 +58,9 @@ dependencies:
   '@next/font': 13.1.6
   '@tanstack/react-query': 4.24.6_biqbaboplfbrettd7655fr4n2y
   '@toss/emotion-utils': 1.1.5_sogmqz4enknxtkxk3k5s6bqwnq
+  '@toss/react': 1.3.7_react@18.2.0
   '@toss/use-overlay': 1.3.1_react@18.2.0
+  '@toss/utils': 1.4.1
   axios: 1.3.3
   framer-motion: 10.0.0_biqbaboplfbrettd7655fr4n2y
   next: 13.1.6_6m24vuloj5ihw4zc5lbsktc4fu
@@ -2554,10 +2558,30 @@ packages:
     dependencies:
       '@babel/runtime': 7.20.13
       '@emotion/react': 11.10.5_gqz5z5osutjfnjhhqhx3ybpdoy
-      '@toss/utils': 1.3.1
+      '@toss/utils': 1.4.1
       csstype: 3.1.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@toss/react/1.3.7_react@18.2.0:
+    resolution: {integrity: sha512-3p8K5Ak49PAjc5lGRU153UmXx3jrAX/g6GhQ3xO2+bvnBcyUlyXAfXWD8aQdnQz+oDMX/IZR4KL9KCjGAX6jOw==}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18
+    dependencies:
+      '@babel/runtime': 7.20.13
+      '@toss/storage': 1.2.0
+      '@toss/utils': 1.4.1
+      classnames: 2.3.2
+      lodash.debounce: 4.0.8
+      lodash.throttle: 4.1.1
+      react: 18.2.0
+    dev: false
+
+  /@toss/storage/1.2.0:
+    resolution: {integrity: sha512-pQ5nwy7mXeip47JhzDZ6RAOxoBtUkY1iF8oGd0LDoyZeTMk5IPEladq7VKEzIzh6AWvy1n1hckcqcaW30QKqXA==}
+    dependencies:
+      '@babel/runtime': 7.20.13
     dev: false
 
   /@toss/use-overlay/1.3.1_react@18.2.0:
@@ -2569,8 +2593,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@toss/utils/1.3.1:
-    resolution: {integrity: sha512-4veKRh4iZUKM1+vCbSlPWafMc0kYc05M8prNkg+oDD6E1BSpL2kAXTSLA5aQ081VSjE7hdFEuIeWajepVBJerQ==}
+  /@toss/utils/1.4.1:
+    resolution: {integrity: sha512-xrgAtmJSTnGWeiFHxk8PgadCwUTUfw/o2ssWTKWZTxmim3Bt/DEdCTfpHFdLHUjonJgWfac6ua5F2+J872dWJg==}
     dependencies:
       '@babel/runtime': 7.20.13
       date-fns: 2.29.3
@@ -3350,6 +3374,10 @@ packages:
   /cjs-module-lexer/1.2.2:
     resolution: {integrity: sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==}
     dev: true
+
+  /classnames/2.3.2:
+    resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
+    dev: false
 
   /clean-stack/2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
@@ -5844,7 +5872,6 @@ packages:
 
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
-    dev: true
 
   /lodash.isfunction/3.0.9:
     resolution: {integrity: sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==}
@@ -5873,6 +5900,10 @@ packages:
   /lodash.startcase/4.4.0:
     resolution: {integrity: sha512-+WKqsK294HMSc2jEbNgpHpd0JfIBhp7rEV4aqXWqFr6AlXov+SlcgB1Fv01y2kGe3Gc8nMW7VA0SrGuSkRfIEg==}
     dev: true
+
+  /lodash.throttle/4.1.1:
+    resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==}
+    dev: false
 
   /lodash.uniq/4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}

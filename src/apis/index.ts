@@ -41,6 +41,14 @@ export async function postResetPassword(email: string, password: string, confirm
   return await axiosClient.post('/members/password-reset', { email, password, confirmPassword });
 }
 
+//user 정보 fetching
+export async function getUser() {
+  const {
+    data: { nickname, email },
+  } = await axiosClient.get<User>('/members/profile');
+  return { nickname, email };
+}
+
 export const getMainCategories = async () => {
   const {
     data: { categories },
