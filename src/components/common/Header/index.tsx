@@ -10,7 +10,7 @@ import Text from '../Text';
 type ColorType = 'white' | 'gray';
 
 export interface HeaderProps {
-  headerTitle?: string;
+  headerTitle: string;
   color: ColorType;
 }
 
