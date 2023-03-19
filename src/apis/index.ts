@@ -80,3 +80,14 @@ export const getRandomQuestion = async (midCategoryId: number) => {
   });
   return { id, question };
 };
+
+export const getQuestionAnswer = async (questionId?: number) => {
+  const {
+    data: { id, answer },
+  } = await axiosClient.get<QuestionAnswerResponse>(`/questions/${questionId}/answer`, {
+    params: {
+      questionId,
+    },
+  });
+  return { id, answer };
+};
