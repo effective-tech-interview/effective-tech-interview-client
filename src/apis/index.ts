@@ -1,4 +1,6 @@
-import { axiosClient } from './client';
+import axios from 'axios';
+
+import { authToken, axiosClient, DEV_SERVER_URL } from './client';
 
 export type LoginResponse = {
   memberId: number;
@@ -40,8 +42,17 @@ export async function postEmailAndCodeforResetPassword(email: string, verificati
 export async function postResetPassword(email: string, password: string, confirmPassword: string) {
   return await axiosClient.post('/members/password-reset', { email, password, confirmPassword });
 }
+export async function postLogout() {
+  const headers = {
+    Authorization: `Bearer ${authToken.access}`,
+    refreshToken: `Bearer ${authToken.refresh}`,
+  };
 
-//user 정보 fetching
+  return await axios.post(`${DEV_SERVER_URL}/auth/logout`, null, {
+    headers,
+  });
+}
+
 export async function getUser() {
   const {
     data: { nickname, email },

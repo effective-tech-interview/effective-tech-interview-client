@@ -21,6 +21,6 @@
     }
   },
   "types": ["node", "jest", "@testing-library/jest-dom"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/signup/SignUpModal"],
   "exclude": ["node_modules", "mock-server"]
 }

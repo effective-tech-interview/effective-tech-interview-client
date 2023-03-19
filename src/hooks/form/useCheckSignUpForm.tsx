@@ -13,7 +13,7 @@ import {
 } from '~/apis';
 import { isEffError } from '~/apis/client';
 import { ConfirmModal } from '~/components/common/ConfirmModal';
-import { SignUpModal } from '~/components/signup/SignUpModal.tsx';
+import { SignUpModal } from '~/components/signup/SignUpModal';
 import { emailPattern, passwordPattern, verificatonPattern } from '~/constants/validationPattern';
 
 import { useModal } from '../useModal';
