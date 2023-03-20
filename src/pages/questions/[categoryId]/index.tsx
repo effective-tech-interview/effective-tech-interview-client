@@ -8,7 +8,6 @@ import { Header } from '~/components/common/Header';
 import { InputBubble } from '~/components/common/InputBubble';
 import { UserBubble } from '~/components/common/UserBubble';
 import { useMidCategoryQuery } from '~/hooks/query/useMidCategory';
-import { useQuestionAnswerQuery } from '~/hooks/query/useQuestionAnswerQuery';
 import { useRandomQuestionQuery } from '~/hooks/query/useRandomQuestionQuery';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -22,7 +21,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 const Questions = ({ params }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { data: midCategoryData } = useMidCategoryQuery(Number(params.categoryId));
   const { data: randomQuestionData } = useRandomQuestionQuery(Number(params.categoryId));
-  const { data: questionAnswerData } = useQuestionAnswerQuery(randomQuestionData?.id);
 
   const [answer, setAnswer] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -32,11 +30,7 @@ const Questions = ({ params }: InferGetServerSidePropsType<typeof getServerSideP
   return (
     <>
       <Header headerTitle={midCategoryData.name} color="gray" />
-      <AIBubble
-        questionType="normal"
-        question={randomQuestionData?.question}
-        answer={isSubmitted ? questionAnswerData?.answer : ''}
-      />
+      <AIBubble questionType="normal" question={randomQuestionData.questions[0].question} />
       <Spacing size={20} />
       {isSubmitted ? (
         <UserBubble userAnswer={answer} />

@@ -23,6 +23,18 @@ interface RandomQuestionDeprecatedResponse {
   question: string;
 }
 
+interface QuestionResponse {
+  pageQuestionId: number;
+  question: string;
+  userAnswer: string;
+  aiAnswer: string;
+}
+
+interface RandomQuestionResponse {
+  pageId: number;
+  questions: QuestionResponse[];
+}
+
 interface QuestionAnswerDeprecatedResponse {
   id: number;
   answer: string;

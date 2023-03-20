@@ -73,6 +73,15 @@ export const getRandomQuestionDeprecated = async (midCategoryId: number) => {
   return { id, question };
 };
 
+export const getRandomQuestion = async (midCategoryId: number) => {
+  const {
+    data: { pageId, questions },
+  } = await axiosClient.get<RandomQuestionResponse>('/v2/pages/questions', {
+    params: { midCategoryId },
+  });
+  return { pageId, questions };
+};
+
 export const getQuestionAnswerDeprecated = async (questionId?: number) => {
   const {
     data: { id, answer },
