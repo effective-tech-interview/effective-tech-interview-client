@@ -42,6 +42,7 @@ export async function postEmailAndCodeforResetPassword(email: string, verificati
 export async function postResetPassword(email: string, password: string, confirmPassword: string) {
   return await axiosClient.post('/v1/members/password-reset', { email, password, confirmPassword });
 }
+
 export async function postLogout() {
   const headers = {
     Authorization: `Bearer ${authToken.access}`,
