@@ -95,3 +95,11 @@ export const getQuestionAnswerDeprecated = async (questionId?: number) => {
   );
   return { id, answer };
 };
+
+export const postSaveQuestionAnswer = async (
+  pageId: number,
+  questionId: number,
+  memberAnswer: string
+) => {
+  return await axiosClient.post(`/v2/pages/${pageId}/questions/${questionId}`, { memberAnswer });
+};
