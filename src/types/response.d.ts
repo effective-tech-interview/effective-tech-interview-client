@@ -18,12 +18,12 @@ interface MidCategoriesResponse {
   categories: MidCategoryResponse[];
 }
 
-interface RandomQuestionResponse {
+interface RandomQuestionDeprecatedResponse {
   id: number;
   question: string;
 }
 
-interface QuestionAnswerResponse {
+interface QuestionAnswerDeprecatedResponse {
   id: number;
   answer: string;
 }

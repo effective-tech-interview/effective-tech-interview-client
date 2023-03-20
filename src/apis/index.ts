@@ -67,7 +67,7 @@ export const getMidCategory = async (midCategoryId: number) => {
 export const getRandomQuestionDeprecated = async (midCategoryId: number) => {
   const {
     data: { id, question },
-  } = await axiosClient.get<RandomQuestionResponse>('/v1/questions', {
+  } = await axiosClient.get<RandomQuestionDeprecatedResponse>('/v1/questions', {
     params: { midCategoryId },
   });
   return { id, question };
@@ -76,10 +76,13 @@ export const getRandomQuestionDeprecated = async (midCategoryId: number) => {
 export const getQuestionAnswerDeprecated = async (questionId?: number) => {
   const {
     data: { id, answer },
-  } = await axiosClient.get<QuestionAnswerResponse>(`/v1/questions/${questionId}/answer`, {
-    params: {
-      questionId,
-    },
-  });
+  } = await axiosClient.get<QuestionAnswerDeprecatedResponse>(
+    `/v1/questions/${questionId}/answer`,
+    {
+      params: {
+        questionId,
+      },
+    }
+  );
   return { id, answer };
 };
