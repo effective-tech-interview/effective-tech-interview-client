@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import { postLogin } from '~/apis';
-import { authToken, isEffError } from '~/apis/client';
+import { isEffError } from '~/apis/client';
 import { emailPattern, passwordPattern } from '~/constants/validationPattern';
 
 import { useToast } from '../useToast';
@@ -53,8 +53,6 @@ export const useCheckLoginForm = () => {
         const { accessToken, refreshToken } = data;
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
-      }
-      if (authToken.access && authToken.refresh) {
         router.push('/category');
       }
     } catch (error: unknown) {

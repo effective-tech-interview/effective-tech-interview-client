@@ -27,3 +27,8 @@ interface QuestionAnswerResponse {
   id: number;
   answer: string;
 }
+
+interface User {
+  nickname: string;
+  email: string;
+}
