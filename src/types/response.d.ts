@@ -30,7 +30,7 @@ interface QuestionResponse {
   aiAnswer: string;
 }
 
-interface RandomQuestionResponse {
+interface QuestionsResponse {
   pageId: number;
   questions: QuestionResponse[];
 }
