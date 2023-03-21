@@ -1,7 +1,7 @@
 import type { AxiosError, AxiosResponse } from 'axios';
 import axios from 'axios';
 
-const DEV_SERVER_URL = process.env.NEXT_PUBLIC_DEVELOPMENT_SERVER_URL;
+export const DEV_SERVER_URL = process.env.NEXT_PUBLIC_DEVELOPMENT_SERVER_URL;
 const PROD_SERVER_URL = process.env.NEXT_PUBLIC_PRODUCTION_SERVER_URL;
 
 export const authToken = {
@@ -159,7 +159,7 @@ axiosClient.interceptors.response.use(
       try {
         const {
           data: { accessToken, refreshToken },
-        } = await axios.post(`${DEV_SERVER_URL}/auth/refresh`, { headers });
+        } = await axios.post(`${DEV_SERVER_URL}/auth/refresh`, null, { headers });
         if (error?.config?.headers === undefined) {
           return null;
         } else {

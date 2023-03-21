@@ -25,3 +25,7 @@ export const QUESTION_ANSWER_QUERY_KEYS = {
     return ['getQuestionAnswer', questionId];
   },
 };
+
+export const USER_INFO_QUERY_KEYS = {
+  USER_INFO: ['USER_INFO'],
+};
