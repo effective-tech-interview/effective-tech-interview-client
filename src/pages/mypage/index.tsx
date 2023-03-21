@@ -4,11 +4,11 @@ import { Flex, Spacing } from '@toss/emotion-utils';
 import { Header } from '~/components/common/Header';
 import Text from '~/components/common/Text';
 import { LogoutModal } from '~/components/mypage/LogoutModal';
-import { useUserrInfoQuery } from '~/hooks/query/useUserInfoQuery';
+import { useUserInfoQuery } from '~/hooks/query/useUserInfoQuery';
 import { useModal } from '~/hooks/useModal';
 
 export default function MyPage() {
-  const { data: userInfo } = useUserrInfoQuery();
+  const { data: userInfo } = useUserInfoQuery();
   const { openModal, close } = useModal();
   const onClick = async () => {
     await openModal({
