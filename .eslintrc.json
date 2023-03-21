@@ -19,6 +19,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
+    "plugin:playwright/playwright-test",
     "prettier"
   ],
   "plugins": ["@typescript-eslint", "simple-import-sort", "unused-imports", "import"],
