@@ -39,6 +39,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.4.3",
     "@commitlint/config-conventional": "17.4.3",
+    "@playwright/test": "1.31.2",
     "@svgr/webpack": "^6.5.1",
     "@tanstack/react-query-devtools": "4.24.6",
     "@testing-library/dom": "9.0.0",

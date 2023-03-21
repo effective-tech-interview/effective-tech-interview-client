@@ -7,6 +7,7 @@ specifiers:
   '@emotion/react': 11.10.5
   '@emotion/styled': 11.10.5
   '@next/font': 13.1.6
+  '@playwright/test': 1.31.2
   '@svgr/webpack': ^6.5.1
   '@tanstack/react-query': 4.24.6
   '@tanstack/react-query-devtools': 4.24.6
@@ -74,6 +75,7 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 17.4.3
   '@commitlint/config-conventional': 17.4.3
+  '@playwright/test': 1.31.2
   '@svgr/webpack': 6.5.1
   '@tanstack/react-query-devtools': 4.24.6_r32zdxeb7iubg3qfkymfterewe
   '@testing-library/dom': 9.0.0
@@ -2232,6 +2234,17 @@ packages:
       picocolors: 1.0.0
       tiny-glob: 0.2.9
       tslib: 2.5.0
+    dev: true
+
+  /@playwright/test/1.31.2:
+    resolution: {integrity: sha512-BYVutxDI4JeZKV1+ups6dt5WiqKhjBtIYowyZIJ3kBDmJgsuPKsqqKNIMFbUePLSCmp2cZu+BDL427RcNKTRYw==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dependencies:
+      '@types/node': 18.13.0
+      playwright-core: 1.31.2
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   /@rushstack/eslint-patch/1.2.0:
@@ -6410,6 +6423,12 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 4.1.0
+    dev: true
+
+  /playwright-core/1.31.2:
+    resolution: {integrity: sha512-a1dFgCNQw4vCsG7bnojZjDnPewZcw7tZUNFN0ZkcLYKj+mPmXvg4MpaaKZ5SgqPsOmqIf2YsVRkgqiRDxD+fDQ==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /postcss/8.4.14:
