@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { getUser } from '~/apis';
-import { MAIN_CATEGORIES_QUERY_KEYS } from '~/constants/queryKeys';
+import { USER_INFO_QUERY_KEYS } from '~/constants/queryKeys';
 
 export const useUserInfoQuery = () => {
   const userInfoQuery = useQuery({
-    queryKey: MAIN_CATEGORIES_QUERY_KEYS.getMainCategories,
+    queryKey: USER_INFO_QUERY_KEYS.USER_INFO,
     queryFn: getUser,
   });
   return userInfoQuery;
