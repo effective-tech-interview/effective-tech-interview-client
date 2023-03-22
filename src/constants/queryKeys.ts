@@ -14,9 +14,13 @@ export const MID_CATEGORY_QUERY_KEYS = {
   },
 };
 
-export const RANDOM_QUESTION_QUERY_KEYS = {
-  getRandomQuestion(midCategoryId: number) {
-    return ['getRandomQuestion', midCategoryId];
+export const PAGES_QUERY_KEYS = {
+  getPages: ['getPages'],
+};
+
+export const QUESTIONS_QUERY_KEYS = {
+  getQuestions(pageId?: number, midCategoryId?: number) {
+    return ['getQuestions', pageId, midCategoryId];
   },
 };
 
