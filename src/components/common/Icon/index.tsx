@@ -6,6 +6,7 @@ type SizeType = 'oneSize' | 'eachSize';
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   wrapperProps?: React.HTMLAttributes<HTMLDivElement>;
   iconName: IconName;
+  color?: string;
   size?: SizeType;
   width?: number;
   height?: number;
@@ -21,6 +22,7 @@ export const Icon = ({
   size = 'oneSize',
   width = 22,
   height = 22,
+  color,
   iconName,
   wrapperProps,
   ...rest
@@ -38,7 +40,7 @@ export const Icon = ({
   const IconComponent = ICONS[iconName];
   return (
     <span {...wrapperProps}>
-      <IconComponent width={SIZE[size]['w']} height={SIZE[size]['h']} {...rest} />
+      <IconComponent stroke={color} width={SIZE[size]['w']} height={SIZE[size]['h']} {...rest} />
     </span>
   );
 };
