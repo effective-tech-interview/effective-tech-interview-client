@@ -1,14 +1,11 @@
-import { useState } from 'react';
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { Spacing } from '@toss/emotion-utils';
+import { css } from '@emotion/react';
 
-import { AIBubble } from '~/components/common/AIBubble';
-import { DoubleBottomFixedButton, SingleBottomFixedButton } from '~/components/common/Button';
 import { Header } from '~/components/common/Header';
-import { InputBubble } from '~/components/common/InputBubble';
-import { UserBubble } from '~/components/common/UserBubble';
+import { Question } from '~/components/question';
 import { useMidCategoryQuery } from '~/hooks/query/useMidCategory';
-import { useRandomQuestionQuery } from '~/hooks/query/useRandomQuestionQuery';
+import { usePagesQuery } from '~/hooks/query/usePagesQuery';
+import { useQuestionsQuery } from '~/hooks/query/useQuestionsQuery';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return {
@@ -20,36 +17,35 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const Questions = ({ params }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { data: midCategoryData } = useMidCategoryQuery(Number(params.categoryId));
-  const { data: randomQuestionData } = useRandomQuestionQuery(Number(params.categoryId));
+  const { data: pagesData } = usePagesQuery();
+  const { data: questionsData } = useQuestionsQuery(pagesData?.pageId, midCategoryData?.id);
 
-  const [answer, setAnswer] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  if (!midCategoryData || !randomQuestionData) return;
+  if (!pagesData || !midCategoryData) return;
 
   return (
     <>
       <Header headerTitle={midCategoryData.name} color="gray" />
-      <AIBubble questionType="normal" question={randomQuestionData.questions[0].question} />
-      <Spacing size={20} />
-      {isSubmitted ? (
-        <UserBubble userAnswer={answer} />
-      ) : (
-        <InputBubble onChange={e => setAnswer(e.target.value)} value={answer} />
-      )}
-      {isSubmitted ? (
-        <DoubleBottomFixedButton variant="largePrimary">꼬리 질문</DoubleBottomFixedButton>
-      ) : (
-        <SingleBottomFixedButton
-          variant="largePrimary"
-          disabled={Boolean(!answer)}
-          onClick={() => setIsSubmitted(true)}
-        >
-          작성완료
-        </SingleBottomFixedButton>
-      )}
+      <div css={questionsWrapperStyle}>
+        {questionsData?.questions.map((_, index) => {
+          return (
+            <Question
+              key={index}
+              type={index === 0 ? 'normal' : 'tail'}
+              pageId={pagesData.pageId}
+              midCategoryId={midCategoryData.id}
+              index={index}
+            />
+          );
+        })}
+      </div>
     </>
   );
 };
 
 export default Questions;
+
+const questionsWrapperStyle = css`
+  height: 90vh;
+  overflow: scroll;
+  padding-bottom: 84px;
+`;
