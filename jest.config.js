@@ -15,7 +15,11 @@ const jestConfig = async () => {
       '^~/(.*)$': '<rootDir>/src/$1',
       '\\.svg$': '<rootDir>/__mocks__/svg.js',
     },
-    testPathIgnorePatterns: ['<rootDir>/src/__tests__/utils/*'],
+    testPathIgnorePatterns: [
+      '<rootDir>/src/__tests__/utils/*',
+      '<rootDir>/e2e/*',
+      '<rootDir>/tests-examples/*',
+    ],
   };
 };
 
