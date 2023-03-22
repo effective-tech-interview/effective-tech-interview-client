@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 import { theme } from '~/styles/Theme';
 
+import { Chip } from '../Chip';
 import Text from '../Text';
 
 type QuestionType = 'normal' | 'tail';
@@ -17,14 +18,14 @@ export const AIBubble = ({ questionType, question, answer }: AIBubbleProps) => {
     <BubbleWrapper>
       <BubbleContainer>
         {questionType === 'normal' && (
-          <Text variant="b2" color="gray400">
-            일반 질문
-          </Text>
+          <ChipWrapper>
+            <Chip chipType="default" text="일반 질문" />
+          </ChipWrapper>
         )}
         {questionType === 'tail' && (
-          <Text variant="b2" color="primary_default">
-            꼬리 질문
-          </Text>
+          <ChipWrapper>
+            <Chip chipType="highlight" text="꼬리 질문" />
+          </ChipWrapper>
         )}
         <Text variant="b1" color="gray800">
           {question}
@@ -32,9 +33,9 @@ export const AIBubble = ({ questionType, question, answer }: AIBubbleProps) => {
         {answer && (
           <>
             <Divider />
-            <Text variant="b2" color="gray400">
-              AI답변
-            </Text>
+            <ChipWrapper>
+              <Chip chipType="default" text="AI 답변" />
+            </ChipWrapper>
             <Text variant="b1" color="gray800">
               {answer}
             </Text>
@@ -77,4 +78,8 @@ const Arrow = styled.div`
 const Divider = styled.div`
   height: 1px;
   background: ${theme.color.gray100};
+`;
+
+const ChipWrapper = styled.div`
+  width: max-content;
 `;
