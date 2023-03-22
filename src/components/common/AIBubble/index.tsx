@@ -36,7 +36,7 @@ export const AIBubble = ({ questionType, question, answer }: AIBubbleProps) => {
             <ChipWrapper>
               <Chip chipType="default" text="AI 답변" />
             </ChipWrapper>
-            <Text variant="b1" color="gray800">
+            <Text variant="b3" color="gray600">
               {answer}
             </Text>
           </>

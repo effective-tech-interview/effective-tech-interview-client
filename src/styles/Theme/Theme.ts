@@ -41,6 +41,13 @@ export const theme = {
       line-height: 1.8rem;
       letter-spacing: -0.25px;
     `,
+    b3: css`
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 2.2rem;
+      letter-spacing: -0.25px;
+      text-align: left;
+    `,
     subtitle: css`
       font-size: 1.8rem;
       font-weight: 500;
