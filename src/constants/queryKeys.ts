@@ -24,12 +24,6 @@ export const QUESTIONS_QUERY_KEYS = {
   },
 };
 
-export const QUESTIONS_QUERY_KEYS = {
-  getQuestions(pageId?: number) {
-    return ['getQuestions', pageId];
-  },
-};
-
 export const QUESTION_ANSWER_QUERY_KEYS = {
   getQuestionAnswer(questionId?: number) {
     return ['getQuestionAnswer', questionId];
