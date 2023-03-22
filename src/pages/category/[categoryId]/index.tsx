@@ -5,6 +5,7 @@ import { Flex, Spacing } from '@toss/emotion-utils';
 
 import { getMidCategories } from '~/apis';
 import { CategoryDetailBody, CategoryDetailHeader } from '~/components/categoryDetail';
+import { HomeHeader } from '~/components/common/HomeHeader';
 import Text from '~/components/common/Text';
 import { MID_CATEGORIES_QUERY_KEYS } from '~/constants/queryKeys';
 import { useMidCategoriesQuery } from '~/hooks/query/useMidCategoriesQuery';
@@ -53,7 +54,7 @@ export default function CategoryDetail({
 
   return (
     <>
-      {/* { TODO: Add Header} */}
+      <HomeHeader />
       <Spacing size={26} />
       <CategoryDetailHeader name={midCategoriesData.name} />
       <Spacing size={20} />
