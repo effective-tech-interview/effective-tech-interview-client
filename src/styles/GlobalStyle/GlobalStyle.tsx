@@ -1,5 +1,6 @@
 import { css, Global } from '@emotion/react';
 
+import { theme } from '../Theme';
 import { resetCss } from './reset';
 
 export default function GlobalStyle() {
@@ -14,5 +15,11 @@ const globalCss = css`
   }
   html {
     font-size: 62.5%;
+
+    ${theme.mediaQuery.desktop} {
+      display: flex;
+      justify-content: center;
+      background-color: ${theme.color.gray050};
+    }
   }
 `;

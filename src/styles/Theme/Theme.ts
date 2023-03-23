@@ -61,6 +61,9 @@ export const theme = {
       letter-spacing: 0px;
     `,
   },
+  mediaQuery: {
+    desktop: `@media (min-width: 767px)`,
+  },
 };
 
 export type KeyOfColors = keyof (typeof theme)['color'];

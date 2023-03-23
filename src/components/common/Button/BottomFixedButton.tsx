@@ -46,6 +46,12 @@ const BottomFixedButtonWrapperStyle = css`
   width: 100%;
   background-color: ${theme.color.gray000};
   padding: 1.6rem;
+
+  ${theme.mediaQuery.desktop} {
+    width: 360px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 `;
 
 const DoubleBottomFixedButtonWrapperStyle = css`

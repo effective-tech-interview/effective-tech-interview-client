@@ -6,6 +6,7 @@ import Button from '~/components/common/Button';
 import { HomeHeader } from '~/components/common/HomeHeader';
 import Text from '~/components/common/Text';
 import { useShowLoginModal } from '~/hooks/useShowLoginModal';
+import { theme } from '~/styles/Theme';
 
 export default function Home() {
   // TODO: redirect page 재설정하기
@@ -86,4 +87,10 @@ const StyledButton = styled.div`
   width: 100%;
   position: fixed;
   bottom: 24px;
+
+  ${theme.mediaQuery.desktop} {
+    width: 360px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 `;
