@@ -5,6 +5,7 @@ import LocalFont from '@next/font/local';
 import type { PropsWithChildren } from 'react';
 
 import useBackGroundColor from '~/hooks/useBackgroundColor';
+import { theme } from '~/styles/Theme';
 
 const Font = LocalFont({
   src: './PretendardVariable.woff2',
@@ -49,4 +50,8 @@ const StyledLayout = styled('main')<LayoutStyleProps>`
       background-color: ${backgroundColor};
     `;
   }}
+
+  ${theme.mediaQuery.desktop} {
+    width: 360px;
+  }
 `;
