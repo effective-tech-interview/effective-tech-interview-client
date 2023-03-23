@@ -7,6 +7,7 @@ export const usePagesQuery = () => {
   const pagesQuery = useQuery({
     queryKey: PAGES_QUERY_KEYS.getPages,
     queryFn: () => getPages(),
+    cacheTime: 0,
   });
 
   return pagesQuery;
