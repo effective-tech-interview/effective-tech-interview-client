@@ -24,6 +24,7 @@ const DoubleBottomFixedButton = (props: ComponentProps<typeof Button>) => {
         <Button {...props} />
         <Button variant="largeSecondary" onClick={() => router.reload()}>
           <Icon
+            color="white"
             iconName="rightArrow"
             width={18}
             wrapperProps={{

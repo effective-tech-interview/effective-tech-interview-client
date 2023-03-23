@@ -49,7 +49,7 @@ export async function postLogout() {
     refreshToken: `Bearer ${authToken.refresh}`,
   };
 
-  return await axios.post(`${DEV_SERVER_URL}/auth/logout`, null, {
+  return await axios.post(`${DEV_SERVER_URL}/v1/auth/logout`, null, {
     headers,
   });
 }
@@ -57,7 +57,7 @@ export async function postLogout() {
 export async function getUser() {
   const {
     data: { nickname, email },
-  } = await axiosClient.get<User>('/members/profile');
+  } = await axiosClient.get<User>('/v1/members/profile');
   return { nickname, email };
 }
 

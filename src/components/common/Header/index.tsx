@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
+import { GoBackModal } from '~/components/question/GoBackModal';
+import useModal from '~/hooks/useModal';
 import { theme } from '~/styles/Theme';
 
 import { Icon } from '../Icon';
@@ -16,9 +18,17 @@ export interface HeaderProps {
 
 export const Header = ({ headerTitle, color }: HeaderProps) => {
   const router = useRouter();
+  const { openModal, close } = useModal();
 
-  const onClick = () => {
-    router.back();
+  const onClick = async () => {
+    if (router.pathname.includes('questions')) {
+      await openModal({
+        children: <GoBackModal close={close} />,
+      });
+      console.log(router.pathname);
+    } else {
+      router.back();
+    }
   };
 
   return (
