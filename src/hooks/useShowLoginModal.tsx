@@ -5,7 +5,7 @@ import { ConfirmModal } from '~/components/common/ConfirmModal';
 
 import { useModal } from './useModal';
 
-export function useShowLoginModal(redirectUrl: string) {
+export function useShowLoginModal(redirectUrl?: string) {
   const { openModal } = useModal();
   const router = useRouter();
 

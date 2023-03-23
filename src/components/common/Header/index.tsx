@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import { GoBackModal } from '~/components/question/GoBackModal';
-import useModal from '~/hooks/useModal';
+import { useModal } from '~/hooks/useModal';
 import { theme } from '~/styles/Theme';
 
 import { Icon } from '../Icon';

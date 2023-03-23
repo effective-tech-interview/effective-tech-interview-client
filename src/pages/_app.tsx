@@ -23,6 +23,7 @@ export default function App({ Component, pageProps }: AppProps<PageProps>) {
   return (
     <>
       <Head>
+        <title>이펙티브 기술면접 - ChatGPT로 연습하는 개발자 면접</title>
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`} />
 
         {/* GA설정 */}
