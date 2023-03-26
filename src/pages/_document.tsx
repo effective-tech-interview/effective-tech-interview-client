@@ -13,14 +13,16 @@ export default function Document() {
         rel="icon"
         href="https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/logo-blue.svg"
       />
+      <meta property="og:url" content="https://effective-tech-interview.com/" />
+      <meta property="og:type" content="website" />
       <meta
         property="og:image"
-        content="https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/og-image.svg"
+        content="https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/og-image.png"
       />
-      <meta property="og:title" content="이펙티브 기술면접 - ChatGPT로 연습하는 개발자 면접" />
+      <meta property="og:title" content="이펙티브 기술면접" />
       <meta
         property="og:description"
-        content="프론트엔드, 백엔드 면접 막막하다면? 개발 언어만 선택하면 10초만에 맞춤 질문을 뽑아드려요. 답변이 어려운 꼬리 질문까지, AI로 면접 준비 한번에!"
+        content="Chat GPT로 연습하는 개발자 면접! 프론트엔드, 백엔드 면접 막막하다면, 10초만에 맞춤 질문 뽑아드려요. 답변이 어려운 꼬리 질문까지 한번에!"
       />
       <body>
         <Main />
