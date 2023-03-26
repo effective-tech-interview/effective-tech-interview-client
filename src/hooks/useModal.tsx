@@ -47,9 +47,9 @@ const Dimmer = styled.div`
   height: 100%;
   top: 0%;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
 
   ${theme.mediaQuery.desktop} {
     width: 360px;
-    z-index: 9999;
   }
 `;
