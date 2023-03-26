@@ -30,7 +30,7 @@ export default function Home() {
         width={328}
         height={328}
         src={
-          'https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/onboarding-1.svg'
+          'https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/onboarding-1.png'
         }
       />
       <Spacing size={64} />
@@ -43,7 +43,7 @@ export default function Home() {
         width={328}
         height={328}
         src={
-          'https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/onboadring-2.svg'
+          'https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/onboarding-2.png'
         }
       />
       <Spacing size={64} />
@@ -56,7 +56,7 @@ export default function Home() {
         width={328}
         height={328}
         src={
-          'https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/onboarding-3.svg'
+          'https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/onboarding-3.png'
         }
       />
       <Spacing size={64} />
@@ -69,7 +69,7 @@ export default function Home() {
         width={328}
         height={328}
         src={
-          'https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/onboarding-4.svg'
+          'https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/onboarding-4.png'
         }
       />
       <Spacing size={100} />
