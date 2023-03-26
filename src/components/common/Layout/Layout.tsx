@@ -45,6 +45,12 @@ const StyledLayout = styled('main')<LayoutStyleProps>`
   padding: 0 16px;
   height: 100vh;
 
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+      format('woff');
+  }
+
   ${({ backgroundColor }) => {
     return css`
       background-color: ${backgroundColor};

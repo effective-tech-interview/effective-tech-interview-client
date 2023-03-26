@@ -16,4 +16,12 @@ const StyledModal = styled.div`
   flex-direction: column;
   width: 328px;
   margin: auto;
+
+  font-family: 'Pretendard';
+
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+      format('woff');
+  }
 `;
