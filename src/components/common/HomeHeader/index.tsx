@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from '@emotion/styled';
 
 import { IconContainer } from '~/components/common/Header';
@@ -10,12 +11,16 @@ export const HomeHeader = () => {
   return (
     <HomeHeaderWrapper>
       <IconContainer>
-        <Image
-          alt="blue-logo"
-          width={30}
-          height={30}
-          src={'https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/logo-blue.svg'}
-        />
+        <Link href="/">
+          <Image
+            alt="blue-logo"
+            width={30}
+            height={30}
+            src={
+              'https://effective-tech-client-assets.s3.ap-northeast-2.amazonaws.com/logo-blue.svg'
+            }
+          />
+        </Link>
       </IconContainer>
       <IconContainer onClick={showLoginModal}>
         <Icon iconName="user" />

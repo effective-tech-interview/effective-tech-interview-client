@@ -45,7 +45,7 @@ export default function Find() {
           suffix={
             <Button
               onClick={(e: React.SyntheticEvent) => sendCode(e)}
-              width={10}
+              width={11}
               height={3.1}
               variant="smallButton"
             >
