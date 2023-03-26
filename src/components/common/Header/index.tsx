@@ -25,7 +25,6 @@ export const Header = ({ headerTitle, color }: HeaderProps) => {
       await openModal({
         children: <GoBackModal close={close} />,
       });
-      console.log(router.pathname);
     } else {
       router.back();
     }

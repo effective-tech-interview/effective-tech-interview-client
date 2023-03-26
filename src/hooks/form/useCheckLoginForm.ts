@@ -57,7 +57,6 @@ export const useCheckLoginForm = () => {
       }
     } catch (error: unknown) {
       if (isEffError(error)) {
-        // TODO: toast 추가
         await openToast({
           type: 'danger',
           title: '이메일 또는 비밀번호가 다릅니다',
