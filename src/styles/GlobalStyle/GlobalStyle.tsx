@@ -13,6 +13,7 @@ const globalCss = css`
   * {
     box-sizing: border-box;
   }
+
   html {
     font-size: 62.5%;
 
@@ -20,6 +21,14 @@ const globalCss = css`
       display: flex;
       justify-content: center;
       background-color: ${theme.color.gray050};
+    }
+  }
+
+  a {
+    color: inherit;
+
+    &:visited {
+      color: inherit;
     }
   }
 `;

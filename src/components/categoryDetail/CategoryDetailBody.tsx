@@ -13,7 +13,7 @@ const CategoryDetailBody = ({ categories }: CategoryDetailBodyProps) => {
         return (
           <div key={category.id} css={CategoryDetailBodyImgWrapperStyle}>
             <Link href={`/questions/${category.id}`}>
-              <Image alt={category.name} src={category.imageUrl} fill />
+              <Image alt={category.name} src={category.imageUrl} fill priority />
             </Link>
           </div>
         );

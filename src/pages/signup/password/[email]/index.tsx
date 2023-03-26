@@ -104,10 +104,25 @@ export default function Password({ email }: { email: string }) {
       <Spacing size={144} />
       <Flex.Center direction="column">
         <Text variant="b2" color="gray400">
-          회원가입 시, 이펙티브 기술면접 서비스 이용
+          회원가입 시, 이펙티브 기술면접&nbsp;
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://twilight-tartan-155.notion.site/8d39631d4ec74cc283322d0b96b77e98"
+          >
+            서비스 이용약관
+          </a>
+          과
         </Text>
         <Text variant="b2" color="gray400">
-          약관과 개인정보 보호정책에 동의하게 됩니다.
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://twilight-tartan-155.notion.site/2b133710e4404ca08f75bcc391616452"
+          >
+            개인정보 보호정책
+          </a>
+          에 동의하게 됩니다.
         </Text>
       </Flex.Center>
     </>
