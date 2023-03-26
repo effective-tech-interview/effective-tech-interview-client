@@ -160,6 +160,7 @@ axiosClient.interceptors.response.use(
         const {
           data: { accessToken, refreshToken },
         } = await axios.post(`${PROD_SERVER_URL}/v1/auth/refresh`, null, { headers });
+
         if (error?.config?.headers === undefined) {
           return null;
         } else {

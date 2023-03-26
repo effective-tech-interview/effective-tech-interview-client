@@ -36,6 +36,12 @@ export default function MyPage() {
       <Text css={{ cursor: 'pointer' }} variant="subtitle" onClick={onClick}>
         로그아웃
       </Text>
+      <Spacing size={345} />
+      <Flex.Center direction="column">
+        <Text variant="caption" color="gray400">
+          계정 문의 ㅣ effectivetechinterview@gmail.com
+        </Text>
+      </Flex.Center>
     </>
   );
 }

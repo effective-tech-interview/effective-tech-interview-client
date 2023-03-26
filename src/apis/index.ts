@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { authToken, axiosClient, DEV_SERVER_URL } from './client';
+import { authToken, axiosClient, PROD_SERVER_URL } from './client';
 
 export type LoginResponse = {
   memberId: number;
@@ -49,7 +49,7 @@ export async function postLogout() {
     refreshToken: `Bearer ${authToken.refresh}`,
   };
 
-  return await axios.post(`${DEV_SERVER_URL}/v1/auth/logout`, null, {
+  return await axios.post(`${PROD_SERVER_URL}/v1/auth/logout`, null, {
     headers,
   });
 }
