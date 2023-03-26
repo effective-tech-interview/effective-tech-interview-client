@@ -11,7 +11,6 @@ export function useShowLoginModal(redirectUrl?: string) {
 
   const showLoginModal = async () => {
     if (authToken.access && authToken.refresh) {
-      // TODO: 리다이렉트 페이지 바꾸기
       router.push(`/${redirectUrl}`);
     } else {
       await openModal({

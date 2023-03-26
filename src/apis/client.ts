@@ -2,7 +2,7 @@ import type { AxiosError, AxiosResponse } from 'axios';
 import axios from 'axios';
 
 export const DEV_SERVER_URL = process.env.NEXT_PUBLIC_DEVELOPMENT_SERVER_URL;
-const PROD_SERVER_URL = process.env.NEXT_PUBLIC_PRODUCTION_SERVER_URL;
+export const PROD_SERVER_URL = process.env.NEXT_PUBLIC_PRODUCTION_SERVER_URL;
 
 export const authToken = {
   access: (() => {
@@ -159,7 +159,7 @@ axiosClient.interceptors.response.use(
       try {
         const {
           data: { accessToken, refreshToken },
-        } = await axios.post(`${DEV_SERVER_URL}/auth/refresh`, null, { headers });
+        } = await axios.post(`${PROD_SERVER_URL}/v1/auth/refresh`, null, { headers });
         if (error?.config?.headers === undefined) {
           return null;
         } else {
@@ -170,9 +170,9 @@ axiosClient.interceptors.response.use(
           const originalResponse = await axios.request(error.config);
           return originalResponse.data.data;
         }
-      } catch (err) {
-        if (isEffError(err) && err.errorCode === 401) {
-          console.log(err);
+      } catch (error: unknown) {
+        if (error) {
+          authToken.destroy();
           redirectToLoginPage();
           await delay(500);
           return null;
