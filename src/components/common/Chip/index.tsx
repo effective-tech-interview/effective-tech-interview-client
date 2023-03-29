@@ -6,7 +6,7 @@ import { theme } from '~/styles/Theme';
 
 import Text from '../Text';
 
-type ChipType = 'default' | 'highlight';
+type ChipType = 'default' | 'highlight' | 'home';
 export interface ChipProps {
   text: string;
   chipType: ChipType;
@@ -27,6 +27,10 @@ const CHIP_COLOR: ChipColors = {
     background: theme.color.primary_default,
     color: 'gray000',
   },
+  home: {
+    background: theme.color.gray000,
+    color: 'gray400',
+  },
 };
 export const Chip = ({ text, chipType }: ChipProps) => {
   return (
@@ -41,6 +45,7 @@ export const Chip = ({ text, chipType }: ChipProps) => {
 const StyledChip = styled('div')<{ chipType: ChipType }>`
   border-radius: 80px;
   padding: 4px 8px;
+  width: fit-content;
   ${({ chipType }) => {
     return css`
       background: ${CHIP_COLOR[chipType]['background']};

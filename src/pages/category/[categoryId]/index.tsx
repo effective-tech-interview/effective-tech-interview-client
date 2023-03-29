@@ -54,7 +54,7 @@ export default function CategoryDetail({
 
   return (
     <>
-      <HomeHeader />
+      <HomeHeader color="white" />
       <Spacing size={26} />
       <CategoryDetailHeader name={midCategoriesData.name} />
       <Spacing size={20} />
