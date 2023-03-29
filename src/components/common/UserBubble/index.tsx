@@ -16,7 +16,6 @@ export const UserBubble = ({ userAnswer }: UserBubbleProps) => {
           {userAnswer}
         </Text>
       </BubbleContainer>
-      <Arrow />
     </BubbleWrapper>
   );
 };
@@ -36,17 +35,5 @@ const BubbleContainer = styled.div`
   width: 100%;
   background: ${theme.color.primary_default};
   word-break: break-all;
-  border-radius: 8px 8px 0px 8px;
-`;
-
-const Arrow = styled.div`
-  position: absolute;
-  bottom: -12px;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-bottom: 6px solid transparent;
-  border-top: 6px solid ${theme.color.primary_default};
-  border-left: 6px solid transparent;
-  border-right: 6px solid ${theme.color.primary_default};
+  border-radius: 12px 12px 0px 12px;
 `;

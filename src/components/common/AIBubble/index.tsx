@@ -42,7 +42,6 @@ export const AIBubble = ({ questionType, question, answer }: AIBubbleProps) => {
           </>
         )}
       </BubbleContainer>
-      <Arrow />
     </BubbleWrapper>
   );
 };
@@ -62,17 +61,7 @@ const BubbleContainer = styled.div`
   width: 100%;
   background: ${theme.color.gray000};
   word-break: break-all;
-  border-radius: 8px 8px 8px 0px;
-`;
-const Arrow = styled.div`
-  position: absolute;
-  bottom: -12px;
-  width: 0;
-  height: 0;
-  border-bottom: 6px solid transparent;
-  border-top: 6px solid ${theme.color.gray000};
-  border-left: 6px solid ${theme.color.gray000};
-  border-right: 6px solid transparent;
+  border-radius: 12px 12px 12px 0px;
 `;
 
 const Divider = styled.div`
