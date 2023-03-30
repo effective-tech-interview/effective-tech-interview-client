@@ -38,12 +38,12 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
 };
 
 export default Layout;
-
 type LayoutStyleProps = ReturnType<typeof useBackGroundColor>;
 
 const StyledLayout = styled('main')<LayoutStyleProps>`
   padding: 0 16px;
   height: 100vh;
+  overflow: auto;
 
   @font-face {
     font-family: 'Pretendard';
@@ -59,5 +59,9 @@ const StyledLayout = styled('main')<LayoutStyleProps>`
 
   ${theme.mediaQuery.desktop} {
     width: 360px;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
   }
 `;
