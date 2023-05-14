@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-import { authToken, axiosClient, PROD_SERVER_URL } from './client';
+import { axiosClient } from './client';
 
 export type LoginResponse = {
   memberId: number;
@@ -43,13 +41,7 @@ export async function postResetPassword(email: string, password: string, confirm
 }
 
 export async function postLogout() {
-  const headers = {
-    Authorization: `Bearer ${authToken.access}`,
-  };
-
-  return await axios.post(`${PROD_SERVER_URL}/v1/auth/logout`, null, {
-    headers,
-  });
+  return await axiosClient.post('/v1/auth/logout');
 }
 
 export async function getUser() {
