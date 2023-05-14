@@ -46,14 +46,14 @@ export const AIBubble = ({ questionType, question, answer }: AIBubbleProps) => {
   );
 };
 
-const BubbleWrapper = styled.div`
+export const BubbleWrapper = styled.div`
   position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
 `;
 
-const BubbleContainer = styled.div`
+export const BubbleContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -64,7 +64,7 @@ const BubbleContainer = styled.div`
   border-radius: 12px 12px 12px 0px;
 `;
 
-const Divider = styled.div`
+export const Divider = styled.div`
   height: 1px;
   background: ${theme.color.gray100};
 `;
