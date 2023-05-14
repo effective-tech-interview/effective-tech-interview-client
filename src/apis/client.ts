@@ -24,6 +24,7 @@ export const authToken = {
 
 export const axiosClient = axios.create({
   baseURL: process.env.NODE_ENV === 'development' ? DEV_SERVER_URL : PROD_SERVER_URL,
+  withCredentials: true,
   headers: {
     Authorization: `Bearer ${authToken.access}`,
     'Content-Type': 'application/json; charset=utf-8',
@@ -142,7 +143,6 @@ axiosClient.interceptors.request.use(
 axiosClient.interceptors.response.use(
   response => response,
   async function (error: EffError) {
-    console.log(error);
     if (isEffError(error) && error.errorCode === 401) {
       try {
         const {
@@ -156,7 +156,7 @@ axiosClient.interceptors.response.use(
           //localStorage에 새 토큰 저장
           localStorage.setItem('accessToken', accessToken);
           const originalResponse = await axios.request(error.config);
-          return originalResponse.data.data;
+          return originalResponse;
         }
       } catch (error: unknown) {
         if (error) {

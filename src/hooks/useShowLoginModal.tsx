@@ -10,7 +10,7 @@ export function useShowLoginModal(redirectUrl?: string) {
   const router = useRouter();
 
   const showLoginModal = async () => {
-    if (authToken.access && authToken.refresh) {
+    if (authToken.access) {
       router.push(`/${redirectUrl}`);
     } else {
       await openModal({

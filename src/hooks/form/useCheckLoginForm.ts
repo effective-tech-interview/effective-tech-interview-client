@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import { postLogin } from '~/apis';
-import { isEffError } from '~/apis/client';
+import { authToken, isEffError } from '~/apis/client';
 import { emailPattern, passwordPattern } from '~/constants/validationPattern';
 
 import { useToast } from '../useToast';
@@ -48,6 +48,8 @@ export const useCheckLoginForm = () => {
   const { mutate: loginMutation } = useMutation(async () => {
     const { email, password } = getValues();
     try {
+      authToken.destroy();
+
       const data = await postLogin(email, password);
       if (data) {
         const { accessToken } = data;
