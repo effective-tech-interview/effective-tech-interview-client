@@ -50,9 +50,8 @@ export const useCheckLoginForm = () => {
     try {
       const data = await postLogin(email, password);
       if (data) {
-        const { accessToken, refreshToken } = data;
+        const { accessToken } = data;
         localStorage.setItem('accessToken', accessToken);
-        localStorage.setItem('refreshToken', refreshToken);
         router.push('/category');
       }
     } catch (error: unknown) {

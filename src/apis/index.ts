@@ -5,7 +5,6 @@ import { authToken, axiosClient, PROD_SERVER_URL } from './client';
 export type LoginResponse = {
   memberId: number;
   accessToken: string;
-  refreshToken: string;
 };
 
 export async function postEmail(email: string) {
@@ -22,9 +21,9 @@ export async function postSignUp(email: string, password: string, confirmPasswor
 
 export async function postLogin(email: string, password: string) {
   const {
-    data: { memberId, accessToken, refreshToken },
+    data: { memberId, accessToken },
   } = await axiosClient.post<LoginResponse>('/v1/auth/login', { email, password });
-  return { memberId, accessToken, refreshToken };
+  return { memberId, accessToken };
 }
 
 //password reset apis
@@ -46,7 +45,6 @@ export async function postResetPassword(email: string, password: string, confirm
 export async function postLogout() {
   const headers = {
     Authorization: `Bearer ${authToken.access}`,
-    refreshToken: `Bearer ${authToken.refresh}`,
   };
 
   return await axios.post(`${PROD_SERVER_URL}/v1/auth/logout`, null, {
