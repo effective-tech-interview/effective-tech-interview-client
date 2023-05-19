@@ -4,6 +4,7 @@ type ButtonStyleProps = {
   fontSize: KeyOfTypography;
   color: KeyOfColors;
   backgroundColor: KeyOfColors;
+  borderRadius?: string;
 };
 
 type ButtonPressStyleProps = Partial<ButtonStyleProps>;
@@ -21,7 +22,10 @@ type ButtonVariantNames =
   | 'largeSecondary'
   | 'largeSystem'
   | 'mediumTeritary'
-  | 'smallButton';
+  | 'smallButton'
+  | 'otherQuestion'
+  | 'tailQuestion'
+  | 'nextQuestion';
 
 type ButtonVariantProps = Record<ButtonVariantNames, ButtonTypeProps>;
 
@@ -83,6 +87,30 @@ export const BUTTON_VARAINTS: ButtonVariantProps = {
     disabled: {
       color: 'gray400',
       backgroundColor: 'gray100',
+    },
+  },
+  otherQuestion: {
+    default: {
+      fontSize: 'b2',
+      color: 'gray600',
+      backgroundColor: 'gray000',
+      borderRadius: '8',
+    },
+  },
+  tailQuestion: {
+    default: {
+      fontSize: 'b2',
+      color: 'gray000',
+      backgroundColor: 'primary_default',
+      borderRadius: '8',
+    },
+  },
+  nextQuestion: {
+    default: {
+      fontSize: 'b2',
+      color: 'gray000',
+      backgroundColor: 'gray600',
+      borderRadius: '8',
     },
   },
 };

@@ -30,6 +30,7 @@ const StyledButton = styled('button')<ButtonStyleProps>`
     const DEFAULT_FONT_SIZE = BUTTON_VARAINTS[variant].default.fontSize;
     const DEFAULT_COLOR = BUTTON_VARAINTS[variant].default.color;
     const DEFAULT_BACKGROUND_COLOR = BUTTON_VARAINTS[variant].default.backgroundColor;
+    const DEFAULT_BORDER_RADIUS = BUTTON_VARAINTS[variant].default?.borderRadius;
 
     // Press Style
     const PRESS_BACKGROUND_COLOR = BUTTON_VARAINTS[variant].press?.backgroundColor;
@@ -49,6 +50,7 @@ const StyledButton = styled('button')<ButtonStyleProps>`
       background-color: ${disabled
         ? theme.color[DISABLED_BACKGROUND_COLOR ?? DEFAULT_BACKGROUND_COLOR]
         : theme.color[DEFAULT_BACKGROUND_COLOR]};
+      border-radius: ${DEFAULT_BORDER_RADIUS ? `${DEFAULT_BORDER_RADIUS}rem` : '0.8rem'};
 
       &:active {
         background-color: ${!disabled &&
@@ -56,6 +58,4 @@ const StyledButton = styled('button')<ButtonStyleProps>`
       }
     `;
   }}
-
-  border-radius: 0.8rem;
 `;
