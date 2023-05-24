@@ -24,6 +24,7 @@ const QueryClientProvider = ({
             suspense: true,
             useErrorBoundary: true,
             refetchOnWindowFocus: false,
+            retry: false,
           },
         },
       })

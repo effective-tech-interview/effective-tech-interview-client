@@ -12,28 +12,19 @@ export const authToken = {
       return null;
     }
   })(),
-  refresh: (() => {
-    try {
-      return localStorage.getItem('refreshToken');
-    } catch (err) {
-      return null;
-    }
-  })(),
   refetch: () => {
     authToken.access = localStorage.getItem('accessToken');
-    authToken.refresh = localStorage.getItem('refreshToken');
     return;
   },
   destroy: () => {
     localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
     authToken.access = null;
-    authToken.refresh = null;
   },
 };
 
 export const axiosClient = axios.create({
   baseURL: process.env.NODE_ENV === 'development' ? DEV_SERVER_URL : PROD_SERVER_URL,
+  withCredentials: true,
   headers: {
     Authorization: `Bearer ${authToken.access}`,
     'Content-Type': 'application/json; charset=utf-8',
@@ -153,13 +144,10 @@ axiosClient.interceptors.response.use(
   response => response,
   async function (error: EffError) {
     if (isEffError(error) && error.errorCode === 401) {
-      const headers = {
-        Authorization: `Bearer ${authToken.refresh}`,
-      };
       try {
         const {
-          data: { accessToken, refreshToken },
-        } = await axios.post(`${PROD_SERVER_URL}/v1/auth/refresh`, null, { headers });
+          data: { accessToken },
+        } = await axiosClient.post('/v1/auth/refresh');
 
         if (error?.config?.headers === undefined) {
           return null;
@@ -167,9 +155,8 @@ axiosClient.interceptors.response.use(
           error.config.headers['Authorization'] = `Bearer ${accessToken}`;
           //localStorage에 새 토큰 저장
           localStorage.setItem('accessToken', accessToken);
-          localStorage.setItem('refreshToken', refreshToken);
           const originalResponse = await axios.request(error.config);
-          return originalResponse.data.data;
+          return originalResponse;
         }
       } catch (error: unknown) {
         if (error) {

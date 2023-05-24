@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { Flex, Spacing } from '@toss/emotion-utils';
+import { Spacing } from '@toss/emotion-utils';
 
 import Button from '~/components/common/Button';
+import Checkbox from '~/components/common/Checkbox';
 import { Header } from '~/components/common/Header';
 import { Icon } from '~/components/common/Icon';
 import { Input } from '~/components/common/Input';
 import Text from '~/components/common/Text';
 import { useCheckSignUpForm } from '~/hooks/form/useCheckSignUpForm';
+import { theme } from '~/styles/Theme';
 
 type IParams = {
   email: string;
@@ -24,6 +26,9 @@ export async function getServerSideProps({ params }: { params: IParams }) {
 export default function Password({ email }: { email: string }) {
   const [isVisible, setIsVisible] = useState(false);
   const [isCheckVisible, setIsCheckVisible] = useState(false);
+
+  const [isTermsOfServiceChecked, setIsTermsOfServiceChecked] = useState(false);
+  const [isPrivacyPolicyChecked, setIsPrivacyPolicyChecked] = useState(false);
 
   const {
     register,
@@ -97,34 +102,50 @@ export default function Password({ email }: { email: string }) {
           }
         />
         <Spacing size={40} />
-        <Button variant="largePrimary" disabled={isDisabled}>
+        <Checkbox
+          id="TermsOfService"
+          checked={isTermsOfServiceChecked}
+          onClick={() => setIsTermsOfServiceChecked(prev => !prev)}
+        >
+          <Text variant="b2" color="gray600">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://twilight-tartan-155.notion.site/8d39631d4ec74cc283322d0b96b77e98"
+              style={{ textDecoration: 'none', borderBottom: `1px solid ${theme.color.gray600}` }}
+            >
+              서비스 이용약관
+            </a>
+            에 동의합니다 (필수)
+          </Text>
+        </Checkbox>
+        <Spacing size={8} />
+        <Checkbox
+          id="PrivacyPolicy"
+          checked={isPrivacyPolicyChecked}
+          onClick={() => setIsPrivacyPolicyChecked(prev => !prev)}
+        >
+          <Text variant="b2" color="gray600">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://twilight-tartan-155.notion.site/8d39631d4ec74cc283322d0b96b77e98"
+              style={{ textDecoration: 'none', borderBottom: `1px solid ${theme.color.gray600}` }}
+            >
+              개인정보 보호 정책
+            </a>
+            에 동의합니다 (필수)
+          </Text>
+        </Checkbox>
+        <Spacing size={16} />
+        <Button
+          variant="largePrimary"
+          disabled={isDisabled || !isTermsOfServiceChecked || !isPrivacyPolicyChecked}
+        >
           가입 완료
         </Button>
       </form>
       <Spacing size={144} />
-      <Flex.Center direction="column">
-        <Text variant="b2" color="gray400">
-          회원가입 시, 이펙티브 기술면접&nbsp;
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://twilight-tartan-155.notion.site/8d39631d4ec74cc283322d0b96b77e98"
-          >
-            서비스 이용약관
-          </a>
-          과
-        </Text>
-        <Text variant="b2" color="gray400">
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://twilight-tartan-155.notion.site/2b133710e4404ca08f75bcc391616452"
-          >
-            개인정보 보호정책
-          </a>
-          에 동의하게 됩니다.
-        </Text>
-      </Flex.Center>
     </>
   );
 }
