@@ -1,6 +1,7 @@
 import check from './icons/check.svg';
 import downArrow from './icons/downArrow.svg';
 import hide from './icons/hide.svg';
+import kakao from './icons/kakao.svg';
 import leftArrow from './icons/leftArrow.svg';
 import reload from './icons/reload.svg';
 import rightArrow from './icons/rightArrow.svg';
@@ -24,6 +25,7 @@ export const ICONS = {
   toGoHome,
   upArrow,
   warning,
+  kakao,
 };
 
 export type IconName = keyof typeof ICONS;
