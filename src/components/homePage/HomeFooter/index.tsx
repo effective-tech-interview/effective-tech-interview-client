@@ -12,14 +12,15 @@ type HomeFooterProps = {
   onClick: () => void;
 };
 
+export const clientUrl =
+  process.env.NODE_ENV === 'development'
+    ? process.env.NEXT_PUBLIC_DEVELOPMENT_CLIENT_URL
+    : process.env.NEXT_PUBLIC_PRODUCTION_CLIENT_URL;
+
 export const HomeFooter = ({ onClick }: HomeFooterProps) => {
   const router = useRouter();
 
   const baseUrl = process.env.NODE_ENV === 'development' ? DEV_SERVER_URL : PROD_SERVER_URL;
-  const clientUrl =
-    process.env.NODE_ENV === 'development'
-      ? process.env.NEXT_PUBLIC_DEVELOPMENT_CLIENT_URL
-      : process.env.NEXT_PUBLIC_PRODUCTION_CLIENT_URL;
 
   const handleKakaoLogin = async () => {
     router.push(`${baseUrl}/v1/signup/oauth2/kakao/?redirectUri=${clientUrl}kakao`);
