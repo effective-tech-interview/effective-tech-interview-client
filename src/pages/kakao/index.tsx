@@ -6,10 +6,12 @@ import { postKakaoCode } from '~/apis';
 import { isEffError } from '~/apis/client';
 import { clientUrl } from '~/components/homePage/HomeFooter';
 import { useNextRouter } from '~/hooks/useNextRouter';
+import { useToast } from '~/hooks/useToast';
 
 export default function Kakao() {
   const { query } = useNextRouter({ suspense: true });
 
+  const { openToast } = useToast();
   const code = query.code;
   const router = useRouter();
   const redirectUri = `${clientUrl}kakao`;
@@ -23,7 +25,10 @@ export default function Kakao() {
         router.push('/category');
       } catch (error: unknown) {
         if (isEffError(error)) {
-          console.log(error);
+          await openToast({
+            type: 'danger',
+            title: '카카오 로그인에 실패했습니다. ',
+          });
         }
       }
     }
