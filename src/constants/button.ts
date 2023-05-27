@@ -21,7 +21,8 @@ type ButtonVariantNames =
   | 'largeSecondary'
   | 'largeSystem'
   | 'mediumTeritary'
-  | 'smallButton';
+  | 'smallButton'
+  | 'kakaoLogin';
 
 type ButtonVariantProps = Record<ButtonVariantNames, ButtonTypeProps>;
 
@@ -83,6 +84,13 @@ export const BUTTON_VARAINTS: ButtonVariantProps = {
     disabled: {
       color: 'gray400',
       backgroundColor: 'gray100',
+    },
+  },
+  kakaoLogin: {
+    default: {
+      fontSize: 'subtitle',
+      color: 'gray800',
+      backgroundColor: 'kakao',
     },
   },
 };
