@@ -151,7 +151,7 @@ const StyledButton = styled.div`
   padding: 0 16px;
   width: 100%;
   position: fixed;
-  bottom: 24px;
+  bottom: 0px;
 
   ${theme.mediaQuery.desktop} {
     width: 360px;

@@ -2,6 +2,7 @@ import chatConversation from './icons/chatConversation.svg';
 import check from './icons/check.svg';
 import downArrow from './icons/downArrow.svg';
 import hide from './icons/hide.svg';
+import kakao from './icons/kakao.svg';
 import leftArrow from './icons/leftArrow.svg';
 import paperPlane from './icons/paperPlane.svg';
 import paperPlaneDisabled from './icons/paperPlaneDisabled.svg';
