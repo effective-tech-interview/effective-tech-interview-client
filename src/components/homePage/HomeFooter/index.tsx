@@ -10,7 +10,7 @@ type HomeFooterProps = {
 export const HomeFooter = ({ onClick }: HomeFooterProps) => {
   return (
     <HomeFooterWrapper>
-      <Button variant="largePrimary">카카오톡으로 시작하기</Button>
+      <Button variant="kakaoLogin">카카오톡으로 시작하기</Button>
       <Text variant="b1" color="gray600" onClick={onClick}>
         이메일로 시작하기
       </Text>
