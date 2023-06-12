@@ -19,7 +19,7 @@ interface QuestionProps {
 
 const TOTAL_TAIL_QUESTION_NUMBER = 3;
 
-export const Question = ({ type, index, pageId, midCategoryId }: QuestionProps) => {
+const Question = ({ type, index, pageId, midCategoryId }: QuestionProps) => {
   const { data: questionsData, refetch: questionsRefetch } = useQuestionsQuery(
     pageId,
     midCategoryId
@@ -85,3 +85,5 @@ export const Question = ({ type, index, pageId, midCategoryId }: QuestionProps) 
     </>
   );
 };
+
+export default Question;
