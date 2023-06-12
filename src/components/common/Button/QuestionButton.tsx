@@ -61,7 +61,7 @@ const NextQuestionButton = (props: Omit<ComponentProps<typeof QuestionButton>, '
   );
 };
 
-export { NextQuestionButton, OtherQuestionButton, TailQuestionButton };
+export { NextQuestionButton, OtherQuestionButton, QuestionButton, TailQuestionButton };
 
 const QuestionButtonContainer = styled.div`
   display: flex;
