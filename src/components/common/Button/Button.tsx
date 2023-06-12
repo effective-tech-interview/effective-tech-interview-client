@@ -38,6 +38,7 @@ const StyledButton = styled('button')<ButtonStyleProps>`
     // Disabled Style
     const DISABLED_COLOR = BUTTON_VARAINTS[variant].disabled?.color;
     const DISABLED_BACKGROUND_COLOR = BUTTON_VARAINTS[variant].disabled?.backgroundColor;
+    const DISABLED_OPACITY = BUTTON_VARAINTS[variant].disabled?.opacity;
 
     return css`
       ${theme.typography[DEFAULT_FONT_SIZE]};
@@ -55,6 +56,10 @@ const StyledButton = styled('button')<ButtonStyleProps>`
       &:active {
         background-color: ${!disabled &&
         theme.color[PRESS_BACKGROUND_COLOR ?? DEFAULT_BACKGROUND_COLOR]};
+      }
+
+      &:disabled {
+        opacity: ${DISABLED_OPACITY};
       }
     `;
   }}

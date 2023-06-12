@@ -5,6 +5,7 @@ type ButtonStyleProps = {
   color: KeyOfColors;
   backgroundColor: KeyOfColors;
   borderRadius?: string;
+  opacity?: number;
 };
 
 type ButtonPressStyleProps = Partial<ButtonStyleProps>;
@@ -96,6 +97,12 @@ export const BUTTON_VARAINTS: ButtonVariantProps = {
       backgroundColor: 'gray000',
       borderRadius: '8',
     },
+    press: {
+      backgroundColor: 'gray050',
+    },
+    disabled: {
+      opacity: 0.6,
+    },
   },
   tailQuestion: {
     default: {
@@ -104,6 +111,12 @@ export const BUTTON_VARAINTS: ButtonVariantProps = {
       backgroundColor: 'primary_default',
       borderRadius: '8',
     },
+    press: {
+      backgroundColor: 'primary_press',
+    },
+    disabled: {
+      opacity: 0.5,
+    },
   },
   nextQuestion: {
     default: {
@@ -111,6 +124,9 @@ export const BUTTON_VARAINTS: ButtonVariantProps = {
       color: 'gray000',
       backgroundColor: 'gray600',
       borderRadius: '8',
+    },
+    press: {
+      backgroundColor: 'gray800',
     },
   },
 };
