@@ -2,7 +2,7 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { css } from '@emotion/react';
 
 import { Header } from '~/components/common/Header';
-import { Question } from '~/components/question';
+import Question from '~/components/question';
 import { useMidCategoryQuery } from '~/hooks/query/useMidCategory';
 import { usePagesQuery } from '~/hooks/query/usePagesQuery';
 import { useQuestionsQuery } from '~/hooks/query/useQuestionsQuery';

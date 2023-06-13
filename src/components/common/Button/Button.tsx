@@ -30,6 +30,7 @@ const StyledButton = styled('button')<ButtonStyleProps>`
     const DEFAULT_FONT_SIZE = BUTTON_VARAINTS[variant].default.fontSize;
     const DEFAULT_COLOR = BUTTON_VARAINTS[variant].default.color;
     const DEFAULT_BACKGROUND_COLOR = BUTTON_VARAINTS[variant].default.backgroundColor;
+    const DEFAULT_BORDER_RADIUS = BUTTON_VARAINTS[variant].default?.borderRadius;
 
     // Press Style
     const PRESS_BACKGROUND_COLOR = BUTTON_VARAINTS[variant].press?.backgroundColor;
@@ -37,6 +38,7 @@ const StyledButton = styled('button')<ButtonStyleProps>`
     // Disabled Style
     const DISABLED_COLOR = BUTTON_VARAINTS[variant].disabled?.color;
     const DISABLED_BACKGROUND_COLOR = BUTTON_VARAINTS[variant].disabled?.backgroundColor;
+    const DISABLED_OPACITY = BUTTON_VARAINTS[variant].disabled?.opacity;
 
     return css`
       ${theme.typography[DEFAULT_FONT_SIZE]};
@@ -49,13 +51,16 @@ const StyledButton = styled('button')<ButtonStyleProps>`
       background-color: ${disabled
         ? theme.color[DISABLED_BACKGROUND_COLOR ?? DEFAULT_BACKGROUND_COLOR]
         : theme.color[DEFAULT_BACKGROUND_COLOR]};
+      border-radius: ${DEFAULT_BORDER_RADIUS ? `${DEFAULT_BORDER_RADIUS}rem` : '0.8rem'};
 
       &:active {
         background-color: ${!disabled &&
         theme.color[PRESS_BACKGROUND_COLOR ?? DEFAULT_BACKGROUND_COLOR]};
       }
+
+      &:disabled {
+        opacity: ${DISABLED_OPACITY};
+      }
     `;
   }}
-
-  border-radius: 0.8rem;
 `;
