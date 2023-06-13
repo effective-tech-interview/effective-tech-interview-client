@@ -15,6 +15,7 @@ export const theme = {
     teritary_press: '#EEECFF',
     system_default: '#FF2F2F',
     system_press: '#CC2626',
+    kakao: '#FEE500',
   },
   typography: {
     h1: css`
