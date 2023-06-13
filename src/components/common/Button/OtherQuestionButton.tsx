@@ -5,7 +5,7 @@ import { QuestionButton } from './QuestionButton';
 
 const OtherQuestionButton = (props: Omit<ComponentProps<typeof QuestionButton>, 'variant'>) => {
   return (
-    <QuestionButton variant="otherQuestion" {...props}>
+    <QuestionButton variant="otherQuestion" data-testid="other-question-button" {...props}>
       <Icon
         iconName="refresh"
         size="eachSize"
