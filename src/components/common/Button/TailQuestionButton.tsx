@@ -5,7 +5,7 @@ import { QuestionButton } from './QuestionButton';
 
 const TailQuestionButton = (props: Omit<ComponentProps<typeof QuestionButton>, 'variant'>) => {
   return (
-    <QuestionButton variant="tailQuestion" {...props}>
+    <QuestionButton variant="tailQuestion" data-testid="tail-question-button" {...props}>
       <Icon
         iconName="chatConversation"
         size="eachSize"
