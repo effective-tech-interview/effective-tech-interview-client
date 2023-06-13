@@ -3,6 +3,8 @@ import check from './icons/check.svg';
 import downArrow from './icons/downArrow.svg';
 import hide from './icons/hide.svg';
 import leftArrow from './icons/leftArrow.svg';
+import paperPlane from './icons/paperPlane.svg';
+import paperPlaneDisabled from './icons/paperPlaneDisabled.svg';
 import refresh from './icons/refresh.svg';
 import reload from './icons/reload.svg';
 import right from './icons/right.svg';
@@ -27,6 +29,9 @@ export const ICONS = {
   toGoHome,
   upArrow,
   warning,
+  paperPlane,
+  paperPlaneDisabled,
+  kakao,
   chatConversation,
   refresh,
   right,
