@@ -24,6 +24,7 @@ type ButtonVariantNames =
   | 'largeSystem'
   | 'mediumTeritary'
   | 'smallButton'
+  | 'kakaoLogin'
   | 'otherQuestion'
   | 'tailQuestion'
   | 'nextQuestion';
@@ -88,6 +89,13 @@ export const BUTTON_VARAINTS: ButtonVariantProps = {
     disabled: {
       color: 'gray400',
       backgroundColor: 'gray100',
+    },
+  },
+  kakaoLogin: {
+    default: {
+      fontSize: 'subtitle',
+      color: 'gray800',
+      backgroundColor: 'kakao',
     },
   },
   otherQuestion: {
