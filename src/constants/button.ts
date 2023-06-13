@@ -4,6 +4,8 @@ type ButtonStyleProps = {
   fontSize: KeyOfTypography;
   color: KeyOfColors;
   backgroundColor: KeyOfColors;
+  borderRadius?: string;
+  opacity?: number;
 };
 
 type ButtonPressStyleProps = Partial<ButtonStyleProps>;
@@ -23,6 +25,9 @@ type ButtonVariantNames =
   | 'mediumTeritary'
   | 'smallButton'
   | 'kakaoLogin';
+  | 'otherQuestion'
+  | 'tailQuestion'
+  | 'nextQuestion';
 
 type ButtonVariantProps = Record<ButtonVariantNames, ButtonTypeProps>;
 
@@ -91,6 +96,45 @@ export const BUTTON_VARAINTS: ButtonVariantProps = {
       fontSize: 'subtitle',
       color: 'gray800',
       backgroundColor: 'kakao',
+    },
+  },
+  otherQuestion: {
+    default: {
+      fontSize: 'b2',
+      color: 'gray600',
+      backgroundColor: 'gray000',
+      borderRadius: '8',
+    },
+    press: {
+      backgroundColor: 'gray050',
+    },
+    disabled: {
+      opacity: 0.6,
+    },
+  },
+  tailQuestion: {
+    default: {
+      fontSize: 'b2',
+      color: 'gray000',
+      backgroundColor: 'primary_default',
+      borderRadius: '8',
+    },
+    press: {
+      backgroundColor: 'primary_press',
+    },
+    disabled: {
+      opacity: 0.5,
+    },
+  },
+  nextQuestion: {
+    default: {
+      fontSize: 'b2',
+      color: 'gray000',
+      backgroundColor: 'gray600',
+      borderRadius: '8',
+    },
+    press: {
+      backgroundColor: 'gray800',
     },
   },
 };

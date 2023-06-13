@@ -1,9 +1,12 @@
+import chatConversation from './icons/chatConversation.svg';
 import check from './icons/check.svg';
 import downArrow from './icons/downArrow.svg';
 import hide from './icons/hide.svg';
 import kakao from './icons/kakao.svg';
 import leftArrow from './icons/leftArrow.svg';
+import refresh from './icons/refresh.svg';
 import reload from './icons/reload.svg';
+import right from './icons/right.svg';
 import rightArrow from './icons/rightArrow.svg';
 import setting from './icons/setting.svg';
 import show from './icons/show.svg';
@@ -26,6 +29,9 @@ export const ICONS = {
   upArrow,
   warning,
   kakao,
+  chatConversation,
+  refresh,
+  right,
 };
 
 export type IconName = keyof typeof ICONS;
