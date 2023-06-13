@@ -6,7 +6,7 @@ import { QuestionButton } from './QuestionButton';
 
 const NextQuestionButton = (props: Omit<ComponentProps<typeof QuestionButton>, 'variant'>) => {
   return (
-    <QuestionButton variant="nextQuestion" {...props}>
+    <QuestionButton variant="nextQuestion" data-testid="next-question-button" {...props}>
       <span css={NextQuestionButtonSpanStyle}>다음 질문</span>
       <Icon
         iconName="right"
