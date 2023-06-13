@@ -2,6 +2,7 @@ import chatConversation from './icons/chatConversation.svg';
 import check from './icons/check.svg';
 import downArrow from './icons/downArrow.svg';
 import hide from './icons/hide.svg';
+import kakao from './icons/kakao.svg';
 import leftArrow from './icons/leftArrow.svg';
 import refresh from './icons/refresh.svg';
 import reload from './icons/reload.svg';
@@ -27,6 +28,7 @@ export const ICONS = {
   toGoHome,
   upArrow,
   warning,
+  kakao,
   chatConversation,
   refresh,
   right,
