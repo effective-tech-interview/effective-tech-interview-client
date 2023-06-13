@@ -122,10 +122,3 @@ export const postSaveQuestionAnswer = async (
 ) => {
   return await axiosClient.post(`/v2/pages/${pageId}/questions/${questionId}`, { memberAnswer });
 };
-
-export const postKakaoCode = async (code: string, redirectUri: string) => {
-  const {
-    data: { memberId, accessToken },
-  } = await axiosClient.post<LoginResponse>('/v1/signup/oauth2/kakao/code', { code, redirectUri });
-  return { memberId, accessToken };
-};

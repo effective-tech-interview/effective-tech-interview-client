@@ -2,10 +2,10 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 import { Flex, Spacing } from '@toss/emotion-utils';
 
+import Button from '~/components/common/Button';
 import { Chip } from '~/components/common/Chip';
 import { HomeHeader } from '~/components/common/HomeHeader';
 import Text from '~/components/common/Text';
-import { HomeFooter } from '~/components/homePage/HomeFooter';
 import { useShowLoginModal } from '~/hooks/useShowLoginModal';
 import { theme } from '~/styles/Theme';
 
@@ -140,7 +140,9 @@ export default function Home() {
         </Text>
         <Spacing size={120} />
         <StyledButton>
-          <HomeFooter onClick={showLoginModal} />
+          <Button variant="largePrimary" onClick={showLoginModal}>
+            시작하기
+          </Button>
         </StyledButton>
       </Flex.Center>
     </>
@@ -151,7 +153,7 @@ const StyledButton = styled.div`
   padding: 0 16px;
   width: 100%;
   position: fixed;
-  bottom: 0px;
+  bottom: 24px;
 
   ${theme.mediaQuery.desktop} {
     width: 360px;
