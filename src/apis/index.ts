@@ -86,14 +86,14 @@ export const getRandomQuestionDeprecated = async (midCategoryId: number) => {
 export const getPages = async () => {
   const {
     data: { pageId, questions },
-  } = await axiosClient.get<QuestionsResponse>('/v2/pages');
+  } = await axiosClient.get<QuestionsDeprecatedResponse>('/v2/pages');
   return { pageId, questions };
 };
 
-export const getQuestions = async (pageNumber?: number, midCategoryId?: number) => {
+export const getQuestionsDeprecated = async (pageNumber?: number, midCategoryId?: number) => {
   const {
     data: { pageId, questions },
-  } = await axiosClient.get<QuestionsResponse>(`/v2/pages/${pageNumber}/questions`, {
+  } = await axiosClient.get<QuestionsDeprecatedResponse>(`/v2/pages/${pageNumber}/questions`, {
     params: {
       midCategoryId,
     },
@@ -117,10 +117,16 @@ export const getQuestionAnswerDeprecated = async (questionId?: number) => {
 
 export const postSaveQuestionAnswer = async (
   pageId: number,
-  questionId: number,
+  pageQuestionId: number,
   memberAnswer: string
 ) => {
-  return await axiosClient.post(`/v2/pages/${pageId}/questions/${questionId}`, { memberAnswer });
+  return await axiosClient.post(`/v2/pages/${pageId}/questions/${pageQuestionId}`, {
+    memberAnswer,
+  });
+};
+
+export const postUserAnswerFeedback = async (pageId: number, pageQuestionId: number) => {
+  return await axiosClient.post(`/v2/pages/${pageId}/questions/${pageQuestionId}/feedback`);
 };
 
 export const postKakaoCode = async (code: string, redirectUri: string) => {
@@ -128,4 +134,64 @@ export const postKakaoCode = async (code: string, redirectUri: string) => {
     data: { memberId, accessToken },
   } = await axiosClient.post<LoginResponse>('/v1/signup/oauth2/kakao/code', { code, redirectUri });
   return { memberId, accessToken };
+};
+
+export const getQuestions = async (pageId?: number) => {
+  const {
+    data: { pageId: pageNumber, midCategoryId, questions },
+  } = await axiosClient.get<QuestionsResponse>(`/v2/pages/${pageId}/questions`, {
+    params: { pageId },
+  });
+  return { pageNumber, midCategoryId, questions };
+};
+
+export const postPages = async (midCategoryId: number) => {
+  const {
+    data: { id },
+  } = await axiosClient.post<PagesResponse>('/v2/pages', { midCategoryId });
+  return { id };
+};
+
+export const postTailQuestion = async (pageId: number, pageQuestionId: number) => {
+  return await axiosClient.post(`/v2/pages/${pageId}/questions/${pageQuestionId}/tails`, null, {
+    params: {
+      pageId,
+      pageQuestionId,
+    },
+  });
+};
+
+export const postMemberAnswer = async (
+  pageId: number,
+  pageQuestionId: number,
+  memberAnswer: string
+) => {
+  return await axiosClient.post(
+    `/v2/pages/${pageId}/questions/${pageQuestionId}/member-answer`,
+    { memberAnswer },
+    {
+      params: {
+        pageId,
+        pageQuestionId,
+      },
+    }
+  );
+};
+
+export const postAiAnswer = async (pageId: number, pageQuestionId: number) => {
+  return await axiosClient.post(`/v2/pages/${pageId}/questions/${pageQuestionId}/ai-answer`, null, {
+    params: {
+      pageId,
+      pageQuestionId,
+    },
+  });
+};
+
+export const postMemberAnswerFeedback = async (pageId: number, pageQuestionId: number) => {
+  return await axiosClient.post(`/v2/pages/${pageId}/questions/${pageQuestionId}/feedback`, null, {
+    params: {
+      pageId,
+      pageQuestionId,
+    },
+  });
 };

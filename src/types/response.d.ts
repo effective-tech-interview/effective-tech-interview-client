@@ -23,21 +23,43 @@ interface RandomQuestionDeprecatedResponse {
   question: string;
 }
 
-interface QuestionResponse {
+interface QuestionDeprecatedResponse {
   pageQuestionId: number;
   question: string;
   userAnswer: string;
   aiAnswer: string;
 }
 
+interface QuestionResponse {
+  pageQuestionId: number;
+  question: string;
+  memberAnswer: string;
+  aiAnswer: string;
+  feedback: string;
+}
+
+interface QuestionsDeprecatedResponse {
+  pageId: number;
+  questions: QuestionResponse[];
+}
+
 interface QuestionsResponse {
   pageId: number;
+  midCategoryId: number;
   questions: QuestionResponse[];
 }
 
 interface QuestionAnswerDeprecatedResponse {
   id: number;
   answer: string;
+}
+
+interface PagesResponse {
+  id: number;
+}
+
+interface MemberAnswerResponse {
+  memberAnswer: string;
 }
 
 interface User {
