@@ -1,4 +1,5 @@
 import chatConversation from './icons/chatConversation.svg';
+import chatDots from './icons/chatDots.svg';
 import check from './icons/check.svg';
 import downArrow from './icons/downArrow.svg';
 import hide from './icons/hide.svg';
@@ -36,6 +37,7 @@ export const ICONS = {
   chatConversation,
   refresh,
   right,
+  chatDots,
 };
 
 export type IconName = keyof typeof ICONS;
