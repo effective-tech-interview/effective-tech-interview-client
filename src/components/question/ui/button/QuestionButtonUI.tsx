@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import type { ComponentProps, PropsWithChildren } from 'react';
 
-import Button from './Button';
+import Button from '~/components/common/Button';
 
 type QuestionButtonVariants = 'otherQuestion' | 'tailQuestion' | 'nextQuestion';
 
@@ -9,15 +9,15 @@ interface QuestionButtonProps extends Omit<ComponentProps<typeof Button>, 'varia
   variant: QuestionButtonVariants;
 }
 
-const QuestionButton = ({ children, ...props }: PropsWithChildren<QuestionButtonProps>) => {
+const QuestionButtonUI = ({ children, ...props }: PropsWithChildren<QuestionButtonProps>) => {
   return (
-    <Button width={12.3} height={3.4} {...props}>
+    <Button width={10.4} height={3.4} {...props}>
       <QuestionButtonContainer>{children}</QuestionButtonContainer>
     </Button>
   );
 };
 
-export { QuestionButton };
+export default QuestionButtonUI;
 
 const QuestionButtonContainer = styled.div`
   display: flex;

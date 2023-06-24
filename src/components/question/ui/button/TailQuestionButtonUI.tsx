@@ -1,9 +1,10 @@
 import type { ComponentProps } from 'react';
 
-import { Icon } from '../Icon';
-import { QuestionButton } from './QuestionButton';
+import { Icon } from '~/components/common/Icon';
 
-const TailQuestionButton = (props: Omit<ComponentProps<typeof QuestionButton>, 'variant'>) => {
+import QuestionButton from './QuestionButtonUI';
+
+const TailQuestionButtonUI = (props: Omit<ComponentProps<typeof QuestionButton>, 'variant'>) => {
   return (
     <QuestionButton variant="tailQuestion" data-testid="tail-question-button" {...props}>
       <Icon
@@ -17,4 +18,4 @@ const TailQuestionButton = (props: Omit<ComponentProps<typeof QuestionButton>, '
   );
 };
 
-export { TailQuestionButton };
+export { TailQuestionButtonUI };

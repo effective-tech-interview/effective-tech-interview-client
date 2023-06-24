@@ -1,9 +1,10 @@
 import type { ComponentProps } from 'react';
 
-import { Icon } from '../Icon';
-import { QuestionButton } from './QuestionButton';
+import { Icon } from '~/components/common/Icon';
 
-const OtherQuestionButton = (props: Omit<ComponentProps<typeof QuestionButton>, 'variant'>) => {
+import QuestionButton from './QuestionButtonUI';
+
+const OtherQuestionButtonUI = (props: Omit<ComponentProps<typeof QuestionButton>, 'variant'>) => {
   return (
     <QuestionButton variant="otherQuestion" data-testid="other-question-button" {...props}>
       <Icon
@@ -17,4 +18,4 @@ const OtherQuestionButton = (props: Omit<ComponentProps<typeof QuestionButton>, 
   );
 };
 
-export { OtherQuestionButton };
+export { OtherQuestionButtonUI };

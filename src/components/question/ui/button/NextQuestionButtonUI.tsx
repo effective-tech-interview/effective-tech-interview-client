@@ -1,10 +1,11 @@
 import { css } from '@emotion/react';
 import type { ComponentProps } from 'react';
 
-import { Icon } from '../Icon';
-import { QuestionButton } from './QuestionButton';
+import { Icon } from '~/components/common/Icon';
 
-const NextQuestionButton = (props: Omit<ComponentProps<typeof QuestionButton>, 'variant'>) => {
+import QuestionButton from './QuestionButtonUI';
+
+const NextQuestionButtonUI = (props: Omit<ComponentProps<typeof QuestionButton>, 'variant'>) => {
   return (
     <QuestionButton variant="nextQuestion" data-testid="next-question-button" {...props}>
       <span css={NextQuestionButtonSpanStyle}>다음 질문</span>
@@ -18,8 +19,8 @@ const NextQuestionButton = (props: Omit<ComponentProps<typeof QuestionButton>, '
   );
 };
 
-export { NextQuestionButton };
+export { NextQuestionButtonUI };
 
 const NextQuestionButtonSpanStyle = css`
-  margin: 0 12px;
+  margin: 0 8px;
 `;
