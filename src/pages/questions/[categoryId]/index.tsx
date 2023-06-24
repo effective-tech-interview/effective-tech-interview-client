@@ -1,11 +1,13 @@
+import { useEffect, useState } from 'react';
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { css } from '@emotion/react';
 
 import { Header } from '~/components/common/Header';
-import Question from '~/components/question';
+import { Questions } from '~/components/question';
+import QuestionButtonApplication from '~/components/question/application/button/QuestionButtonApplication';
+import QuestionInputApplication from '~/components/question/application/input/QuestionInputApplication';
 import { useMidCategoryQuery } from '~/hooks/query/useMidCategory';
-import { usePagesQuery } from '~/hooks/query/usePagesQuery';
 import { useQuestionsQuery } from '~/hooks/query/useQuestionsQuery';
+import useGetPages from '~/hooks/useGetPages';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return {
@@ -15,37 +17,34 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   };
 };
 
-const Questions = ({ params }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Question = ({ params }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { data: midCategoryData } = useMidCategoryQuery(Number(params.categoryId));
-  const { data: pagesData } = usePagesQuery();
-  const { data: questionsData } = useQuestionsQuery(pagesData?.pageId, midCategoryData?.id);
+  const { pagesId } = useGetPages(Number(params.categoryId));
+  const { data: questionsData, isSuccess: questionsIsSuccess } = useQuestionsQuery(pagesId);
 
-  if (!pagesData || !midCategoryData) return;
+  const [actionData, setActionData] = useState({
+    pageId: 0,
+    pageQuestionId: 0,
+  });
+
+  useEffect(() => {
+    if (questionsIsSuccess)
+      setActionData({
+        pageId: questionsData.pageNumber,
+        pageQuestionId: questionsData.questions[questionsData.questions.length - 1].pageQuestionId,
+      });
+  }, [questionsIsSuccess, questionsData]);
+
+  if (!midCategoryData || !questionsData) return <></>;
 
   return (
     <>
       <Header headerTitle={midCategoryData.name} color="gray" />
-      <div css={questionsWrapperStyle}>
-        {questionsData?.questions.map((_, index) => {
-          return (
-            <Question
-              key={index}
-              type={index === 0 ? 'normal' : 'tail'}
-              pageId={pagesData.pageId}
-              midCategoryId={midCategoryData.id}
-              index={index}
-            />
-          );
-        })}
-      </div>
+      <Questions questionsData={questionsData} />
+      <QuestionButtonApplication actionData={actionData} />
+      <QuestionInputApplication actionData={actionData} />
     </>
   );
 };
 
-export default Questions;
-
-const questionsWrapperStyle = css`
-  height: 90vh;
-  overflow: scroll;
-  padding-bottom: 84px;
-`;
+export default Question;
