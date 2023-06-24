@@ -1,19 +1,19 @@
 import userEvent from '@testing-library/user-event';
 import type { ComponentProps } from 'react';
 
-import { QuestionButton } from '~/components/common/Button';
+import QuestionButtonUI from '~/components/question/ui/button/QuestionButtonUI';
 
 import { render, screen } from './testUtils';
 
 const BUTTON_TEXT = 'Question Text';
 
-export function renderQuestionButton(props?: ComponentProps<typeof QuestionButton>) {
+export function renderQuestionButton(props?: ComponentProps<typeof QuestionButtonUI>) {
   const onClick = jest.fn();
 
   render(
-    <QuestionButton variant={props?.variant ?? 'tailQuestion'} onClick={onClick} {...props}>
+    <QuestionButtonUI variant={props?.variant ?? 'tailQuestion'} onClick={onClick} {...props}>
       {BUTTON_TEXT}
-    </QuestionButton>
+    </QuestionButtonUI>
   );
 
   const button = () => screen.getByText(BUTTON_TEXT);

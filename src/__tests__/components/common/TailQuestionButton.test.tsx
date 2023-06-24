@@ -1,9 +1,9 @@
 import { renderTailQuestionButton } from '~/__tests__/utils/renderTailQuestionButton';
-import { TailQuestionButton } from '~/components/common/Button';
+import { TailQuestionButtonUI } from '~/components/question/ui/button';
 
 describe('<TailQuestionButton />', () => {
   it('컴포넌트가 존재해야 한다.', async () => {
-    expect(TailQuestionButton).toBeDefined();
+    expect(TailQuestionButtonUI).toBeDefined();
   });
 
   it('기본 필드를 렌더링해야 한다.', async () => {

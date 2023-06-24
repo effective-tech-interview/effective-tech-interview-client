@@ -1,9 +1,9 @@
 import { renderOtherQuestionButton } from '~/__tests__/utils/renderOtherQuestionButton';
-import { OtherQuestionButton } from '~/components/common/Button';
+import { OtherQuestionButtonUI } from '~/components/question/ui/button';
 
 describe('<OtherQuestionButton />', () => {
   it('컴포넌트가 존재해야 한다.', async () => {
-    expect(OtherQuestionButton).toBeDefined();
+    expect(OtherQuestionButtonUI).toBeDefined();
   });
 
   it('기본 필드를 렌더링해야 한다.', async () => {

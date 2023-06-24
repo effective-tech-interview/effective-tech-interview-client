@@ -1,16 +1,16 @@
 import userEvent from '@testing-library/user-event';
 import type { ComponentProps } from 'react';
 
-import { NextQuestionButton } from '~/components/common/Button';
+import { NextQuestionButtonUI } from '~/components/question/ui/button';
 
 import { render, screen } from './testUtils';
 
 const TEST_ID = 'next-question-button';
 
-export function renderNextQuestionButton(props?: ComponentProps<typeof NextQuestionButton>) {
+export function renderNextQuestionButton(props?: ComponentProps<typeof NextQuestionButtonUI>) {
   const onClick = jest.fn();
 
-  render(<NextQuestionButton onClick={onClick} {...props} />);
+  render(<NextQuestionButtonUI onClick={onClick} {...props} />);
 
   const button = () => screen.getByTestId(TEST_ID);
 

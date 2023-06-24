@@ -1,9 +1,9 @@
 import { renderNextQuestionButton } from '~/__tests__/utils/renderNextQuestionButton';
-import { NextQuestionButton } from '~/components/common/Button';
+import { NextQuestionButtonUI } from '~/components/question/ui/button';
 
 describe('<NextQuestionButton />', () => {
   it('컴포넌트가 존재해야 한다.', async () => {
-    expect(NextQuestionButton).toBeDefined();
+    expect(NextQuestionButtonUI).toBeDefined();
   });
 
   it('기본 필드를 렌더링해야 한다.', async () => {

@@ -1,16 +1,16 @@
 import userEvent from '@testing-library/user-event';
 import type { ComponentProps } from 'react';
 
-import { TailQuestionButton } from '~/components/common/Button';
+import { TailQuestionButtonUI } from '~/components/question/ui/button';
 
 import { render, screen } from './testUtils';
 
 const TEST_ID = 'tail-question-button';
 
-export function renderTailQuestionButton(props?: ComponentProps<typeof TailQuestionButton>) {
+export function renderTailQuestionButton(props?: ComponentProps<typeof TailQuestionButtonUI>) {
   const onClick = jest.fn();
 
-  render(<TailQuestionButton onClick={onClick} {...props} />);
+  render(<TailQuestionButtonUI onClick={onClick} {...props} />);
 
   const button = () => screen.getByTestId(TEST_ID);
 
