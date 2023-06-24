@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+
+import questionInputHeightAtom from '~/store/questionInputHeight/questionInputHeightAtom';
 
 const useAutoSizeTextArea = (textAreaRef: HTMLTextAreaElement | null, value: string) => {
   const [scrollHeight, setScrollHeight] = useState(0);
+  const setHeight = useSetRecoilState(questionInputHeightAtom);
 
   useEffect(() => {
     if (textAreaRef) {
@@ -11,13 +15,18 @@ const useAutoSizeTextArea = (textAreaRef: HTMLTextAreaElement | null, value: str
 
       setScrollHeight(scrollHeight);
 
+      setHeight(scrollHeight);
+
       textAreaRef.style.height = scrollHeight + 'px';
 
-      if (scrollHeight > 95) textAreaRef.style.height = '95px';
+      if (scrollHeight > 95) {
+        textAreaRef.style.height = '95px';
+        setHeight(95);
+      }
     }
-  }, [textAreaRef, value]);
+  }, [setHeight, textAreaRef, value]);
 
-  return [scrollHeight];
+  return { scrollHeight };
 };
 
 export default useAutoSizeTextArea;
