@@ -19,8 +19,8 @@ export const PAGES_QUERY_KEYS = {
 };
 
 export const QUESTIONS_QUERY_KEYS = {
-  getQuestions(pageId?: number, midCategoryId?: number) {
-    return ['getQuestions', pageId, midCategoryId];
+  getQuestions(pageId?: number) {
+    return ['getQuestions', pageId];
   },
 };
 
