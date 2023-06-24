@@ -2,6 +2,7 @@ import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'ne
 import type { DehydratedState } from '@tanstack/react-query';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { Flex, Spacing } from '@toss/emotion-utils';
+import { useSetRecoilState } from 'recoil';
 
 import { getMidCategories } from '~/apis';
 import { CategoryDetailBody, CategoryDetailHeader } from '~/components/categoryDetail';
@@ -9,6 +10,8 @@ import { HomeHeader } from '~/components/common/HomeHeader';
 import Text from '~/components/common/Text';
 import { MID_CATEGORIES_QUERY_KEYS } from '~/constants/queryKeys';
 import { useMidCategoriesQuery } from '~/hooks/query/useMidCategoriesQuery';
+import useDidMount from '~/hooks/useDidMount';
+import userAnswerResetSelector from '~/store/userAnswerReset/userAnswerResetSelector';
 
 const TOTAL_PAGE_NUMBER = 4;
 
@@ -49,6 +52,12 @@ export default function CategoryDetail({
   mainCategoryId,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data: midCategoriesData } = useMidCategoriesQuery(mainCategoryId);
+
+  const resetUserAnswer = useSetRecoilState(userAnswerResetSelector);
+
+  useDidMount(() => {
+    resetUserAnswer(1);
+  });
 
   if (!midCategoriesData) return;
 

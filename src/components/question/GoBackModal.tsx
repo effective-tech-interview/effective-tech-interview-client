@@ -1,8 +1,10 @@
 import { useRouter } from 'next/router';
 import { Flex, Spacing } from '@toss/emotion-utils';
+import { useSetRecoilState } from 'recoil';
 
 import Button from '~/components/common/Button';
 import Text from '~/components/common/Text';
+import userAnswerResetSelector from '~/store/userAnswerReset/userAnswerResetSelector';
 
 type GoBackModalProps = {
   close: () => void;
@@ -13,10 +15,13 @@ const GOOGLE_FORM = 'https://forms.gle/HbexSiDB2UuqmVTPA';
 export const GoBackModal = ({ close }: GoBackModalProps) => {
   const router = useRouter();
 
+  const resetUserAnswer = useSetRecoilState(userAnswerResetSelector);
+
   const onCancelClick = () => {
     close();
   };
   const onLogoutClick = () => {
+    resetUserAnswer(1);
     router.back();
   };
   return (
