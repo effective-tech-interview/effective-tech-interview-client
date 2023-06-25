@@ -1,15 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+
+import tailQuestionButtonDisableAtomFamily from '~/store/tailQuestionButtonDisable/tailQuestionButtonDisableAtomFamily';
 
 import { useQuestionsQuery } from './query/useQuestionsQuery';
 
 interface Props {
   pageId: number;
+  pageQuestionId: number;
 }
 
-const useTailQuestionButtonDisabled = ({ pageId }: Props) => {
-  const [disabled, setDisabled] = useState(true);
-
+const useTailQuestionButtonDisabled = ({ pageId, pageQuestionId }: Props) => {
   const { data: questionsData, isSuccess: quesionsIsSuccess } = useQuestionsQuery(pageId);
+
+  const [disabled, setDisabled] = useRecoilState(
+    tailQuestionButtonDisableAtomFamily(pageQuestionId)
+  );
 
   useEffect(() => {
     if (quesionsIsSuccess) {
@@ -17,7 +23,7 @@ const useTailQuestionButtonDisabled = ({ pageId }: Props) => {
 
       setDisabled(Boolean(!memberAnswer));
     }
-  }, [quesionsIsSuccess, questionsData]);
+  }, [quesionsIsSuccess, questionsData, setDisabled]);
 
   return { disabled };
 };

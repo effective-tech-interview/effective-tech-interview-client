@@ -13,7 +13,7 @@ interface Props {
 }
 
 const TailQuestionButtonApplication = ({ actionData: { pageId, pageQuestionId } }: Props) => {
-  const { disabled } = useTailQuestionButtonDisabled({ pageId });
+  const { disabled } = useTailQuestionButtonDisabled({ pageId, pageQuestionId });
   const { handleClick } = useTailQuestionButtonClick({ pageId, pageQuestionId });
 
   return <TailQuestionButtonUI disabled={disabled} onClick={handleClick} />;
