@@ -1,3 +1,6 @@
+import useFeedbackQuestionButtonClick from '~/hooks/useFeedbackQuestionButtonClick';
+import useFeedbackQuestionButtonDisabled from '~/hooks/useFeedbackQuestionButtonDisabled';
+
 import { FeedbackQuestionButtonUI } from '../../ui/button';
 
 interface ActionData {
@@ -9,11 +12,11 @@ interface Props {
   actionData: ActionData;
 }
 
-const FeedbackQuestionButtonApplication = ({}: Props) => {
-  // const { disabled } = useFeedbackQuestionButtonDisabled({ pageId });
-  // const { handleClick } = useFeedbackQuestionButtonClick({ pageId, pageQuestionId });
+const FeedbackQuestionButtonApplication = ({ actionData: { pageId, pageQuestionId } }: Props) => {
+  const { disabled } = useFeedbackQuestionButtonDisabled({ pageId, pageQuestionId });
+  const { handleClick } = useFeedbackQuestionButtonClick({ pageId, pageQuestionId });
 
-  return <FeedbackQuestionButtonUI disabled={true} onClick={() => null} />;
+  return <FeedbackQuestionButtonUI disabled={disabled} onClick={handleClick} />;
 };
 
 export { FeedbackQuestionButtonApplication };
