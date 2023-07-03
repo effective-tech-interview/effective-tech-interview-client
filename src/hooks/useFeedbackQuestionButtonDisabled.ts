@@ -21,7 +21,7 @@ const useFeedbackQuestionButtonDisabled = ({ pageId, pageQuestionId }: Props) =>
 
       setDisabled(Boolean(!memberAnswer));
 
-      const feedback = questionsData.questions[questionsData.questions.length - 1].feedback;
+      const feedback = questionsData.questions[questionsData.questions.length - 1].positiveFeedback;
 
       if (feedback) setDisabled(true);
     }

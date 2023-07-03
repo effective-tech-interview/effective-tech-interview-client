@@ -35,7 +35,8 @@ interface QuestionResponse {
   question: string;
   memberAnswer: string;
   aiAnswer: string;
-  feedback: string;
+  positiveFeedback: string;
+  improvementFeedback: string;
 }
 
 interface QuestionsDeprecatedResponse {

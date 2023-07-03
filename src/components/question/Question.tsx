@@ -25,10 +25,10 @@ const Question = ({ type, questionData }: QuestionProps) => {
       {questionData.memberAnswer && <UserBubble userAnswer={questionData.memberAnswer} />}
       <Spacing size={20} />
       <QuestionLoadingApplication pageQuestionId={questionData.pageQuestionId} />
-      {questionData.feedback && (
+      {questionData.positiveFeedback && (
         <AIFeedbackBubble
-          advantage={questionData.feedback.split('\n\n')[0].split('좋은 점: ')[1]}
-          improvements={questionData.feedback.split('\n\n')[1].split('개선할 점: ')[1]}
+          positive={questionData.positiveFeedback}
+          improvement={questionData.improvementFeedback}
         />
       )}
       <Spacing size={20} />

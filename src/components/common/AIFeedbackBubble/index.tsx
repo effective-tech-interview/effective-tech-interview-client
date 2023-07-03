@@ -6,11 +6,11 @@ import { Chip } from '../Chip';
 import Text from '../Text';
 
 export interface AIBubbleProps {
-  advantage: string;
-  improvements: string;
+  positive: string;
+  improvement: string;
 }
 
-export const AIFeedbackBubble = ({ advantage, improvements }: AIBubbleProps) => {
+export const AIFeedbackBubble = ({ positive, improvement }: AIBubbleProps) => {
   return (
     <BubbleWrapper>
       <BubbleContainer>
@@ -21,13 +21,13 @@ export const AIFeedbackBubble = ({ advantage, improvements }: AIBubbleProps) => 
           {'좋은 점'}
         </Text>
         <Text variant="b3" color="gray800">
-          {advantage}
+          {positive}
         </Text>
         <Text variant="b3" color="system_default">
           {'개선할 점'}
         </Text>
         <Text variant="b3" color="gray800">
-          {improvements}
+          {improvement}
         </Text>
       </BubbleContainer>
     </BubbleWrapper>
