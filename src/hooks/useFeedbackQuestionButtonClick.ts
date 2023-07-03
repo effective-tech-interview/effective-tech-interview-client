@@ -33,7 +33,9 @@ const useFeedbackQuestionButtonClick = ({ pageId, pageQuestionId }: Props) => {
   );
 
   useDidUpdate(() => {
-    setIsFeedbackLoading(memberAnswerFeedbackIsLoading);
+    if (!memberAnswerFeedbackIsLoading) {
+      setIsFeedbackLoading(false);
+    }
   }, [memberAnswerFeedbackIsLoading]);
 
   useDidUpdate(() => {
@@ -47,6 +49,7 @@ const useFeedbackQuestionButtonClick = ({ pageId, pageQuestionId }: Props) => {
     });
     setAiFeedbackButtonDisabled(true);
     setTailQuestionButtonDisabled(true);
+    setIsFeedbackLoading(true);
   };
 
   return { handleClick };
