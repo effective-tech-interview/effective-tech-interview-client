@@ -10,6 +10,8 @@ interface Props {
   pageQuestionId: number;
 }
 
+const TOTAL_TAIL_QUESTION_NUMBER = 4;
+
 const useTailQuestionButtonDisabled = ({ pageId, pageQuestionId }: Props) => {
   const { data: questionsData, isSuccess: quesionsIsSuccess } = useQuestionsQuery(pageId);
 
@@ -22,6 +24,8 @@ const useTailQuestionButtonDisabled = ({ pageId, pageQuestionId }: Props) => {
       const memberAnswer = questionsData.questions[questionsData.questions.length - 1].memberAnswer;
 
       setDisabled(Boolean(!memberAnswer));
+
+      if (questionsData.questions.length === TOTAL_TAIL_QUESTION_NUMBER) setDisabled(true);
     }
   }, [quesionsIsSuccess, questionsData, setDisabled]);
 

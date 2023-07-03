@@ -11,8 +11,6 @@ interface QuestionProps {
   questionData: QuestionResponse;
 }
 
-// const TOTAL_TAIL_QUESTION_NUMBER = 3;
-
 const Question = ({ type, questionData }: QuestionProps) => {
   return (
     <>
